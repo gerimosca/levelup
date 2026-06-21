@@ -6,7 +6,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { Settings, Check, Zap, Lock, BarChart3 } from 'lucide-react';
-import { RARITY, attributeRank, dominantAttribute, type RarityKey } from '@/game-core';
+import { RARITY, attributeRank, dominantAttribute, ACHIEVEMENTS_BY_KEY, type RarityKey } from '@/game-core';
 import { usePlayerStore, audio, haptics } from '@/shared/game';
 import { getProfileAction, equipItemAction, updateAvatarConfigAction } from '../game.actions';
 import { CharacterStage } from './character-stage';
@@ -416,26 +416,46 @@ export function MeClient() {
               <div className="grid grid-cols-2 gap-2">
                 {keys.map((aKey) => {
                   const done = unlocked.has(aKey);
+                  const def = ACHIEVEMENTS_BY_KEY[aKey];
+                  const prog = !done && def?.progress ? def.progress(profile.achievementStats) : null;
+                  const pct = prog ? Math.round((prog.current / prog.target) * 100) : 0;
+                  const hint = !done ? tg.rich(`achievements.${aKey}.hint`, {
+                    current: prog?.current ?? 0,
+                    target: prog?.target ?? 1,
+                  }) : null;
                   return (
                     <motion.div
                       key={aKey}
                       layout
-                      className="flex items-center gap-2 rounded-xl border px-3 py-2.5"
+                      className="flex flex-col gap-1.5 rounded-xl border px-3 py-2.5"
                       style={{
                         borderColor: done ? '#6C5CE7' : 'hsl(var(--border))',
                         backgroundColor: done ? 'rgba(108,92,231,0.08)' : 'hsl(var(--card))',
-                        opacity: done ? 1 : 0.55,
+                        opacity: done ? 1 : 0.7,
                       }}
                     >
-                      <span className="shrink-0 text-sm" aria-hidden="true">
-                        {done ? '🏅' : '🔒'}
-                      </span>
-                      <span
-                        className="text-xs font-medium leading-tight"
-                        style={{ color: done ? '#6C5CE7' : 'hsl(var(--muted-foreground))' }}
-                      >
-                        {tg(`achievements.${aKey}.name`)}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="shrink-0 text-sm" aria-hidden="true">
+                          {done ? '🏅' : '🔒'}
+                        </span>
+                        <span
+                          className="text-xs font-medium leading-tight"
+                          style={{ color: done ? '#6C5CE7' : 'hsl(var(--muted-foreground))' }}
+                        >
+                          {tg(`achievements.${aKey}.name`)}
+                        </span>
+                      </div>
+                      {!done && hint && (
+                        <p className="text-[10px] leading-tight text-muted-foreground/60">{hint}</p>
+                      )}
+                      {prog && (
+                        <div className="h-1 overflow-hidden rounded-full bg-border">
+                          <div
+                            className="h-full rounded-full bg-primary/50 transition-all"
+                            style={{ width: `${pct}%` }}
+                          />
+                        </div>
+                      )}
                     </motion.div>
                   );
                 })}

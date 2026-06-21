@@ -157,6 +157,7 @@ export interface TodayState {
   materials: Record<string, number>;
   camp: CampView;
   avatarConfig: AvatarConfig;
+  journalDoneToday: boolean;
   /** Atributo dominante del jugador para el aura del héroe (null si no hay puntos aún). */
   dominantAttr: { key: string; rank: number } | null;
 }
@@ -189,6 +190,7 @@ export interface ProfileView {
   power: number;
   attributes: AttributeView[];
   achievements: string[];
+  achievementStats: import('@/game-core').AchievementStats;
   equipment: EquipmentView[];
   equipped: EquippedSlots;
   avatarConfig: AvatarConfig;

@@ -143,7 +143,7 @@ export {
 export { evaluateAchievements } from './achievements/achievements';
 
 // Actividades de la mascota (mundo vivo)
-export { PET_ACTIVITY_EMOJI, petActivityForHour } from './data/pet-activities';
+export { PET_ACTIVITY_EMOJI, PET_THOUGHTS, petActivityForHour } from './data/pet-activities';
 export type { PetActivity } from './data/pet-activities';
 
 // Utilidades deterministas

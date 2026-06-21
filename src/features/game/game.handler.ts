@@ -97,6 +97,7 @@ import {
   getCampStructures,
   getDiscoveries,
   hasRelapseOn,
+  hasJournalToday,
   type PlayerRow,
 } from './game.query';
 import {
@@ -187,8 +188,8 @@ export async function handleGetTodayState(
   const activeHabits = resolveActiveHabits(player, season);
 
   const [
-    claimedArr, streakRow, enemyRow, seasonProg, petRow, relapsedToday, hadRelapseYesterday, equipped,
-    expRow, inventory, campStructures, attrMapToday,
+    claimedArr, streakRow, enemyRow, seasonProg, petRow, relapsedToday, hadRelapseYesterday, journalDoneToday,
+    equipped, expRow, inventory, campStructures, attrMapToday,
   ] = await Promise.all([
     getClaimedHabitKeys(userId, dayDate),
     getStreakRow(userId),
@@ -197,6 +198,7 @@ export async function handleGetTodayState(
     getPetRow(userId),
     hasRelapseOn(userId, dayDate),
     hasRelapseOn(userId, addDaysISO(dayDate, -1)),
+    hasJournalToday(userId, dayDate),
     buildEquippedSlots(userId),
     getExpedition(userId),
     getInventory(userId),
@@ -280,6 +282,7 @@ export async function handleGetTodayState(
       canBuildNext: nextStruct ? canAfford(nextStruct.cost, inventory) : false,
     },
     avatarConfig: (player.avatar_config as AvatarConfig | null) ?? {},
+    journalDoneToday,
     dominantAttr: (() => {
       const dom = dominantAttribute(attrMapToday);
       if (!dom) return null;
@@ -336,11 +339,17 @@ export async function handleGetProfile(userId: string): Promise<ProfileView> {
   const player = (await getPlayerRow(userId)) ?? DEFAULT_PLAYER;
   const levelInfo = levelFromTotalXp(player.xp_total);
 
-  const [attrMap, achievements, equipmentRows] = await Promise.all([
+  const [attrMap, achievements, equipmentRows, streakForProfile] = await Promise.all([
     getAttributesMap(userId),
     getUnlockedAchievementKeys(userId),
     getEquipmentRows(userId),
+    getStreakRow(userId),
   ]);
+  const achievementStats = await getAchievementStats(
+    userId,
+    levelInfo.level,
+    streakForProfile?.longest ?? 0,
+  );
   const unlocked = new Set(achievements);
   const equippedByItem = new Map(equipmentRows.map((r) => [r.item_key, r.equipped_slot]));
   const ownedKeys = new Set(equipmentRows.map((r) => r.item_key));
@@ -369,6 +378,7 @@ export async function handleGetProfile(userId: string): Promise<ProfileView> {
       return { type, points, rank: attributeRank(points), progress: attributeRankProgress(points) };
     }),
     achievements,
+    achievementStats,
     equipment: EQUIPMENT.map((e) => ({
       key: e.key,
       slot: e.slot,

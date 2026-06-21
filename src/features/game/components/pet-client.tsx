@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Shield } from 'lucide-react';
-import { nextPetStageInfo, PET_ACTIVITY_EMOJI, petActivityForHour } from '@/game-core';
+import { nextPetStageInfo, PET_ACTIVITY_EMOJI, PET_THOUGHTS, petActivityForHour } from '@/game-core';
 import { getTodayStateAction } from '../game.actions';
 import { PetStage } from './pet-stage';
 import type { TodayState } from '../types';
@@ -32,6 +32,8 @@ export function PetClient() {
 
   const info = nextPetStageInfo(pet.careDays);
   const activity = pet.activity ?? petActivityForHour(new Date().getHours(), pet.mood);
+  const thoughts = PET_THOUGHTS[pet.mood] ?? [];
+  const thought = thoughts[pet.careDays % thoughts.length];
 
   return (
     <div className="space-y-6 text-center">
@@ -45,6 +47,13 @@ export function PetClient() {
         <p className="text-lg font-bold">{tg(`petStage.${pet.stage}`)}</p>
         <p className="text-sm text-muted-foreground">{tg(`petMood.${pet.mood}`)}</p>
       </div>
+
+      {thought && (
+        <div className="relative mx-auto w-fit max-w-[220px] rounded-2xl rounded-bl-none border border-border bg-card px-4 py-3 text-center text-sm text-muted-foreground shadow-sm">
+          {thought}
+          <span className="absolute -bottom-3 left-4 text-xl leading-none" aria-hidden="true">💬</span>
+        </div>
+      )}
 
       {activity && (
         <div className="mx-auto flex w-fit items-center gap-2 rounded-full border border-border bg-card px-4 py-2">

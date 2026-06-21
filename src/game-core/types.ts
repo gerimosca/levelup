@@ -211,6 +211,10 @@ export interface AchievementDef {
   key: string;
   /** Predicado sobre el snapshot de estadísticas. */
   check: (stats: AchievementStats) => boolean;
+  /** Clave i18n del hint (se muestra en logros bloqueados). */
+  hintKey: string;
+  /** Progreso numérico [current, target] o null para logros binarios. */
+  progress?: (stats: AchievementStats) => { current: number; target: number };
 }
 
 export interface EquipmentDef {

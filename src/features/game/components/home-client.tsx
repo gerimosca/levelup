@@ -43,6 +43,17 @@ import { LevelUpOverlay, MissionCompleteOverlay, StreakMilestoneOverlay, SeasonV
 import { JournalModal } from './journal-modal';
 import { CraftForge } from './craft-forge';
 
+const ZONE_EMOJI: Record<string, string> = {
+  forest: '🌳', mountain: '⛰️', cave: '🕳️', volcano: '🌋',
+  temple: '🏛️', city: '🏙️', castle: '🏰', summit: '🗻',
+  plains: '🌿', hills: '🏔️', gorge: '🪨', highlands: '🌄',
+  ridge: '⛰️', glacier: '🧊',
+  desert: '🏜️', oasis: '🌴', dunes: '🌊', mesa: '🪨',
+  canyon: '🏞️', spire: '🗽', zenith: '⭐',
+  sanctum: '🕍', labyrinth: '🌀', abyss: '🌑', dreamscape: '💫',
+  void_edge: '🌌', mindscape: '🔮', astral: '✨', transcendence: '🌟',
+};
+
 function localDayDate(): string {
   const d = new Date();
   const m = String(d.getMonth() + 1).padStart(2, '0');
@@ -64,6 +75,7 @@ function fullValueFor(habit: HabitKey): number {
 export function HomeClient() {
   const tg = useTranslations('game');
   const th = useTranslations('home');
+  const tmap = useTranslations('map');
   const locale = useLocale();
 
   const [today, setToday] = useState<TodayState | null>(null);
@@ -402,6 +414,11 @@ export function HomeClient() {
           <div className="mt-2 flex items-center justify-center gap-5 text-sm font-bold">
             <span>🪵 {today.materials.wood ?? 0}</span>
             <span>🪨 {today.materials.stone ?? 0}</span>
+            {today.pet.shields > 0 && (
+              <span className="text-xs font-semibold text-blue-400" title="Active shields">
+                {th('shields', { count: today.pet.shields })}
+              </span>
+            )}
           </div>
         </div>
       </section>
@@ -466,7 +483,10 @@ export function HomeClient() {
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold">{th('expedition.outTitle')}</p>
               <p className="text-xs text-muted-foreground">
-                ⏱ {remainingTime(today.expedition.readyAt)}
+                {th('expedition.out', {
+                  zone: `${ZONE_EMOJI[today.season.zoneKey] ?? '🌍'} ${tmap(`zones.${today.season.zoneKey}`)}`,
+                  time: remainingTime(today.expedition.readyAt),
+                })}
               </p>
             </div>
           </div>
@@ -489,14 +509,18 @@ export function HomeClient() {
               animate={{ x: [0, 3, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             >
-              🧭
+              {ZONE_EMOJI[today.season.zoneKey] ?? '🧭'}
             </motion.span>
           </div>
         </div>
       ) : (
         <div className="flex items-center gap-3 rounded-2xl border border-dashed border-border p-4 text-muted-foreground">
           <Compass className="h-5 w-5 shrink-0" aria-hidden="true" />
-          <p className="text-xs">{th('expedition.departHint')}</p>
+          <p className="text-xs">
+            {today.missions.main.claimed
+              ? th('expedition.departHint')
+              : th('expedition.idleHint')}
+          </p>
         </div>
       )}
 
@@ -579,6 +603,22 @@ export function HomeClient() {
         )}
       </section>
 
+      {/* Banner día completo */}
+      {(() => {
+        const allMissions = [today.missions.main, ...today.missions.secondary];
+        const allClaimed = allMissions.length > 0 && allMissions.every((m) => m.claimed);
+        return allClaimed ? (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="rounded-2xl border border-primary/30 bg-primary/8 px-4 py-3.5 text-center"
+          >
+            <p className="text-sm font-bold text-primary">{th('dayComplete.title')}</p>
+            <p className="mt-0.5 text-xs text-muted-foreground">{th('dayComplete.body')}</p>
+          </motion.div>
+        ) : null;
+      })()}
+
       {/* Enemigo de temporada + logger de recaída */}
       <section className="space-y-2">
         <EnemyHealthBar
@@ -609,13 +649,21 @@ export function HomeClient() {
       <button
         type="button"
         onClick={() => setJournalOpen(true)}
-        className="flex w-full items-center justify-between rounded-2xl border border-dashed border-border bg-card/60 px-4 py-3.5 text-left transition-colors active:bg-accent/5"
+        className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3.5 text-left transition-colors active:bg-accent/5 ${
+          today.journalDoneToday
+            ? 'border-primary/30 bg-primary/6'
+            : 'border-dashed border-border bg-card/60'
+        }`}
       >
         <div className="flex items-center gap-3">
           <span className="text-xl" aria-hidden="true">📓</span>
-          <span className="text-sm font-medium">{th('journalCta')}</span>
+          <span className={`text-sm font-medium ${today.journalDoneToday ? 'text-primary' : ''}`}>
+            {today.journalDoneToday ? th('journalCtaDone') : th('journalCta')}
+          </span>
         </div>
-        <span className="text-xs text-muted-foreground/50" aria-hidden="true">›</span>
+        <span className="text-xs text-muted-foreground/50" aria-hidden="true">
+          {today.journalDoneToday ? '✓' : '›'}
+        </span>
       </button>
 
       {valuePrompt && (
@@ -875,7 +923,12 @@ export function HomeClient() {
       )}
 
       <AnimatePresence>
-        {journalOpen && <JournalModal onClose={() => setJournalOpen(false)} />}
+        {journalOpen && (
+          <JournalModal
+            onClose={() => setJournalOpen(false)}
+            onSaved={() => setToday((prev) => prev ? { ...prev, journalDoneToday: true } : prev)}
+          />
+        )}
       </AnimatePresence>
     </div>
   );

@@ -26,6 +26,17 @@ export async function getPlayerRow(userId: string): Promise<PlayerRow | null> {
   return (data as PlayerRow | null) ?? null;
 }
 
+/** ¿Hay una entrada de journal para ese día? */
+export async function hasJournalToday(userId: string, dayDate: string): Promise<boolean> {
+  const supabase = await createClientServer();
+  const { count } = await supabase
+    .from('journal_entries')
+    .select('*', { count: 'exact', head: true })
+    .eq('user_id', userId)
+    .eq('day_date', dayDate);
+  return (count ?? 0) > 0;
+}
+
 /** ¿Hay una recaída registrada en ese día? */
 export async function hasRelapseOn(userId: string, dayDate: string): Promise<boolean> {
   const supabase = await createClientServer();

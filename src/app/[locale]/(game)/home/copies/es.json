@@ -8,10 +8,17 @@
   "offlineRetry": "Reintentar",
   "loading": "Preparando tu aventura...",
   "journalCta": "Diario de esta noche",
+  "journalCtaDone": "Diario escrito ✓",
+  "dayComplete": {
+    "title": "¡Día completado!",
+    "body": "Misiones reclamadas. Escribe en tu diario para ganar XP extra."
+  },
+  "shields": "{count} 🛡️",
   "expedition": {
     "ready": "¡Tu héroe ha vuelto! Mira qué trajo",
     "outTitle": "Tu héroe está explorando",
-    "out": "Tu héroe está explorando… vuelve en ~{time}",
+    "out": "Explorando {zone} · vuelve en ~{time}",
+    "idleHint": "Cumple tu misión principal para enviar a tu héroe a explorar",
     "departHint": "Cumple tu misión principal para enviar a tu héroe a explorar"
   },
   "build": {

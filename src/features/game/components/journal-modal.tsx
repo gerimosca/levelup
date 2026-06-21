@@ -16,7 +16,7 @@ function localDayDate(): string {
   return `${d.getFullYear()}-${m}-${day}`;
 }
 
-export function JournalModal({ onClose }: { onClose: () => void }) {
+export function JournalModal({ onClose, onSaved }: { onClose: () => void; onSaved?: () => void }) {
   const th = useTranslations('home');
   const [mood, setMood] = useState<string | null>(null);
   const [felt, setFelt] = useState('');
@@ -34,6 +34,7 @@ export function JournalModal({ onClose }: { onClose: () => void }) {
     setSaving(false);
     if (res.success) {
       toast.success(th('journal.saved', { xp: res.xpAwarded }));
+      onSaved?.();
       onClose();
     }
   };

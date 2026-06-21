@@ -8,10 +8,17 @@
   "offlineBody": "Log back in when you have a signal and your streak will still be here.",
   "offlineRetry": "Try again",
   "journalCta": "Tonight's journal",
+  "journalCtaDone": "Journal written ✓",
+  "dayComplete": {
+    "title": "Day complete!",
+    "body": "All missions claimed. Write in your journal to earn bonus XP."
+  },
+  "shields": "{count} 🛡️",
   "expedition": {
     "ready": "Your hero is back — see what they found!",
     "outTitle": "Your hero is out exploring",
-    "out": "Your hero is exploring… back in ~{time}",
+    "out": "Exploring {zone} · back in ~{time}",
+    "idleHint": "Complete your main mission to send your hero out",
     "departHint": "Complete your main mission to send your hero out exploring"
   },
   "build": {
