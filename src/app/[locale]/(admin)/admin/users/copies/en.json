@@ -1,0 +1,29 @@
+{
+  "pageTitle": "User Management - Admin",
+  "pageDescription": "Manage users and admin permissions",
+  "title": "User Management",
+  "description": "Manage platform users and assign admin permissions",
+  "searchPlaceholder": "Search users by name...",
+  "filters": {
+    "all": "All Users",
+    "admins": "Admins Only",
+    "users": "Regular Users"
+  },
+  "table": {
+    "user": "User",
+    "role": "Role",
+    "subscription": "Subscription",
+    "actions": "Actions"
+  },
+  "promote": "Make Admin",
+  "demote": "Remove Admin",
+  "promoted": "User promoted to admin successfully",
+  "demoted": "Admin privileges removed successfully",
+  "promoteFailed": "Failed to promote user",
+  "demoteFailed": "Failed to remove admin privileges",
+  "you": "(You)",
+  "noUsers": "No users found",
+  "noResults": "No users match your search",
+  "noSubscription": "No subscription",
+  "showing": "Showing {count} of {total} users"
+}

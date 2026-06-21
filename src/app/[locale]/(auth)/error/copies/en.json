@@ -1,0 +1,7 @@
+{
+  "authError": "Authentication Error",
+  "authErrorDescription": "Something went wrong during authentication. Please try again.",
+  "tryAgain": "Try Again",
+  "backToLogin": "Back to login",
+  "backToHome": "Back to Home"
+}

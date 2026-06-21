@@ -1,0 +1,31 @@
+{
+  "title": "Tu progreso",
+  "loading": "Calculando tus números...",
+  "daysValue": "{days} días",
+  "daysShort": "días",
+  "streakGoal": "Objetivo: {days} días",
+  "activityTitle": "Constancia (8 semanas)",
+  "xpDailyTitle": "XP últimos 14 días",
+  "activityCaption": "Hábitos por día · {current} este mes vs {prev} el mes pasado",
+  "daysAlcoholFree": "Días sin alcohol",
+  "moneySaved": "Dinero ahorrado",
+  "currentStreak": "Racha actual",
+  "longestStreak": "Mejor racha",
+  "trainings": "Entrenamientos",
+  "kmWalked": "Distancia caminada",
+  "reads": "Sesiones de lectura",
+  "level": "Nivel",
+  "xpChartTitle": "XP por semana",
+  "xpChartThisWeek": "esta semana",
+  "xpChartWeeksAgo": "hace {n}s",
+  "attributesTitle": "Atributos",
+  "streakWeekTitle": "Últimos 7 días",
+  "milestonesTitle": "Hitos",
+  "habitRankingTitle": "Hábitos más cumplidos (últimos 90 días)",
+  "dowTitle": "Día de la semana más activo",
+  "dowBest": "El {day} es tu día más fuerte",
+  "dow": {
+    "sun": "domingo", "mon": "lunes", "tue": "martes", "wed": "miércoles",
+    "thu": "jueves", "fri": "viernes", "sat": "sábado"
+  }
+}

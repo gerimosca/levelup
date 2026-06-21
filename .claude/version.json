@@ -1,0 +1,47 @@
+{
+  "version": "0.9.0",
+  "codename": "meta-foundation",
+  "lastUpdate": "2024-11-21",
+  "stable": true,
+  "changelog": [
+    {
+      "version": "0.9.0",
+      "date": "2024-11-21",
+      "changes": [
+        "Initial meta-agent foundation",
+        "Parametrized paths for portability",
+        "Added plugin and marketplace configuration",
+        "Prepared for evolution to autonomous system",
+        "Documented meta-agent roadmap"
+      ]
+    }
+  ],
+  "compatibility": {
+    "minimum_claude_code": "1.0.0",
+    "tested_with": "1.0.0",
+    "breaking_changes": []
+  },
+  "evolution_roadmap": {
+    "0.9.5": "Add pre-deploy validation commands",
+    "1.0.0": "Self-verification and deployment safety",
+    "1.2.0": "UX/UI excellence with auto-optimization",
+    "1.5.0": "Self-learning from session patterns",
+    "2.0.0": "Autonomous feature development",
+    "2.5.0": "Predictive development capabilities",
+    "3.0.0": "Full meta-agent with self-improvement"
+  },
+  "meta_capabilities": {
+    "current": {
+      "auto_type_check": true,
+      "auto_documentation": false,
+      "self_healing": false,
+      "autonomous": false
+    },
+    "planned": {
+      "v1.0": ["visual_regression", "auto_rollback"],
+      "v1.5": ["pattern_learning", "auto_documentation"],
+      "v2.0": ["autonomous_features", "self_healing"],
+      "v3.0": ["self_improvement", "meta_generation"]
+    }
+  }
+}

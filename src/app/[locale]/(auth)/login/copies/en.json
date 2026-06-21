@@ -1,0 +1,21 @@
+{
+  "login": "Log In",
+  "welcomeBack": "Welcome back!",
+  "email": "Email",
+  "password": "Password",
+  "rememberMe": "Remember me",
+  "loggingIn": "Signing in...",
+  "forgotPassword": "Forgot password?",
+  "dontHaveAccount": "Don't have an account?",
+  "register": "Sign Up",
+  "orContinueWith": "Or continue with",
+  "oauthSignIn": "Sign in with {provider}",
+  "backToHome": "Back to Home",
+  "magicLink": "Send magic link",
+  "loginWithMagicLink": "Sign in with magic link",
+  "sendingMagicLink": "Sending link...",
+  "lastUsed": "Last used",
+  "tryResetPassword": "Wrong password?",
+  "autoMagicLinkSent": "We couldn't verify your password. We've sent a login link to {email}",
+  "googleOneTapError": "Could not sign in with Google. Please try again."
+}

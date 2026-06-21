@@ -1,0 +1,202 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate admin panel copy. Admin is for SaaS owner/operators.",
+    "usage": "Read by Claude to generate app/[locale]/(admin)/admin/**/copies/[locale].json",
+    "note": "Admin copy should be professional, efficient, and data-focused. Target audience: business owners, not end users."
+  },
+
+  "page": {
+    "title": "Main admin page title. Ex: 'Admin Dashboard', 'Admin Panel', 'Platform Management'",
+    "description": "Page description. Explain what admin can do here. Ex: 'Manage your SaaS platform, configure settings, and view analytics'"
+  },
+
+  "nav": {
+    "dashboard": "Nav link to admin dashboard. Ex: 'Dashboard', 'Overview'",
+    "settings": "Nav link to settings. Ex: 'Settings', 'Configuration'",
+    "emails": "Nav link to email journeys management. Ex: 'Email Journeys', 'Automated Emails'",
+    "users": "Nav link to user management. Ex: 'Users', 'User Management'",
+    "backToApp": "Link to exit admin and return to main app. Ex: 'Back to App', 'Exit Admin'"
+  },
+
+  "stats": {
+    "title": "Section heading for business metrics. Ex: 'Business Metrics', 'Key Stats', 'Overview'",
+    "totalUsers": "Metric label for total registered users. Ex: 'Total Users', 'Registered Users'",
+    "totalUsersDesc": "Description explaining what this metric means. Ex: 'All registered users on the platform'",
+    "activeSubscriptions": "Metric label for paying customers. Ex: 'Active Subscriptions', 'Paying Customers'",
+    "activeSubscriptionsDesc": "Description. Ex: 'Users with active paid plans'",
+    "trialUsers": "Metric label for trial users. Ex: 'Trial Users', 'In Trial'",
+    "trialUsersDesc": "Description. Ex: 'Users currently in trial period'",
+    "mrr": "Metric label for monthly recurring revenue. Use industry acronym. Ex: 'MRR', 'Monthly Revenue'",
+    "mrrDesc": "Description. Ex: 'Total monthly revenue from subscriptions', 'Recurring revenue (monthly)'",
+    "newUsersThisMonth": "Metric label for recent growth. Ex: 'New Users This Month', 'New Signups'",
+    "newUsersThisMonthDesc": "Description. Ex: 'Users registered this month'",
+    "canceledSubscriptions": "Metric label for churn. Ex: 'Canceled Subscriptions', 'Churned'",
+    "canceledSubscriptionsDesc": "Description. Ex: 'Subscriptions that have been canceled'"
+  },
+
+  "crossSell": {
+    "title": "Section heading for recommended products/add-ons. Ex: 'Recommended Add-ons', 'Boost Your SaaS'",
+    "description": "Section description. Ex: 'Boost your SaaS with these premium features', 'Recommended tools for your stack'"
+  },
+
+  "infoBar": {
+    "pageTitle": "Page title for info-bar settings. Ex: 'Info-Bar Settings - Admin', 'Global Banner'",
+    "pageDescription": "Page description. Ex: 'Configure the global information banner'",
+    "title": "Section heading. Ex: 'Global Info Bar', 'Site-Wide Banner'",
+    "description": "Section description explaining what info-bar does. Ex: 'Configure a banner to show important messages across your app'",
+    "enabled": "Toggle label to enable/disable info-bar. Ex: 'Enable info bar', 'Show banner'",
+    "enabledDescription": "Help text for enable toggle. Ex: 'Show the info bar to users'",
+    "scope": {
+      "label": "Field label for display scope. Ex: 'Display on', 'Show on pages'",
+      "help": "Help text explaining options. Ex: 'Choose which pages should show the info bar'",
+      "all": "Option to show on all pages. Ex: 'All pages', 'Everywhere'",
+      "authenticated": "Option to show only to logged-in users. Ex: 'Only authenticated pages', 'Logged-in users only'",
+      "unauthenticated": "Option to show only to visitors. Ex: 'Only public pages', 'Visitors only'"
+    },
+    "mode": {
+      "label": "Field label for visual style. Ex: 'Style', 'Type', 'Mode'",
+      "help": "Help text explaining when to use each mode. Ex: 'Choose the visual style based on message importance'",
+      "info": "Option for informational messages. Ex: 'Info (blue)', 'Information'",
+      "warning": "Option for warnings. Ex: 'Warning (yellow)', 'Warning'",
+      "error": "Option for critical messages. Ex: 'Error (red)', 'Critical'"
+    },
+    "messages": {
+      "label": "Field label for message texts. Ex: 'Messages', 'Banner Text'",
+      "en": "Label for English message. Ex: 'Message (English)', 'English'",
+      "es": "Label for Spanish message. Ex: 'Message (Spanish)', 'Spanish'",
+      "placeholder": "Placeholder text for message input. Ex: 'Enter message text...', 'Type your message...'"
+    },
+    "dismissible": "Toggle label for allowing users to dismiss. Ex: 'Dismissible', 'Allow dismiss'",
+    "dismissibleDescription": "Help text. Ex: 'Allow users to dismiss the banner'",
+    "save": "Button to save settings. Ex: 'Save Settings', 'Update'",
+    "saving": "Button text while saving. Ex: 'Saving...', 'Updating...'",
+    "success": "Success message after save. Ex: 'Info bar settings updated successfully', 'Settings saved!'"
+  },
+
+  "emailJourneys": {
+    "title": "Section heading for email journey controls. Ex: 'Email Journey Control', 'Automated Campaigns'",
+    "description": "Section description. Ex: 'Activate or deactivate automated email campaigns with one click'",
+    "journeyEnabled": "Success message when journey activated. Ex: 'Journey activated', 'Campaign enabled'",
+    "journeyDisabled": "Success message when journey deactivated. Ex: 'Journey deactivated', 'Campaign disabled'",
+    "error": "Error message when toggle fails. Ex: 'Failed to update email journey. Please try again.'"
+  },
+
+  "emails": {
+    "page": {
+      "title": "Page title for email journeys page. Ex: 'Email Journeys - Admin', 'Email Campaigns'",
+      "description": "Page description. Ex: 'Manage automated email campaigns and notifications'"
+    }
+  },
+
+  "settings": {
+    "page": {
+      "title": "Page title for settings page. Ex: 'Settings - Admin', 'Configuration'",
+      "description": "Page description. Ex: 'Configure global application settings'"
+    }
+  },
+
+  "users": {
+    "pageTitle": "Page title for user management. Ex: 'User Management - Admin', 'Users'",
+    "pageDescription": "Page description. Ex: 'Manage users and admin permissions'",
+    "title": "Section heading. Ex: 'User Management', 'Platform Users'",
+    "description": "Section description. Ex: 'Manage platform users and assign admin permissions'",
+    "searchPlaceholder": "Search input placeholder. Ex: 'Search users by name...', 'Find a user...'",
+    "filters": {
+      "all": "Filter option to show all users. Ex: 'All Users', 'Everyone'",
+      "admins": "Filter option to show only admins. Ex: 'Admins Only', 'Administrators'",
+      "users": "Filter option to show only regular users. Ex: 'Regular Users', 'Users'"
+    },
+    "table": {
+      "user": "Column header for user info. Ex: 'User', 'Name'",
+      "role": "Column header for role. Ex: 'Role', 'Permission Level'",
+      "subscription": "Column header for subscription status. Ex: 'Subscription', 'Plan'",
+      "actions": "Column header for action buttons. Ex: 'Actions', 'Manage'"
+    },
+    "promote": "Button to make user an admin. Ex: 'Make Admin', 'Promote to Admin'",
+    "demote": "Button to remove admin privileges. Ex: 'Remove Admin', 'Demote'",
+    "promoted": "Success message after promoting user. Ex: 'User promoted to admin successfully'",
+    "demoted": "Success message after demoting admin. Ex: 'Admin privileges removed successfully'",
+    "promoteFailed": "Error message when promotion fails. Ex: 'Failed to promote user'",
+    "demoteFailed": "Error message when demotion fails. Ex: 'Failed to remove admin privileges'",
+    "you": "Badge showing current user. Ex: '(You)', '(Current User)'",
+    "noUsers": "Message when no users exist (unlikely). Ex: 'No users found'",
+    "noResults": "Message when search/filter has no results. Ex: 'No users match your search'",
+    "noSubscription": "Label when user has no active subscription. Ex: 'No subscription', 'Free'",
+    "showing": "Label showing filtered results count. Include {count} and {total} placeholders. Ex: 'Showing {count} of {total} users'"
+  },
+
+  "support": {
+    "crisp": {
+      "title": "Section heading for Crisp chat settings. Ex: 'Crisp Chat', 'Customer Support Chat'",
+      "description": "Section description. Ex: 'Configure customer support chat for your application'",
+      "notConfigured": "Warning when Crisp not set up. Ex: 'Crisp is not configured. Add your Crisp Website ID to enable customer support chat.'",
+      "setupInstructions": "Heading for setup instructions. Ex: 'To enable Crisp, add your Website ID to environment variables:'",
+      "enabled": "Toggle to enable/disable chat. Ex: 'Enable Crisp Chat', 'Show chat widget'",
+      "enabledHelp": "Help text. Ex: 'Show the customer support chat widget'",
+      "scope": "Label for who sees the chat. Ex: 'Show Chat For', 'Display to'",
+      "scopeHelp": "Help text. Ex: 'Control which users see the chat widget'",
+      "scopes": {
+        "all": "Option for everyone. Ex: 'Everyone (all pages)', 'All visitors'",
+        "authenticated": "Option for logged-in users. Ex: 'Logged-in users only', 'Authenticated only'",
+        "unauthenticated": "Option for visitors. Ex: 'Visitors only (marketing pages)', 'Public pages'",
+        "subscribers_only": "Option for paying customers. Ex: 'Paying subscribers only', 'Customers only'"
+      },
+      "position": "Label for chat position. Ex: 'Chat Position', 'Widget Position'",
+      "positions": {
+        "right": "Option for bottom right. Ex: 'Bottom Right'",
+        "left": "Option for bottom left. Ex: 'Bottom Left'"
+      },
+      "hideOnMobile": "Toggle to hide on mobile. Ex: 'Hide on Mobile', 'Desktop only'",
+      "hideOnMobileHelp": "Help text. Ex: 'Don't show the chat widget on mobile devices'",
+      "locale": "Label for language setting. Ex: 'Language', 'Chat Language'",
+      "localeHelp": "Help text. Ex: 'Choose the chat interface language'",
+      "locales": {
+        "auto": "Option to auto-detect language. Ex: 'Auto-detect', 'Automatic'",
+        "en": "English option. Ex: 'English'",
+        "es": "Spanish option. Ex: 'Spanish'",
+        "fr": "French option. Ex: 'French'",
+        "de": "German option. Ex: 'German'",
+        "pt": "Portuguese option. Ex: 'Portuguese'",
+        "it": "Italian option. Ex: 'Italian'"
+      },
+      "save": "Button to save settings. Ex: 'Save Settings', 'Update'",
+      "saving": "Button text while saving. Ex: 'Saving...', 'Updating...'",
+      "saved": "Success message. Ex: 'Support settings saved successfully', 'Settings updated!'",
+      "saveError": "Error message. Ex: 'Failed to save support settings'"
+    }
+  },
+
+  "affiliates": {
+    "title": "Section heading for affiliate settings. Ex: 'Affiliate Program Settings', 'Partner Configuration'",
+    "description": "Section description. Ex: 'Configure your affiliate program and Rewardful integration'",
+    "enable": "Toggle to enable program. Ex: 'Enable Affiliate Program', 'Activate partners'",
+    "enableDescription": "Help text. Ex: 'Activate the affiliate program to allow partners to earn commissions'",
+    "displayOptions": "Subsection heading for display settings. Ex: 'Display Options', 'Visibility'",
+    "displayHeader": "Toggle for showing in header menu. Ex: 'Show in Header Menu', 'Header link'",
+    "displayFooter": "Toggle for showing in footer. Ex: 'Show in Footer', 'Footer link'",
+    "displayHome": "Toggle for showing module on homepage. Ex: 'Show Module on Home Page', 'Homepage section'",
+    "displayHomeHelp": "Help text. Ex: 'Display affiliate module on the home page to drive signups'",
+    "rewardfulConfiguration": "Subsection heading for Rewardful config. Ex: 'Rewardful Configuration', 'Integration Settings'",
+    "rewardfulUrl": "Label for Rewardful form URL. Ex: 'Rewardful Form URL', 'Signup Form URL'",
+    "rewardfulUrlHelp": "Help text. Ex: 'Enter the signup form URL from your Rewardful dashboard'",
+    "commissionRate": "Label for commission rate. Ex: 'Commission Rate', 'Partner Commission'",
+    "commissionRateHelp": "Help text explaining it's display-only. Ex: 'Display only - actual rates are configured in Rewardful'",
+    "averageSalePrice": "Label for avg sale price. Ex: 'Average Sale Price', 'Typical Sale'",
+    "averageSalePriceHelp": "Help text. Ex: 'The average price per sale used in the earnings calculator'",
+    "calculatorEnabled": "Toggle for earnings calculator. Ex: 'Enable Calculator', 'Show calculator'",
+    "calculatorEnabledHelp": "Help text. Ex: 'Show the earnings calculator on the affiliate page'",
+    "webhookEndpoint": "Label for webhook URL. Ex: 'Webhook Endpoint', 'Callback URL'",
+    "webhookEndpointHelp": "Help text. Ex: 'Copy this URL and add it to your Rewardful webhook settings'",
+    "webhookCopied": "Success message after copying. Ex: 'Webhook URL copied to clipboard', 'Copied!'",
+    "webhookCopyFailed": "Error message when copy fails. Ex: 'Failed to copy webhook URL'",
+    "save": "Button to save. Ex: 'Save Settings', 'Update'",
+    "saving": "Button text while saving. Ex: 'Saving...', 'Updating...'",
+    "saved": "Success message. Ex: 'Settings saved successfully', 'Updated!'",
+    "saveFailed": "Error message. Ex: 'Failed to save settings'",
+    "setupInstructions": "Heading for setup guide. Ex: 'Setup Instructions:', 'How to set up'",
+    "instruction1": "Step 1. Ex: 'Create an account at getrewardful.com'",
+    "instruction2": "Step 2. Ex: 'Copy your affiliate signup form URL'",
+    "instruction3": "Step 3. Ex: 'Add the webhook endpoint to Rewardful'",
+    "instruction4": "Step 4. Ex: 'Configure commission rates in Rewardful'"
+  }
+}

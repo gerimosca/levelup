@@ -1,0 +1,7 @@
+{
+  "authError": "Error de Autenticación",
+  "authErrorDescription": "Algo salió mal durante la autenticación. Por favor, inténtalo de nuevo.",
+  "tryAgain": "Intentar de Nuevo",
+  "backToLogin": "Volver al inicio de sesión",
+  "backToHome": "Volver al inicio"
+}

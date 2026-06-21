@@ -1,0 +1,18 @@
+{
+  "resetPassword": "Reset Password",
+  "sendResetLink": "Send Reset Link",
+  "sendingResetLink": "Sending...",
+  "resetPasswordSuccess": "Check your email for a password reset link",
+  "email": "Email",
+  "newPassword": "New Password",
+  "updatePassword": "Update Password",
+  "updatingPassword": "Updating...",
+  "passwordUpdated": "Your password has been updated successfully",
+  "backToLogin": "Back to login",
+  "passwordRequirements": {
+    "minLength": "At least 6 characters",
+    "hasNumber": "Contains a number",
+    "hasLetter": "Contains a letter",
+    "hasSpecial": "Contains a special character"
+  }
+}

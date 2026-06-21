@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate common UI component text. These are generic, reusable across the app.",
+    "usage": "Read by Claude to generate app/[locale]/_shared/ui/copies/[locale].json",
+    "note": "Keep these short and universal. They're used throughout the entire application."
+  },
+
+  "appName": "Your application name. This should come from brand.name config ideally. Ex: 'TaskFlow', 'AI SaaS', 'YourProduct'",
+
+  "actions": {
+    "loading": "Generic loading state text. Keep it short. Ex: 'Loading...', 'Please wait...', 'One moment...'",
+    "save": "Button text to save changes. Ex: 'Save', 'Save Changes', 'Update'",
+    "saved": "Success message after saving. Ex: 'Saved successfully', 'Changes saved', 'Updated!'",
+    "cancel": "Button to cancel action. Ex: 'Cancel', 'Discard', 'Nevermind'",
+    "delete": "Button to delete something. Ex: 'Delete', 'Remove'",
+    "edit": "Button to edit something. Ex: 'Edit', 'Modify'",
+    "close": "Button to close modal/dialog. Ex: 'Close', 'Done', 'Dismiss'"
+  },
+
+  "accessibility": {
+    "skipToContent": "Skip link for keyboard navigation. Standard a11y text. Ex: 'Skip to main content', 'Skip to content'"
+  },
+
+  "states": {
+    "empty": "Generic empty state text when no data. Ex: 'No data available', 'Nothing here yet'",
+    "error": "Generic error message. Ex: 'Something went wrong', 'An error occurred'",
+    "success": "Generic success message. Ex: 'Success!', 'Done!'",
+    "searching": "Status while searching. Ex: 'Searching...', 'Finding...'",
+    "noResults": "When search returns nothing. Ex: 'No results found', 'Nothing matched your search'"
+  },
+
+  "confirmation": {
+    "areYouSure": "Confirmation dialog heading. Ex: 'Are you sure?', 'Confirm action'",
+    "confirm": "Button to confirm destructive action. Ex: 'Confirm', 'Yes, proceed', 'I'm sure'",
+    "cannotUndo": "Warning that action is irreversible. Ex: 'This action cannot be undone', 'This is permanent'"
+  }
+}

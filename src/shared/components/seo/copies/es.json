@@ -1,0 +1,22 @@
+{
+  "landing": {
+    "title": "Construye tu SaaS más rápido",
+    "description": "Boilerplate SaaS listo para producción con autenticación, pagos y todo lo que necesitas para lanzar rápidamente."
+  },
+  "pricing": {
+    "title": "Planes de Precios",
+    "description": "Elige el plan perfecto para tus necesidades. Comienza gratis, actualiza cuando estés listo."
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "description": "Conoce más sobre nuestra misión de ayudar a los desarrolladores a construir mejores productos más rápido."
+  },
+  "login": {
+    "title": "Iniciar Sesión",
+    "description": "Inicia sesión en tu cuenta para acceder a tu panel y gestionar tu suscripción."
+  },
+  "register": {
+    "title": "Crear Cuenta",
+    "description": "Regístrate gratis y comienza a construir tu proyecto hoy."
+  }
+}

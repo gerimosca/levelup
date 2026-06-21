@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "badge": {
+      "en": "🚀 Claude Code Native",
+      "es": "🚀 Nativo con Claude Code"
+    },
+    "headline": {
+      "en": "Ship Your AI SaaS",
+      "es": "Lanza tu SaaS con IA"
+    },
+    "headlineHighlight": {
+      "en": "10x Faster",
+      "es": "10x Más Rápido"
+    },
+    "subheadline": {
+      "en": "The only boilerplate with Claude Code integration, growth tools, and everything you need to go from $0 to $10K MRR built-in",
+      "es": "El único boilerplate con integración Claude Code, herramientas de growth, y todo lo necesario para ir de $0 a $10K MRR incluido"
+    },
+    "ctaPrimary": {
+      "en": "Start Building Now",
+      "es": "Comenzar Ahora"
+    },
+    "ctaSecondary": {
+      "en": "See Live Demo",
+      "es": "Ver Demo en Vivo"
+    },
+    "socialProofText": {
+      "en": "⚡ 347 developers shipped their SaaS this month",
+      "es": "⚡ 347 desarrolladores lanzaron su SaaS este mes"
+    }
+  },
+  "features": {
+    "headline": {
+      "en": "Everything You Need, Nothing You Don't",
+      "es": "Todo lo que Necesitas, Nada que No"
+    },
+    "subheadline": {
+      "en": "Carefully selected features that actually help you ship and grow",
+      "es": "Características cuidadosamente seleccionadas que realmente te ayudan a lanzar y crecer"
+    }
+  },
+  "pricing": {
+    "headline": {
+      "en": "Invest Once, Ship Forever",
+      "es": "Invierte Una Vez, Envía Siempre"
+    },
+    "subheadline": {
+      "en": "Pay once, get lifetime updates. Including all future AI features",
+      "es": "Paga una vez, obtén actualizaciones de por vida. Incluyendo todas las features de IA futuras"
+    },
+    "badge": {
+      "en": "🔥 Black Friday: 40% OFF",
+      "es": "🔥 Black Friday: 40% OFF"
+    }
+  },
+  "cta": {
+    "headline": {
+      "en": "Ready to Ship Your SaaS?",
+      "es": "¿Listo para Lanzar tu SaaS?"
+    },
+    "subheadline": {
+      "en": "Join 500+ developers who are building and scaling with our boilerplate",
+      "es": "Únete a 500+ desarrolladores que están construyendo y escalando con nuestro boilerplate"
+    },
+    "ctaPrimary": {
+      "en": "Get Instant Access",
+      "es": "Obtener Acceso Instantáneo"
+    },
+    "ctaSecondary": {
+      "en": "View Live Demo",
+      "es": "Ver Demo en Vivo"
+    }
+  }
+}

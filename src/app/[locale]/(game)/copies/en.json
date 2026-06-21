@@ -1,0 +1,383 @@
+{
+  "offline": "No connection — your data is safe",
+  "backOnline": "Back online",
+  "nav": {
+    "home": "Home",
+    "map": "Map",
+    "pet": "Companion",
+    "challenge": "Challenge",
+    "stats": "Stats",
+    "encyclopedia": "Codex",
+    "me": "Hero"
+  },
+  "discoveryCategory": {
+    "flora": "Flora",
+    "fauna": "Fauna",
+    "recipe": "Recipes",
+    "relic": "Relics",
+    "place": "Places"
+  },
+  "discoveries": {
+    "forest_herb": { "name": "Forest Herb" },
+    "sunbloom": { "name": "Sunbloom" },
+    "glowing_mushroom": { "name": "Glowing Mushroom" },
+    "rare_flower": { "name": "Rare Flower" },
+    "mountain_deer": { "name": "Mountain Deer" },
+    "rare_butterfly": { "name": "Rare Butterfly" },
+    "golden_bee": { "name": "Golden Bee" },
+    "wise_owl": { "name": "Wise Owl" },
+    "fire_fox": { "name": "Fire Fox" },
+    "old_recipe": { "name": "Old Recipe" },
+    "hearty_stew": { "name": "Hearty Stew" },
+    "calm_tea": { "name": "Calming Tea" },
+    "old_coin": { "name": "Old Coin" },
+    "ancient_vase": { "name": "Ancient Vase" },
+    "stone_idol": { "name": "Stone Idol" },
+    "sacred_amulet": { "name": "Sacred Amulet" },
+    "hidden_cave": { "name": "Hidden Cave" },
+    "ancient_temple": { "name": "Ancient Temple" },
+    "volcano_peak": { "name": "Volcano Peak" }
+  },
+  "story": {
+    "tent": {
+      "title": "A new land",
+      "body": "You arrive with nothing but the weight you left behind. You pitch a single tent under an open sky. Whatever comes next, you'll build it yourself."
+    },
+    "campfire": {
+      "title": "The first fire",
+      "body": "You strike a flame and the dark steps back. Drawn by the warmth, an old woman appears at the edge of the light, and sits."
+    },
+    "house": {
+      "title": "Four walls",
+      "body": "Beam by beam, a house takes shape. For the first time in a long time, there's a door that's yours to open — and to close."
+    },
+    "grove": {
+      "title": "Roots",
+      "body": "You plant the first saplings in tired soil. A passing wanderer stops, surprised: 'Things grow here now,' she says, and decides to stay."
+    },
+    "workshop": {
+      "title": "Sparks",
+      "body": "The forge glows. The blacksmith lays out his tools. 'Bring me what you find out there,' he says, 'and I'll make it worth something.'"
+    },
+    "stable": {
+      "title": "Open roads",
+      "body": "Hoofbeats echo through the camp. The land is wide enough to roam now — and there are horizons worth reaching."
+    },
+    "gardens": {
+      "title": "Color returns",
+      "body": "Where there was bare ground, flowers open. The camp smells of something other than ash. People slow down to breathe it in."
+    },
+    "fountain": {
+      "title": "A heartbeat",
+      "body": "Clean water springs from the stone and pools at the center of camp. The place finally has a heart, and it's beating."
+    },
+    "library": {
+      "title": "Old words",
+      "body": "Shelves rise and fill. The librarian arrives carrying stories older than this land. 'Every place deserves a memory,' he says."
+    },
+    "gym": {
+      "title": "On purpose",
+      "body": "A place built to grow stronger by choice, not by accident. The trainer cracks his knuckles. 'Alright,' he nods. 'Now we work.'"
+    },
+    "statues": {
+      "title": "Remembered",
+      "body": "Stone figures rise to mark who you've become. Travelers will pass and wonder who built all this. You did — one day at a time."
+    },
+    "market": {
+      "title": "A town, at last",
+      "body": "Traders fill the square; the cook fires up the stove. What began as one tent is a town now. None of it was luck. It was you, every day."
+    }
+  },
+  "season": {
+    "s1": { "name": "RESET" },
+    "s2": { "name": "STRENGTH" },
+    "s3": { "name": "CUT" },
+    "s4": { "name": "DISCIPLINE" }
+  },
+  "seasonTagline": {
+    "s1-reset": "21 days to reset: stay alcohol-free, train, sleep, hydrate, walk.",
+    "s2-strength": "30 days to forge strength. Train. Eat well. Face Inertia.",
+    "s3-cut": "30 days to cut. Eat clean, stay dry, move every day. Silence The Craving.",
+    "s4-discipline": "60 days. All habits. No mercy. Face The Void and win."
+  },
+  "enemy": {
+    "saboteur": { "name": "The Saboteur" },
+    "inertia": { "name": "Inertia" },
+    "craving": { "name": "The Craving" },
+    "void": { "name": "The Void" }
+  },
+  "habits": {
+    "no_alcohol": { "name": "Stay alcohol-free", "tagline": "Stay clear, stay sharp" },
+    "train": { "name": "Train", "tagline": "Build raw strength" },
+    "sleep": { "name": "Sleep 7h+", "tagline": "Recover and recharge" },
+    "water": { "name": "Drink 2L of water", "tagline": "Fuel every cell" },
+    "steps": { "name": "Walk 10,000 steps", "tagline": "Move every day" },
+    "eat_well": { "name": "Eat well", "tagline": "Feed the machine" },
+    "read": { "name": "Read", "tagline": "Train the mind" },
+    "meditate": { "name": "Meditate", "tagline": "Find your focus" }
+  },
+  "events": {
+    "rematch_day": { "name": "Rematch day", "desc": "Double damage to the enemy. Make it count" },
+    "weekend_temptation": { "name": "Weekend temptation", "desc": "Staying alcohol-free gives x3 XP" },
+    "momentum": { "name": "On a roll", "desc": "Your streak is real — all XP x1.5 today" },
+    "rainy_day": { "name": "Rainy day", "desc": "Training gives x2 XP" },
+    "open_road": { "name": "Open road", "desc": "Steps give x1.5 XP" },
+    "day_of_clarity": { "name": "Day of clarity", "desc": "Reading gives x2 XP" },
+    "restful_night": { "name": "Restful night", "desc": "Sleep gives x2 XP" },
+    "golden_day": { "name": "Golden day", "desc": "All XP x1.5 — a rare day" },
+    "steady_day": { "name": "Steady day", "desc": "A regular day. Regular days build heroes too" }
+  },
+  "structures": {
+    "tent": "Tent",
+    "campfire": "Campfire",
+    "house": "House",
+    "grove": "Grove",
+    "workshop": "Workshop",
+    "stable": "Stable",
+    "gardens": "Gardens",
+    "fountain": "Fountain",
+    "library": "Library",
+    "gym": "Gym",
+    "statues": "Statues",
+    "market": "Market"
+  },
+  "npcs": {
+    "elder": { "name": "The Elder" },
+    "explorer": { "name": "The Explorer" },
+    "blacksmith": { "name": "The Blacksmith" },
+    "librarian": { "name": "The Librarian" },
+    "trainer": { "name": "The Trainer" },
+    "cook": { "name": "The Cook" }
+  },
+  "npcLines": {
+    "elder": {
+      "0": "Discipline built all of this. Keep going.",
+      "1": "{streak} days strong — the camp feels it.",
+      "2": "Rest is part of the journey too."
+    },
+    "explorer": {
+      "0": "There's always a new path when you train.",
+      "1": "Level {level} already. The horizon keeps widening.",
+      "2": "Every expedition starts with one good habit."
+    },
+    "blacksmith": {
+      "0": "Bring me materials and I'll forge wonders.",
+      "1": "Strong habits, strong steel.",
+      "2": "Level {level}? Your gear suits you."
+    },
+    "librarian": {
+      "0": "A page a day rebuilt this library.",
+      "1": "Knowledge, like streaks, compounds.",
+      "2": "Your {streak}-day streak deserves a good book."
+    },
+    "trainer": {
+      "0": "I can tell you've been training. It shows.",
+      "1": "Level {level}. Your future self thanks you.",
+      "2": "Consistency beats intensity. Every time."
+    },
+    "cook": {
+      "0": "Eating well today, thanks to your discipline.",
+      "1": "A good {streak}-day run deserves a feast.",
+      "2": "Fuel the body, fuel the journey."
+    }
+  },
+  "rarity": {
+    "common": "Common",
+    "rare": "Rare",
+    "epic": "Epic",
+    "legendary": "Legendary",
+    "mythic": "Mythic"
+  },
+  "tiers": {
+    "initiate": "Initiate",
+    "apprentice": "Apprentice",
+    "warrior": "Warrior",
+    "veteran": "Veteran",
+    "hero": "Hero",
+    "legend": "Legend"
+  },
+  "attributes": {
+    "vitality": "Vitality",
+    "strength": "Strength",
+    "discipline": "Discipline",
+    "energy": "Energy",
+    "resistance": "Resistance"
+  },
+  "petStage": {
+    "egg": "Egg",
+    "hatchling": "Hatchling",
+    "juvenile": "Juvenile",
+    "adult": "Adult",
+    "final": "Final form"
+  },
+  "petMood": {
+    "happy": "Happy",
+    "ok": "Doing well",
+    "tired": "Tired",
+    "sad": "Sad"
+  },
+  "achievements": {
+    "first_training": { "name": "First training" },
+    "first_clean_day": { "name": "First clean day" },
+    "streak_7": { "name": "7-day streak" },
+    "streak_21": { "name": "21-day streak" },
+    "streak_30": { "name": "30-day streak" },
+    "streak_50": { "name": "50-day streak" },
+    "streak_100": { "name": "100-day streak" },
+    "streak_365": { "name": "One year strong" },
+    "clean_7": { "name": "7 days alcohol-free" },
+    "clean_30": { "name": "30 days alcohol-free" },
+    "clean_100": { "name": "100 days alcohol-free" },
+    "trainings_100": { "name": "100 trainings" },
+    "km_50": { "name": "50 km walked" },
+    "reads_100": { "name": "100 reads" },
+    "level_5": { "name": "Level 5" },
+    "level_10": { "name": "Level 10" },
+    "level_25": { "name": "Level 25" },
+    "level_50": { "name": "Level 50" },
+    "season_1_done": { "name": "RESET complete" },
+    "all_seasons": { "name": "All seasons complete" },
+    "perfect_week": { "name": "Perfect week" }
+  },
+  "equipment": {
+    "legendary_bottle": { "name": "Legendary Bottle", "unlock": "7 days alcohol-free" },
+    "sage_book": { "name": "Sage's Book", "unlock": "Read 100 times" },
+    "explorer_boots": { "name": "Explorer's Boots", "unlock": "Walk 50 km" },
+    "warrior_gloves": { "name": "Warrior's Gloves", "unlock": "100 trainings" },
+    "constancy_medal": { "name": "Medal of Constancy", "unlock": "100-day streak" },
+    "reborn_cape": { "name": "Cape of the Reborn", "unlock": "Complete RESET" },
+    "discipline_crown": { "name": "Crown of Discipline", "unlock": "Complete all seasons" },
+    "forest_charm": { "name": "Forest Charm", "unlock": "From the Forest chest" },
+    "mountain_horn": { "name": "Mountain Horn", "unlock": "From the Mountain chest" },
+    "cave_lantern": { "name": "Cave Lantern", "unlock": "From the Cave chest" },
+    "volcano_blade": { "name": "Volcano Blade", "unlock": "From the Volcano chest" },
+    "temple_relic": { "name": "Temple Relic", "unlock": "From the Temple chest" },
+    "city_cloak": { "name": "City Cloak", "unlock": "From the City chest" },
+    "castle_greaves": { "name": "Castle Greaves", "unlock": "From the Castle chest" },
+    "plains_band": { "name": "Plains Band", "unlock": "From the Plains chest" },
+    "hills_cloak": { "name": "Hills Cloak", "unlock": "From the Hills chest" },
+    "gorge_helm": { "name": "Gorge Helm", "unlock": "From the Gorge chest" },
+    "highlands_boots": { "name": "Highlands Boots", "unlock": "From the Highlands chest" },
+    "ridge_gauntlets": { "name": "Ridge Gauntlets", "unlock": "From the Ridge chest" },
+    "glacier_plate": { "name": "Glacier Plate", "unlock": "From the Glacier chest" },
+    "desert_sigil": { "name": "Desert Sigil", "unlock": "From the Desert chest" },
+    "oasis_veil": { "name": "Oasis Veil", "unlock": "From the Oasis chest" },
+    "dune_sabatons": { "name": "Dune Sabatons", "unlock": "From the Dunes chest" },
+    "mesa_plate": { "name": "Mesa Plate", "unlock": "From the Mesa chest" },
+    "canyon_gauntlets": { "name": "Canyon Gauntlets", "unlock": "From the Canyon chest" },
+    "zenith_helm": { "name": "Zenith Helm", "unlock": "From the Zenith chest" },
+    "iron_clasp": { "name": "Iron Clasp", "unlock": "Forged in the workshop" },
+    "stone_ring": { "name": "Stone Ring", "unlock": "Forged in the workshop" },
+    "forest_wrap": { "name": "Forest Wrap", "unlock": "Forged in the workshop" },
+    "ember_talisman": { "name": "Ember Talisman", "unlock": "Forged in the workshop" },
+    "granite_badge": { "name": "Granite Badge", "unlock": "Forged in the workshop" },
+    "crystal_amulet": { "name": "Crystal Amulet", "unlock": "Forged in the workshop" },
+    "sanctum_sash": { "name": "Sanctum Sash", "unlock": "From the Sanctum chest" },
+    "labyrinth_mantle": { "name": "Labyrinth Mantle", "unlock": "From the Labyrinth chest" },
+    "abyss_greaves": { "name": "Abyss Greaves", "unlock": "From the Abyss chest" },
+    "void_plate": { "name": "Void Plate", "unlock": "From the Void's Edge chest" },
+    "dream_gauntlets": { "name": "Dream Gauntlets", "unlock": "From the Dreamscape chest" },
+    "astral_crown": { "name": "Astral Crown", "unlock": "From the Astral chest" },
+    "transcendence_sash": { "name": "Transcendence Sash", "unlock": "From the Transcendence chest" }
+  },
+  "onboarding": {
+    "step1": {
+      "title": "A new hero rises",
+      "subtitle": "Daily habits become your power. Stick to them, and your enemy grows weaker.",
+      "pillar": {
+        "habits": "Daily habits",
+        "xp": "Earn XP",
+        "hero": "Level up"
+      },
+      "cta": "Choose my path"
+    },
+    "step2": {
+      "title": "What do you want to conquer?",
+      "hint": "{count} more to pick",
+      "hintDone": "{count} selected — good",
+      "cta": "These are my habits"
+    },
+    "step3": {
+      "title": "Ready, hero",
+      "subtitle": "Here's your plan for Day 1.",
+      "mainLabel": "Main mission",
+      "mainHint": "Deals damage to the enemy · highest XP",
+      "secondaryLabel": "Secondary missions",
+      "enemyHint": "Complete every habit today for a bonus. Every miss makes the enemy stronger.",
+      "cta": "One last thing"
+    },
+    "step4": {
+      "title": "Make it yours",
+      "subtitle": "Pick your look. Your hero, your style.",
+      "skinLabel": "Skin tone",
+      "hairLabel": "Hair color",
+      "cta": "Almost there"
+    },
+    "step5": {
+      "title": "Don't break the chain",
+      "subtitle": "A daily nudge at 8 PM keeps your streak alive. You can change the time in settings.",
+      "cta": "Enable reminders",
+      "skip": "Skip for now"
+    }
+  },
+  "relapse": {
+    "prompt": "Had a relapse today?",
+    "done": "The Saboteur recovered some strength. Tomorrow is your rematch.",
+    "logged": "Relapse logged. Tomorrow is your rematch."
+  },
+  "claimValue": {
+    "cancel": "Cancel",
+    "unit": {
+      "liters": "L",
+      "hours": "h",
+      "steps": "steps"
+    }
+  },
+  "ui": {
+    "claim": "Claim",
+    "claimed": "Claimed",
+    "mainBadge": "Main",
+    "streak": "{days}-day streak",
+    "enemyDefeated": "Defeated!",
+    "achievementUnlocked": "Achievement unlocked: {name}",
+    "streakSaved": "Your companion saved your streak! 🛡️",
+    "levelUp": {
+      "title": "You reached level {level}!",
+      "subtitle": "Your future self is closer.",
+      "cta": "Continue"
+    },
+    "missionComplete": {
+      "title": "MISSION COMPLETE",
+      "subtitle": "You finished every mission today. +{bonus} XP",
+      "cta": "Awesome!"
+    },
+    "streakMilestone": {
+      "title": "{days} days. No excuses.",
+      "label": {
+        "7": "One week.",
+        "21": "Three weeks.",
+        "30": "One month.",
+        "50": "50 days.",
+        "100": "100 days.",
+        "365": "A full year."
+      },
+      "sub": "The habit is real. Keep going.",
+      "cta": "Keep it up"
+    },
+    "achievementUnlockedBadge": "Achievement unlocked",
+    "achievementCta": "Awesome!",
+    "victory": {
+      "conquered": "{days} days conquered",
+      "peakStreak": "Best streak · {streak} days",
+      "enemyDefeated": "{enemy} defeated",
+      "nextTeaser": "Next up: {name}",
+      "cta": "Claim victory · Start {name}",
+      "ctaFinal": "Claim victory"
+    },
+    "newSeason": {
+      "badge": "New season",
+      "challenge": "{days} days · New enemy · New challenge",
+      "cta": "Let's go"
+    }
+  }
+}

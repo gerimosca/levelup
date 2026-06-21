@@ -1,0 +1,9 @@
+{
+  "verifyEmail": "Verify Your Email",
+  "verifyEmailDescription": "We've sent a verification link to your email address. Please check your inbox and click the link to verify your account.",
+  "checkEmailVerification": "Check your email to verify your account",
+  "resendEmail": "Resend email",
+  "resendingEmail": "Resending...",
+  "emailResent": "Verification email resent",
+  "backToLogin": "Back to login"
+}

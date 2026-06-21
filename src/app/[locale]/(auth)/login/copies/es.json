@@ -1,0 +1,21 @@
+{
+  "login": "Iniciar Sesión",
+  "welcomeBack": "¡Bienvenido de nuevo!",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "rememberMe": "Recordarme",
+  "loggingIn": "Iniciando sesión...",
+  "forgotPassword": "¿Olvidaste tu contraseña?",
+  "dontHaveAccount": "¿No tienes una cuenta?",
+  "register": "Registrarse",
+  "orContinueWith": "O continúa con",
+  "oauthSignIn": "Iniciar sesión con {provider}",
+  "backToHome": "Volver al inicio",
+  "magicLink": "Enviar enlace mágico",
+  "loginWithMagicLink": "Iniciar sesión con enlace mágico",
+  "sendingMagicLink": "Enviando enlace...",
+  "lastUsed": "Usado recientemente",
+  "tryResetPassword": "¿Contraseña incorrecta?",
+  "autoMagicLinkSent": "No pudimos verificar tu contraseña. Hemos enviado un enlace de inicio de sesión a {email}",
+  "googleOneTapError": "No se pudo iniciar sesión con Google. Por favor, inténtalo de nuevo."
+}

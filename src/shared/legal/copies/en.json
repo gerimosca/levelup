@@ -1,0 +1,180 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Privacy Policy",
+      "description": "Learn how we collect, use, and protect your personal information"
+    },
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated",
+    "warning": {
+      "title": "Development Template - Not Legal",
+      "message": "This is a template for development only. Customize with your actual business details and review with a legal professional before launch."
+    },
+    "sections": {
+      "intro": {
+        "title": "Introduction",
+        "content": "At {companyName}, we respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information."
+      },
+      "dataCollection": {
+        "title": "Information We Collect",
+        "intro": "We collect the following types of personal information:",
+        "items": {
+          "email": "Email address and name for account creation and authentication",
+          "payment": "Payment information processed securely through Stripe (we do not store credit card details)",
+          "usage": "Usage data and analytics to improve our service",
+          "cookies": "Cookies and similar technologies for functionality and analytics"
+        }
+      },
+      "dataUsage": {
+        "title": "How We Use Your Information",
+        "intro": "We use your personal data to:",
+        "items": {
+          "service": "Provide and maintain our services",
+          "communication": "Send you service updates, security alerts, and support messages",
+          "improvements": "Analyze usage to improve our products and services",
+          "legal": "Comply with legal obligations and enforce our terms"
+        }
+      },
+      "dataSharing": {
+        "title": "Data Sharing and Third Parties",
+        "intro": "We share your data only with trusted service providers:",
+        "stripe": "Payment processing (PCI-DSS compliant)",
+        "supabase": "Database and authentication services (SOC 2 certified)"
+      },
+      "yourRights": {
+        "title": "Your Rights (GDPR)",
+        "intro": "Under GDPR, you have the following rights:",
+        "rights": {
+          "access": "Right to access your personal data",
+          "rectification": "Right to correct inaccurate data",
+          "erasure": "Right to request deletion of your data",
+          "portability": "Right to receive your data in a portable format",
+          "objection": "Right to object to processing of your data",
+          "withdrawal": "Right to withdraw consent at any time"
+        },
+        "contact": "To exercise these rights, contact us at:"
+      },
+      "dataSecurity": {
+        "title": "Data Security",
+        "content": "We implement industry-standard security measures to protect your data, including encryption, secure servers, and regular security audits. However, no method of transmission over the internet is 100% secure."
+      },
+      "cookies": {
+        "title": "Cookies and Tracking",
+        "content": "We use essential cookies for authentication and optional analytics cookies. You can manage your cookie preferences through our cookie consent banner."
+      },
+      "changes": {
+        "title": "Changes to This Policy",
+        "content": "We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the 'Last updated' date."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have any questions about this privacy policy or our data practices, please contact us:",
+        "updatePrompt": "⚠️ Remember to update this contact information with your actual legal contact details before launching to production."
+      }
+    }
+  },
+  "cookies": {
+    "meta": {
+      "title": "Cookie Policy",
+      "description": "Learn about how we use cookies and tracking technologies"
+    },
+    "title": "Cookie Policy",
+    "lastUpdated": "Last updated",
+    "warning": {
+      "title": "Development Template - Configure Iubenda",
+      "message": "This is a basic template for development. For production, configure Iubenda to automatically generate and maintain a compliant Cookie Policy."
+    },
+    "sections": {
+      "intro": {
+        "title": "What Are Cookies",
+        "content": "{companyName} uses cookies and similar tracking technologies to improve your experience, analyze usage, and for marketing purposes. This policy explains what cookies are, how we use them, and how you can control them."
+      },
+      "necessary": {
+        "title": "Necessary Cookies",
+        "description": "These cookies are essential for the website to function properly. They cannot be disabled.",
+        "items": {
+          "session": "Session cookies for authentication and account access",
+          "auth": "Authentication tokens to keep you logged in securely",
+          "preferences": "User preferences and settings (language, theme, etc.)"
+        }
+      },
+      "analytics": {
+        "title": "Analytics Cookies (Optional)",
+        "description": "These cookies help us understand how visitors interact with our website. We use this data to improve our service.",
+        "items": {
+          "usage": "Track which pages you visit and how you navigate the site",
+          "performance": "Monitor site performance and identify technical issues"
+        }
+      },
+      "marketing": {
+        "title": "Marketing Cookies (Optional)",
+        "description": "These cookies are used to show you relevant ads and measure campaign effectiveness. You can opt out at any time.",
+        "items": {
+          "googleAds": "Google Ads: Track ad conversions and campaign performance",
+          "metaPixel": "Meta Pixel: Measure Facebook/Instagram ad effectiveness"
+        }
+      },
+      "manage": {
+        "title": "How to Manage Cookies",
+        "content": "You can control cookie preferences through our cookie consent banner. You can also block cookies through your browser settings, but this may affect site functionality."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have questions about our use of cookies, please contact us:"
+      }
+    }
+  },
+  "terms": {
+    "meta": {
+      "title": "Terms of Service",
+      "description": "Terms and conditions for using our service"
+    },
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated",
+    "warning": {
+      "title": "Review with Legal Professional",
+      "message": "These Terms have been generated with your company data. Review with a legal professional familiar with your jurisdiction before launch."
+    },
+    "sections": {
+      "intro": {
+        "title": "Agreement to Terms",
+        "content": "By accessing or using {companyName}, you agree to be bound by these Terms of Service. If you disagree with any part of the terms, you may not access the service."
+      },
+      "accounts": {
+        "title": "Accounts",
+        "content": "When you create an account with us, you must provide accurate, complete, and current information. You are responsible for safeguarding your password and for all activities under your account."
+      },
+      "service": {
+        "title": "Use of Service",
+        "intro": "You agree not to:",
+        "items": {
+          "illegal": "Use the service for any illegal purposes or in violation of any laws",
+          "harm": "Attempt to interfere with or compromise the system integrity or security",
+          "abuse": "Abuse, harass, threaten, or intimidate other users",
+          "spam": "Send unsolicited or unauthorized advertising or promotional material"
+        }
+      },
+      "payments": {
+        "title": "Payments and Billing",
+        "content": "Some parts of the service are billed on a subscription basis. You will be billed in advance on a recurring basis. Payments are non-refundable except as required by law."
+      },
+      "termination": {
+        "title": "Termination",
+        "content": "We may terminate or suspend your account immediately, without prior notice, for any reason, including breach of these Terms."
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "content": "In no event shall {companyName} be liable for any indirect, incidental, special, consequential or punitive damages, including loss of profits, data, or other intangible losses."
+      },
+      "changes": {
+        "title": "Changes to Terms",
+        "content": "We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have any questions about these Terms, please contact us:",
+        "updatePrompt": "⚠️ Remember to update this contact information with your actual legal contact details before launching to production."
+      }
+    }
+  }
+}

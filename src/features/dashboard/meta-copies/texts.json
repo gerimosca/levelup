@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate dashboard copy",
+    "usage": "Read by Claude to generate app/[locale]/(app)/dashboard/copies/[locale].json"
+  },
+
+  "page": {
+    "title": "Page title for dashboard. First page user sees after login. Make it welcoming. Ex: 'Dashboard', 'Welcome', 'Home'",
+    "welcome": "Greeting for the user. Personalize if possible. Ex: 'Welcome back!', 'Good to see you!', 'Welcome, {name}!'"
+  },
+
+  "stats": {
+    "_note": "Section showing user statistics and metrics",
+    "sectionTitle": "Heading for stats section. Ex: 'Your Activity', 'At a Glance', 'Overview'"
+  },
+
+  "quickActions": {
+    "_note": "Common actions user might want to take from dashboard",
+    "title": "Section heading for quick action buttons. Ex: 'Quick Actions', 'Get Started'",
+    "viewBilling": "Button to go to billing page. Ex: 'View Billing', 'Manage Subscription'",
+    "settings": "Button to go to account settings. Ex: 'Settings', 'My Account'"
+  },
+
+  "empty": {
+    "title": "Heading when user has no data/activity yet. Don't blame user. Ex: 'Welcome! Let's get started', 'Your journey begins here'",
+    "description": "Helpful text explaining what they can do. Focus on benefits and next steps.",
+    "action": "Primary CTA to get started. Be specific. Ex: 'Create your first project', 'Set up your account'"
+  }
+}

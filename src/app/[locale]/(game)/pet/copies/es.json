@@ -1,0 +1,18 @@
+{
+  "title": "Tu mascota",
+  "loading": "Despertando a tu mascota...",
+  "careDays": "{days} días de cuidado",
+  "nextStage": "{days} días más para ser {stage}",
+  "maxStage": "¡Tu mascota alcanzó su forma final!",
+  "shieldsLabel": "Escudos de racha",
+  "shieldsNone": "Primero debe nacer",
+  "role": "Tu mascota protege tu racha. Gana 1 escudo cada 7 días de cuidado. Si te saltas tu misión principal, gasta un escudo para salvar tu racha — sigues perdiendo algo de XP, porque el trabajo es el trabajo.",
+  "activityNow": "Ahora mismo",
+  "activity": {
+    "training": "Entrenando junto a ti",
+    "reading": "Leyendo un buen libro",
+    "fishing": "Pescando en el río",
+    "fire": "Cuidando la hoguera",
+    "sleeping": "Descansando tranquila"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "verifyEmail": "Verifica Tu Correo",
+  "verifyEmailDescription": "Hemos enviado un enlace de verificación a tu dirección de correo. Por favor, revisa tu bandeja de entrada y haz clic en el enlace para verificar tu cuenta.",
+  "checkEmailVerification": "Revisa tu correo para verificar tu cuenta",
+  "resendEmail": "Reenviar correo",
+  "resendingEmail": "Reenviando...",
+  "emailResent": "Correo de verificación reenviado",
+  "backToLogin": "Volver al inicio de sesión"
+}

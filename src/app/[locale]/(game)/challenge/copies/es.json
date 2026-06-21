@@ -1,0 +1,29 @@
+{
+  "title": "Reto",
+  "loading": "Cargando reto...",
+  "you": "tú",
+  "day": "Día {n}",
+  "emptyTitle": "Aún no tienes reto",
+  "emptySubtitle": "Crea uno e invita a un amigo, o únete con un código de invitación.",
+  "createBtn": "Crear reto",
+  "joinBtn": "Unirme con código",
+  "createPlaceholder": "Ponle nombre a tu squad… (ej. Lobos de Hierro)",
+  "createConfirm": "Crear y obtener código",
+  "joinConfirm": "Unirme al reto",
+  "codePlaceholder": "Escribe el código",
+  "cancel": "Cancelar",
+  "created": "¡Reto creado! Comparte el código con tu squad.",
+  "joined": "¡Ya estás dentro! Hora de demostrar de qué estás hecho.",
+  "inviteCode": "Código de invitación",
+  "memberCount": "{n} miembros",
+  "loggedToday": "completaron hoy",
+  "confirmLeave": "¿Salir?",
+  "error": {
+    "not_authenticated": "No has iniciado sesión.",
+    "name_required": "Ponle nombre al reto.",
+    "create_failed": "No se pudo crear el reto. Inténtalo de nuevo.",
+    "invalid_code": "Código no encontrado. Compruébalo.",
+    "already_member": "Ya eres miembro de este reto.",
+    "generic": "Algo salió mal. Inténtalo de nuevo."
+  }
+}

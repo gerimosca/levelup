@@ -1,0 +1,101 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate affiliate program page copy. Target audience: potential partners/affiliates.",
+    "usage": "Read by Claude to generate app/[locale]/(landing)/affiliates/copies/[locale].json",
+    "note": "Focus on earning potential and ease of getting started. Be transparent about terms."
+  },
+
+  "metadata": {
+    "title": "Page title for SEO. Include key benefit. Ex: 'Affiliate Program - Earn Recurring Commissions', 'Partner Program - {rate} Commission'",
+    "description": "Meta description for SEO. Mention rate and type of commission. ~150 chars.",
+    "keywords": "SEO keywords. Ex: 'affiliate program, recurring commissions, partner program, referral program'"
+  },
+
+  "nav": {
+    "header": "Nav link text for header menu. Short. Ex: 'Affiliates', 'Partners', 'Earn Money'",
+    "footer": "Nav link text for footer. Can be more descriptive. Ex: 'Become a Partner', 'Affiliate Program'"
+  },
+
+  "hero": {
+    "title": "Main headline. Lead with the earning potential. Ex: 'Earn Recurring Commissions', 'Get Paid to Share {Product}'",
+    "subtitle": "Expand on opportunity. Include commission rate with {rate} placeholder. Ex: 'Join our affiliate program and earn {rate} commission on every referral'",
+    "cta": "Primary action to sign up. Ex: 'Start Earning Today', 'Become an Affiliate', 'Join the Program'",
+    "subtext": "Trust signals below CTA. Remove objections. Ex: 'Free to join • No minimum sales • Monthly payouts'"
+  },
+
+  "benefits": {
+    "title": "Section heading. Ex: 'Why Partner With Us?', 'Partner Benefits', 'What You Get'",
+    "highCommissions": {
+      "title": "Benefit heading. Ex: 'High Commissions', 'Industry-Leading Rates'",
+      "description": "Explain the rate and duration. Include {rate} placeholder. Ex: 'Earn {rate} recurring commission on all referred customers for as long as they remain subscribed'"
+    },
+    "recurring": {
+      "title": "Benefit heading. Ex: 'Recurring Revenue', 'Passive Income Stream'",
+      "description": "Emphasize monthly recurring aspect. Ex: 'Build a passive income stream with monthly recurring commissions'"
+    },
+    "support": {
+      "title": "Benefit heading. Ex: 'Full Support', 'We've Got Your Back'",
+      "description": "What help they get. Ex: 'Get marketing materials, dedicated support, and real-time tracking dashboard'"
+    }
+  },
+
+  "howItWorks": {
+    "title": "Section heading. Ex: 'How It Works', 'Get Started in 3 Steps', 'Simple Process'",
+    "step1": {
+      "title": "Step 1 heading. Ex: 'Sign Up', 'Join Free'",
+      "description": "Emphasize ease and speed. Ex: 'Join our affiliate program for free in just 2 minutes'"
+    },
+    "step2": {
+      "title": "Step 2 heading. Ex: 'Share Your Link', 'Promote'",
+      "description": "How they promote. Ex: 'Promote our product using your unique referral link or coupon code'"
+    },
+    "step3": {
+      "title": "Step 3 heading. Ex: 'Earn Commissions', 'Get Paid'",
+      "description": "Payment cadence. Ex: 'Get paid monthly for every customer you refer'"
+    }
+  },
+
+  "form": {
+    "title": "Form section heading. Create urgency. Ex: 'Ready to Start Earning?', 'Apply Now'",
+    "subtitle": "Form description. Ex: 'Apply to become an affiliate partner today'",
+    "notConfigured": "Message when Rewardful not set up yet. Be helpful. Ex: 'The affiliate application form is being set up. Please check back soon.'",
+    "features": {
+      "_note": "Trust signals next to form",
+      "free": "No cost to join. Ex: 'Free to join - no fees ever'",
+      "instant": "Quick approval. Ex: 'Instant approval for qualified partners'",
+      "dashboard": "Tracking available. Ex: 'Real-time analytics dashboard'",
+      "support": "Help available. Ex: 'Dedicated affiliate support'"
+    }
+  },
+
+  "faq": {
+    "title": "FAQ section heading. Ex: 'Frequently Asked Questions', 'Common Questions', 'Got Questions?'",
+    "_note": "Each Q&A should address common objections and provide transparency. Be specific about rates, payment terms, tracking."
+  },
+
+  "calculator": {
+    "title": "Calculator section heading. Ex: 'Calculate Your Earnings', 'See Your Potential'",
+    "subtitle": "Calculator description. Ex: 'See how much you could earn as an affiliate partner'",
+    "inputLabel": "Label for input field. Ex: 'How many clients can you refer per month?', 'Monthly referrals'",
+    "monthlyTotal": "Label for calculated total. Include {month} placeholder. Ex: 'Total in {month}', 'Monthly earnings'",
+    "calculation": "Calculation explanation. Include {clients} placeholder. Ex: 'Based on {clients} clients/month'",
+    "estimatedClicks": "Clicks needed. Include {min} and {max} placeholders. Ex: 'Estimated clicks needed: {min} - {max}'",
+    "conversionNote": "Conversion rate explanation. Ex: '(based on 1-10% conversion rate)'",
+    "disclaimer": "Legal disclaimer. Include {clients} placeholder. Ex: '* Calculations based on {clients} new clients per month. Actual earnings may vary based on customer retention and subscription plans.'",
+    "chartTitle": "Chart heading. Ex: 'Accumulated Earnings Over Time', 'Growth Projection'",
+    "insights": {
+      "title": "Insights section heading. Ex: 'Partner Success Insights', 'Pro Tips'",
+      "benchmark": "Realistic benchmark label. Ex: 'Realistic Benchmark:', 'What to expect'",
+      "benchmarkDetail": "Benchmark details. Include {amount} placeholder. Ex: 'With 5 clients per month, you could earn €{amount} in 6 months through recurring commissions.'",
+      "qualityTip": "Quality over quantity tip. Ex: 'Focus on quality over quantity. Long-term customers are more valuable than quick churners.'",
+      "trustTip": "Trust-building tip. Ex: 'Build trust first, sales follow naturally.'"
+    },
+    "tierPro": "Message when reaching PRO tier. Ex: '🎯 PRO Tier Unlocked! You're earning 35% commission with 6-month duration'",
+    "tierElite": "Message when reaching ELITE tier. Ex: '🏆 ELITE Tier Achieved! Maximum 50% commission rate activated!'"
+  },
+
+  "stickyCta": {
+    "text": "Sticky CTA button text. Ex: 'Become an Affiliate', 'Join Now'",
+    "subtext": "Text below sticky button. Ex: 'Start earning today', 'Free to join'"
+  }
+}

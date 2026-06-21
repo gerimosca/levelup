@@ -1,0 +1,29 @@
+{
+  "title": "Challenge",
+  "loading": "Loading challenge...",
+  "you": "you",
+  "day": "Day {n}",
+  "emptyTitle": "No challenge yet",
+  "emptySubtitle": "Create one and invite a friend, or join with an invite code.",
+  "createBtn": "Create challenge",
+  "joinBtn": "Join with code",
+  "createPlaceholder": "Name your squad… (e.g. Iron Wolves)",
+  "createConfirm": "Create & get code",
+  "joinConfirm": "Join challenge",
+  "codePlaceholder": "Enter code",
+  "cancel": "Cancel",
+  "created": "Challenge created! Share the code with your squad.",
+  "joined": "You're in! Time to show what you're made of.",
+  "inviteCode": "Invite code",
+  "memberCount": "{n} members",
+  "loggedToday": "logged today",
+  "confirmLeave": "Leave?",
+  "error": {
+    "not_authenticated": "You're not logged in.",
+    "name_required": "Give your challenge a name.",
+    "create_failed": "Couldn't create the challenge. Try again.",
+    "invalid_code": "Code not found. Double-check it.",
+    "already_member": "You're already in this challenge.",
+    "generic": "Something went wrong. Try again."
+  }
+}

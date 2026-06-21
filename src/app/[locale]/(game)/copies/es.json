@@ -1,0 +1,383 @@
+{
+  "offline": "Sin conexión — tus datos están a salvo",
+  "backOnline": "De vuelta en línea",
+  "nav": {
+    "home": "Inicio",
+    "map": "Mapa",
+    "pet": "Mascota",
+    "challenge": "Reto",
+    "stats": "Stats",
+    "encyclopedia": "Códice",
+    "me": "Héroe"
+  },
+  "discoveryCategory": {
+    "flora": "Flora",
+    "fauna": "Fauna",
+    "recipe": "Recetas",
+    "relic": "Reliquias",
+    "place": "Lugares"
+  },
+  "discoveries": {
+    "forest_herb": { "name": "Hierba del Bosque" },
+    "sunbloom": { "name": "Flor del Sol" },
+    "glowing_mushroom": { "name": "Hongo Luminoso" },
+    "rare_flower": { "name": "Flor Rara" },
+    "mountain_deer": { "name": "Ciervo de Montaña" },
+    "rare_butterfly": { "name": "Mariposa Rara" },
+    "golden_bee": { "name": "Abeja Dorada" },
+    "wise_owl": { "name": "Búho Sabio" },
+    "fire_fox": { "name": "Zorro de Fuego" },
+    "old_recipe": { "name": "Receta Antigua" },
+    "hearty_stew": { "name": "Guiso Sustancioso" },
+    "calm_tea": { "name": "Té Calmante" },
+    "old_coin": { "name": "Moneda Antigua" },
+    "ancient_vase": { "name": "Vasija Antigua" },
+    "stone_idol": { "name": "Ídolo de Piedra" },
+    "sacred_amulet": { "name": "Amuleto Sagrado" },
+    "hidden_cave": { "name": "Cueva Oculta" },
+    "ancient_temple": { "name": "Templo Antiguo" },
+    "volcano_peak": { "name": "Cima del Volcán" }
+  },
+  "story": {
+    "tent": {
+      "title": "Una tierra nueva",
+      "body": "Llegas sin nada salvo el peso que dejaste atrás. Plantas una sola tienda bajo el cielo abierto. Lo que venga, lo construirás tú mismo."
+    },
+    "campfire": {
+      "title": "El primer fuego",
+      "body": "Prendes una llama y la oscuridad retrocede. Atraída por el calor, una anciana aparece al borde de la luz, y se sienta."
+    },
+    "house": {
+      "title": "Cuatro paredes",
+      "body": "Viga a viga, una casa toma forma. Por primera vez en mucho tiempo, hay una puerta que es tuya para abrir — y para cerrar."
+    },
+    "grove": {
+      "title": "Raíces",
+      "body": "Plantas los primeros brotes en tierra cansada. Una viajera se detiene, sorprendida: 'Aquí ahora crecen cosas', dice, y decide quedarse."
+    },
+    "workshop": {
+      "title": "Chispas",
+      "body": "La fragua brilla. El herrero dispone sus herramientas. 'Tráeme lo que encuentres ahí fuera', dice, 'y haré que valga algo'."
+    },
+    "stable": {
+      "title": "Caminos abiertos",
+      "body": "Resuenan cascos por el campamento. La tierra ya es lo bastante ancha para recorrerla — y hay horizontes que merecen alcanzarse."
+    },
+    "gardens": {
+      "title": "Vuelve el color",
+      "body": "Donde había suelo desnudo, se abren flores. El campamento huele a algo que no es ceniza. La gente afloja el paso para respirarlo."
+    },
+    "fountain": {
+      "title": "Un latido",
+      "body": "Brota agua limpia de la piedra y se remansa en el centro del campamento. El lugar por fin tiene corazón, y late."
+    },
+    "library": {
+      "title": "Palabras antiguas",
+      "body": "Se alzan estanterías y se llenan. El bibliotecario llega con historias más viejas que esta tierra. 'Todo lugar merece una memoria', dice."
+    },
+    "gym": {
+      "title": "A propósito",
+      "body": "Un lugar hecho para fortalecerse por elección, no por accidente. El entrenador cruje los nudillos. 'Bien', asiente. 'Ahora trabajamos'."
+    },
+    "statues": {
+      "title": "Recordado",
+      "body": "Se alzan figuras de piedra que marcan en quién te has convertido. Los viajeros pasarán y se preguntarán quién construyó todo esto. Tú — un día tras otro."
+    },
+    "market": {
+      "title": "Un pueblo, por fin",
+      "body": "Comerciantes llenan la plaza; el cocinero enciende los fogones. Lo que empezó como una tienda ya es un pueblo. Nada fue suerte. Fuiste tú, cada día."
+    }
+  },
+  "season": {
+    "s1": { "name": "RESET" },
+    "s2": { "name": "STRENGTH" },
+    "s3": { "name": "CUT" },
+    "s4": { "name": "DISCIPLINE" }
+  },
+  "seasonTagline": {
+    "s1-reset": "21 días para reiniciar: sin alcohol, entrena, duerme, hidrátate, camina.",
+    "s2-strength": "30 días para forjar tu fuerza. Entrena. Come bien. Vence a la Inercia.",
+    "s3-cut": "30 días de definición. Come limpio, cero alcohol, muévete. Silencia El Antojo.",
+    "s4-discipline": "60 días. Todos los hábitos. Sin piedad. Enfrenta El Vacío y gana."
+  },
+  "enemy": {
+    "saboteur": { "name": "El Saboteador" },
+    "inertia": { "name": "La Inercia" },
+    "craving": { "name": "El Antojo" },
+    "void": { "name": "El Vacío" }
+  },
+  "habits": {
+    "no_alcohol": { "name": "No beber alcohol", "tagline": "Mente despejada, vida clara" },
+    "train": { "name": "Entrenar", "tagline": "Forja tu fuerza" },
+    "sleep": { "name": "Dormir +7h", "tagline": "Recupera y recarga" },
+    "water": { "name": "Beber 2L de agua", "tagline": "Hidrata cada célula" },
+    "steps": { "name": "Caminar 10.000 pasos", "tagline": "Muévete cada día" },
+    "eat_well": { "name": "Comer bien", "tagline": "Alimenta la máquina" },
+    "read": { "name": "Leer", "tagline": "Entrena la mente" },
+    "meditate": { "name": "Meditar", "tagline": "Encuentra tu centro" }
+  },
+  "events": {
+    "rematch_day": { "name": "Día de revancha", "desc": "Daño doble al enemigo. Que cuente" },
+    "weekend_temptation": { "name": "Tentación del finde", "desc": "No beber da XP x3" },
+    "momentum": { "name": "En racha", "desc": "Tu racha es real — todo el XP x1.5 hoy" },
+    "rainy_day": { "name": "Día lluvioso", "desc": "Entrenar da XP x2" },
+    "open_road": { "name": "Camino abierto", "desc": "Los pasos dan XP x1.5" },
+    "day_of_clarity": { "name": "Día de claridad", "desc": "Leer da XP x2" },
+    "restful_night": { "name": "Noche reparadora", "desc": "Dormir da XP x2" },
+    "golden_day": { "name": "Día dorado", "desc": "Todo el XP x1.5 — un día especial" },
+    "steady_day": { "name": "Día constante", "desc": "Un día corriente. Los días corrientes también forjan héroes" }
+  },
+  "structures": {
+    "tent": "Tienda",
+    "campfire": "Fogata",
+    "house": "Casa",
+    "grove": "Arboleda",
+    "workshop": "Taller",
+    "stable": "Establo",
+    "gardens": "Jardines",
+    "fountain": "Fuente",
+    "library": "Biblioteca",
+    "gym": "Gimnasio",
+    "statues": "Estatuas",
+    "market": "Mercado"
+  },
+  "npcs": {
+    "elder": { "name": "La Anciana" },
+    "explorer": { "name": "La Exploradora" },
+    "blacksmith": { "name": "El Herrero" },
+    "librarian": { "name": "El Bibliotecario" },
+    "trainer": { "name": "El Entrenador" },
+    "cook": { "name": "El Cocinero" }
+  },
+  "npcLines": {
+    "elder": {
+      "0": "La disciplina construyó todo esto. Sigue así.",
+      "1": "{streak} días de racha — el campamento lo nota.",
+      "2": "El descanso también es parte del viaje."
+    },
+    "explorer": {
+      "0": "Siempre hay un camino nuevo cuando entrenas.",
+      "1": "Ya vas por nivel {level}. El horizonte se ensancha.",
+      "2": "Cada expedición empieza con un buen hábito."
+    },
+    "blacksmith": {
+      "0": "Tráeme materiales y forjaré maravillas.",
+      "1": "Hábitos fuertes, acero fuerte.",
+      "2": "¿Nivel {level}? Ese equipo te queda bien."
+    },
+    "librarian": {
+      "0": "Una página al día reconstruyó esta biblioteca.",
+      "1": "El conocimiento, como las rachas, se acumula.",
+      "2": "Tu racha de {streak} días merece un buen libro."
+    },
+    "trainer": {
+      "0": "Se nota que has estado entrenando.",
+      "1": "Nivel {level}. Tu yo del futuro te lo agradece.",
+      "2": "La constancia gana a la intensidad. Siempre."
+    },
+    "cook": {
+      "0": "Hoy comemos bien, gracias a tu disciplina.",
+      "1": "Una buena racha de {streak} días merece un festín.",
+      "2": "Alimenta el cuerpo, alimenta el viaje."
+    }
+  },
+  "rarity": {
+    "common": "Común",
+    "rare": "Raro",
+    "epic": "Épico",
+    "legendary": "Legendario",
+    "mythic": "Mítico"
+  },
+  "tiers": {
+    "initiate": "Iniciado",
+    "apprentice": "Aprendiz",
+    "warrior": "Guerrero",
+    "veteran": "Veterano",
+    "hero": "Héroe",
+    "legend": "Leyenda"
+  },
+  "attributes": {
+    "vitality": "Vitalidad",
+    "strength": "Fuerza",
+    "discipline": "Disciplina",
+    "energy": "Energía",
+    "resistance": "Resistencia"
+  },
+  "petStage": {
+    "egg": "Huevo",
+    "hatchling": "Cría",
+    "juvenile": "Joven",
+    "adult": "Adulta",
+    "final": "Forma final"
+  },
+  "petMood": {
+    "happy": "Feliz",
+    "ok": "Bien",
+    "tired": "Cansada",
+    "sad": "Triste"
+  },
+  "achievements": {
+    "first_training": { "name": "Primer entrenamiento" },
+    "first_clean_day": { "name": "Primer día limpio" },
+    "streak_7": { "name": "Racha de 7 días" },
+    "streak_21": { "name": "Racha de 21 días" },
+    "streak_30": { "name": "Racha de 30 días" },
+    "streak_50": { "name": "Racha de 50 días" },
+    "streak_100": { "name": "Racha de 100 días" },
+    "streak_365": { "name": "Un año fuerte" },
+    "clean_7": { "name": "7 días sin alcohol" },
+    "clean_30": { "name": "30 días sin alcohol" },
+    "clean_100": { "name": "100 días sin alcohol" },
+    "trainings_100": { "name": "100 entrenamientos" },
+    "km_50": { "name": "50 km caminados" },
+    "reads_100": { "name": "100 lecturas" },
+    "level_5": { "name": "Nivel 5" },
+    "level_10": { "name": "Nivel 10" },
+    "level_25": { "name": "Nivel 25" },
+    "level_50": { "name": "Nivel 50" },
+    "season_1_done": { "name": "RESET completada" },
+    "all_seasons": { "name": "Todas las temporadas" },
+    "perfect_week": { "name": "Semana perfecta" }
+  },
+  "equipment": {
+    "legendary_bottle": { "name": "Botella Legendaria", "unlock": "7 días sin alcohol" },
+    "sage_book": { "name": "Libro del Sabio", "unlock": "Leer 100 veces" },
+    "explorer_boots": { "name": "Botas del Explorador", "unlock": "Caminar 50 km" },
+    "warrior_gloves": { "name": "Guantes del Guerrero", "unlock": "100 entrenamientos" },
+    "constancy_medal": { "name": "Medalla de Constancia", "unlock": "Racha de 100 días" },
+    "reborn_cape": { "name": "Capa del Renacido", "unlock": "Completar RESET" },
+    "discipline_crown": { "name": "Corona de Disciplina", "unlock": "Completar todas las temporadas" },
+    "forest_charm": { "name": "Amuleto del Bosque", "unlock": "Del cofre del Bosque" },
+    "mountain_horn": { "name": "Cuerno de la Montaña", "unlock": "Del cofre de la Montaña" },
+    "cave_lantern": { "name": "Linterna de la Cueva", "unlock": "Del cofre de la Cueva" },
+    "volcano_blade": { "name": "Hoja del Volcán", "unlock": "Del cofre del Volcán" },
+    "temple_relic": { "name": "Reliquia del Templo", "unlock": "Del cofre del Templo" },
+    "city_cloak": { "name": "Capa de la Ciudad", "unlock": "Del cofre de la Ciudad" },
+    "castle_greaves": { "name": "Grebas del Castillo", "unlock": "Del cofre del Castillo" },
+    "plains_band": { "name": "Brazalete de la Llanura", "unlock": "Del cofre de la Llanura" },
+    "hills_cloak": { "name": "Capa de las Colinas", "unlock": "Del cofre de las Colinas" },
+    "gorge_helm": { "name": "Yelmo del Desfiladero", "unlock": "Del cofre del Desfiladero" },
+    "highlands_boots": { "name": "Botas de las Tierras Altas", "unlock": "Del cofre de las Tierras Altas" },
+    "ridge_gauntlets": { "name": "Guanteletes de la Cresta", "unlock": "Del cofre de la Cresta" },
+    "glacier_plate": { "name": "Armadura del Glaciar", "unlock": "Del cofre del Glaciar" },
+    "desert_sigil": { "name": "Sigilo del Desierto", "unlock": "Del cofre del Desierto" },
+    "oasis_veil": { "name": "Velo del Oasis", "unlock": "Del cofre del Oasis" },
+    "dune_sabatons": { "name": "Grebas de Dunas", "unlock": "Del cofre de las Dunas" },
+    "mesa_plate": { "name": "Coraza de la Mesa", "unlock": "Del cofre de la Mesa" },
+    "canyon_gauntlets": { "name": "Guanteletes del Cañón", "unlock": "Del cofre del Cañón" },
+    "zenith_helm": { "name": "Yelmo del Cénit", "unlock": "Del cofre del Cénit" },
+    "iron_clasp": { "name": "Broche de Hierro", "unlock": "Forjado en el taller" },
+    "stone_ring": { "name": "Anillo de Piedra", "unlock": "Forjado en el taller" },
+    "forest_wrap": { "name": "Vendaje del Bosque", "unlock": "Forjado en el taller" },
+    "ember_talisman": { "name": "Talismán de Brasa", "unlock": "Forjado en el taller" },
+    "granite_badge": { "name": "Insignia de Granito", "unlock": "Forjado en el taller" },
+    "crystal_amulet": { "name": "Amuleto de Cristal", "unlock": "Forjado en el taller" },
+    "sanctum_sash": { "name": "Faja del Sanctuario", "unlock": "Del cofre del Sanctuario" },
+    "labyrinth_mantle": { "name": "Manto del Laberinto", "unlock": "Del cofre del Laberinto" },
+    "abyss_greaves": { "name": "Grebas del Abismo", "unlock": "Del cofre del Abismo" },
+    "void_plate": { "name": "Coraza del Vacío", "unlock": "Del cofre del Borde del Vacío" },
+    "dream_gauntlets": { "name": "Guanteletes del Sueño", "unlock": "Del cofre del Sueño" },
+    "astral_crown": { "name": "Corona Astral", "unlock": "Del cofre Astral" },
+    "transcendence_sash": { "name": "Fajín de la Trascendencia", "unlock": "Del cofre de la Trascendencia" }
+  },
+  "onboarding": {
+    "step1": {
+      "title": "Nace un nuevo héroe",
+      "subtitle": "Tus hábitos diarios son tu poder. Mantenlos y tu enemigo se debilitará.",
+      "pillar": {
+        "habits": "Hábitos diarios",
+        "xp": "Gana XP",
+        "hero": "Sube de nivel"
+      },
+      "cta": "Elegir mi camino"
+    },
+    "step2": {
+      "title": "¿Qué quieres conquistar?",
+      "hint": "{count} más por elegir",
+      "hintDone": "{count} elegidos — bien",
+      "cta": "Estos son mis hábitos"
+    },
+    "step3": {
+      "title": "Listo, héroe",
+      "subtitle": "Esto es lo que te espera el Día 1.",
+      "mainLabel": "Misión principal",
+      "mainHint": "Daña al enemigo · más XP",
+      "secondaryLabel": "Misiones secundarias",
+      "enemyHint": "Completa todos los hábitos hoy para un bonus. Cada fallo fortalece al enemigo.",
+      "cta": "Una cosa más"
+    },
+    "step4": {
+      "title": "Hazlo tuyo",
+      "subtitle": "Elige tu aspecto. Tu héroe, tu estilo.",
+      "skinLabel": "Tono de piel",
+      "hairLabel": "Color de pelo",
+      "cta": "Ya casi"
+    },
+    "step5": {
+      "title": "No rompas la cadena",
+      "subtitle": "Un aviso diario a las 20:00 mantiene tu racha viva. Puedes cambiar la hora en ajustes.",
+      "cta": "Activar recordatorios",
+      "skip": "Ahora no"
+    }
+  },
+  "relapse": {
+    "prompt": "¿Recaída hoy?",
+    "done": "El Saboteador recuperó algo de fuerza. Mañana es tu revancha.",
+    "logged": "Recaída registrada. Mañana es tu revancha."
+  },
+  "claimValue": {
+    "cancel": "Cancelar",
+    "unit": {
+      "liters": "L",
+      "hours": "h",
+      "steps": "pasos"
+    }
+  },
+  "ui": {
+    "claim": "Reclamar",
+    "claimed": "Reclamado",
+    "mainBadge": "Principal",
+    "streak": "Racha de {days} días",
+    "enemyDefeated": "¡Derrotado!",
+    "achievementUnlocked": "Logro desbloqueado: {name}",
+    "streakSaved": "¡Tu mascota salvó tu racha! 🛡️",
+    "levelUp": {
+      "title": "¡Subiste a nivel {level}!",
+      "subtitle": "Tu yo del futuro está más cerca.",
+      "cta": "Continuar"
+    },
+    "missionComplete": {
+      "title": "MISIÓN COMPLETA",
+      "subtitle": "Has cumplido todas las misiones de hoy. +{bonus} XP",
+      "cta": "¡Genial!"
+    },
+    "streakMilestone": {
+      "title": "{days} días. Sin excusas.",
+      "label": {
+        "7": "Una semana.",
+        "21": "Tres semanas.",
+        "30": "Un mes.",
+        "50": "50 días.",
+        "100": "100 días.",
+        "365": "Un año entero."
+      },
+      "sub": "El hábito es real. Sigue.",
+      "cta": "Seguir adelante"
+    },
+    "achievementUnlockedBadge": "Logro desbloqueado",
+    "achievementCta": "¡Genial!",
+    "victory": {
+      "conquered": "{days} días conquistados",
+      "peakStreak": "Mejor racha · {streak} días",
+      "enemyDefeated": "{enemy} derrotado",
+      "nextTeaser": "Siguiente: {name}",
+      "cta": "Reclamar victoria · Empezar {name}",
+      "ctaFinal": "Reclamar victoria"
+    },
+    "newSeason": {
+      "badge": "Nueva temporada",
+      "challenge": "{days} días · Nuevo enemigo · Nuevo desafío",
+      "cta": "A por ello"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Your companion",
+  "loading": "Waking your companion...",
+  "careDays": "{days} care days",
+  "nextStage": "{days} more days to become {stage}",
+  "maxStage": "Your companion reached its final form!",
+  "shieldsLabel": "Streak shields",
+  "shieldsNone": "Hatches first",
+  "role": "Your companion guards your streak. It earns 1 shield every 7 care days. If you miss your main mission, it spends a shield to save your streak — you still rust some XP, because work is work.",
+  "activityNow": "Right now",
+  "activity": {
+    "training": "Training alongside you",
+    "reading": "Deep in a good book",
+    "fishing": "Fishing by the river",
+    "fire": "Tending the campfire",
+    "sleeping": "Resting peacefully"
+  }
+}

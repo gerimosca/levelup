@@ -1,0 +1,54 @@
+Claude Agent Command: /validate-i18n
+
+🎯 Propósito:
+   Validar todas las traducciones del proyecto
+
+📍 Comando real en:
+   /.claude/commands/validate-translations.md
+
+⚙️ Scripts que ejecuta internamente:
+   1. npm run i18n:validate
+
+🔄 Flujo:
+   Usuario → /validate-i18n → Claude Code → Script → Reporte Visual
+
+📖 Uso:
+   /validate-i18n
+
+💡 Claude añade:
+   ✅ Muestra resultados de forma visual
+   ✅ Agrupa errores por tipo
+   ✅ Explica cada error claramente
+   ✅ Sugiere cómo arreglar cada problema
+   ✅ Indica qué archivos editar
+
+🔧 Alternativa sin Claude:
+   npm run i18n:validate
+
+✅ Qué valida:
+   - Existencia de en.json y es.json
+   - Mismas keys en ambos idiomas
+   - JSON válido
+   - Namespace mapping correcto
+   - No valores vacíos (warning)
+
+📝 Ejemplo output de Claude:
+   "Validando todas las traducciones...
+
+    ✅ pricing: EN ✓ ES ✓ Keys match ✓
+    ✅ about: EN ✓ ES ✓ Keys match ✓
+    ❌ login: Missing es.json
+
+    Errores encontrados:
+    1. app/[locale]/(auth)/login/copies/
+       Missing translation files: es
+
+    Sugerencia:
+    Crea el archivo faltante:
+    npm run i18n:create-structure -- --path=app/[locale]/(auth)/login"
+
+⏰ Cuándo usarlo:
+   - Antes de hacer commit
+   - Después de añadir nuevas traducciones
+   - Cuando añades un nuevo idioma
+   - En CI/CD pipeline

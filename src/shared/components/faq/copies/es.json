@@ -1,0 +1,25 @@
+{
+  "title": "Preguntas Frecuentes",
+  "items": [
+    {
+      "question": "¿Qué incluye el boilerplate?",
+      "answer": "El boilerplate incluye autenticación (email, magic link, OAuth), integración con pagos de Stripe, panel de usuario, gestión de cuenta, soporte multiidioma y configuración de base de datos lista para producción con Supabase."
+    },
+    {
+      "question": "¿Necesito saber TypeScript?",
+      "answer": "Sí, el boilerplate está construido con TypeScript para seguridad de tipos y mejor experiencia de desarrollo. Se recomienda conocimiento básico de TypeScript."
+    },
+    {
+      "question": "¿Puedo usar esto para proyectos comerciales?",
+      "answer": "Sí, puedes usar este boilerplate para cualquier proyecto personal o comercial. No hay restricciones de uso."
+    },
+    {
+      "question": "¿Hay un plan gratuito?",
+      "answer": "Sí, ofrecemos un plan gratuito que incluye todas las funciones principales. Puedes actualizar en cualquier momento para acceder a funciones premium y límites más altos."
+    },
+    {
+      "question": "¿Cómo obtengo soporte?",
+      "answer": "Puedes contactar a nuestro equipo de soporte por correo electrónico o a través de nuestro repositorio de GitHub. Normalmente respondemos en 24-48 horas."
+    }
+  ]
+}

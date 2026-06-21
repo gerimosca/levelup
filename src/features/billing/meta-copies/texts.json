@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate billing/subscription copy",
+    "usage": "Read by Claude to generate app/[locale]/(app)/billing/copies/[locale].json"
+  },
+
+  "page": {
+    "title": "Page title for billing management. Ex: 'Billing', 'Subscription', 'Plans & Billing'",
+    "description": "Page description explaining what user can do here. Ex: 'Manage your subscription and billing details'"
+  },
+
+  "subscription": {
+    "subscription": "Section heading for subscription info. Ex: 'Subscription', 'Your Plan'",
+    "currentPlan": "Subheading or description of current plan section. Ex: 'Your current plan and billing information', 'Active subscription'",
+    "noSubscription": "Message when user has no active subscription. Don't be negative. Ex: 'You don't have an active subscription.', 'No plan selected yet'",
+    "viewPlans": "Button to see available plans. Ex: 'View Plans', 'See Pricing', 'Choose a Plan'",
+    "manageSubscription": "Button to Stripe Customer Portal. Ex: 'Manage Subscription', 'Update Billing'",
+    "renewsOn": "Label showing renewal date. Include {date} placeholder. Ex: 'Renews on {date}', 'Next billing: {date}'",
+    "trialEnds": "Label showing trial end date. Include {date} placeholder. Create urgency gently. Ex: 'Trial ends on {date}'",
+    "cancelsOn": "Label showing when subscription ends after cancellation. Include {date} placeholder. Ex: 'Cancels on {date}', 'Access until {date}'"
+  },
+
+  "payment": {
+    "paymentMethods": "Section heading for payment methods. Ex: 'Payment Methods', 'Billing Details'",
+    "invoices": "Section heading for invoice history. Ex: 'Invoices', 'Billing History'",
+    "paymentFailed": "Warning message when last payment failed. Be helpful, not alarming. Ex: 'Your last payment failed. Please update your payment method to continue your subscription.'"
+  },
+
+  "features": {
+    "includedFeatures": "Section heading listing what's included in current plan. Ex: 'Included Features', 'What you get', 'Your benefits'"
+  }
+}

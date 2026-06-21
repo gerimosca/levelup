@@ -1,0 +1,32 @@
+{
+  "banner": {
+    "title": "Usamos cookies",
+    "description": "Usamos cookies para personalizar tu experiencia y para marketing. Puedes gestionar tus preferencias en cualquier momento.",
+    "learnMore": "Saber más",
+    "acceptAll": "Aceptar todo",
+    "rejectAll": "Rechazar todo",
+    "customize": "Personalizar"
+  },
+  "modal": {
+    "title": "Preferencias de cookies",
+    "description": "Elige qué cookies quieres permitir. Puedes cambiar estos ajustes en cualquier momento. Lee nuestra",
+    "privacyPolicy": "Política de Privacidad",
+    "save": "Guardar preferencias",
+    "acceptAll": "Aceptar todo",
+    "rejectAll": "Rechazar todo"
+  },
+  "categories": {
+    "necessary": {
+      "name": "Necesarias",
+      "description": "Esenciales para que el sitio funcione. Incluyen sesión, autenticación y personalización según tu fuente de referencia."
+    },
+    "marketing": {
+      "name": "Marketing",
+      "description": "Nos ayudan a medir el rendimiento de los anuncios y mostrarte contenido relevante. Incluyen Google Ads y Meta Pixel."
+    }
+  },
+  "footer": {
+    "privacy": "Privacidad",
+    "manageCookies": "Gestionar cookies"
+  }
+}

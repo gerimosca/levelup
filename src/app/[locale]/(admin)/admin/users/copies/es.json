@@ -1,0 +1,29 @@
+{
+  "pageTitle": "Gestión de Usuarios - Admin",
+  "pageDescription": "Gestiona usuarios y permisos de administrador",
+  "title": "Gestión de Usuarios",
+  "description": "Gestiona usuarios de la plataforma y asigna permisos de administrador",
+  "searchPlaceholder": "Buscar usuarios por nombre...",
+  "filters": {
+    "all": "Todos los Usuarios",
+    "admins": "Solo Administradores",
+    "users": "Usuarios Regulares"
+  },
+  "table": {
+    "user": "Usuario",
+    "role": "Rol",
+    "subscription": "Suscripción",
+    "actions": "Acciones"
+  },
+  "promote": "Hacer Administrador",
+  "demote": "Remover Administrador",
+  "promoted": "Usuario promovido a administrador exitosamente",
+  "demoted": "Privilegios de administrador removidos exitosamente",
+  "promoteFailed": "Fallo al promover usuario",
+  "demoteFailed": "Fallo al remover privilegios de administrador",
+  "you": "(Tú)",
+  "noUsers": "No se encontraron usuarios",
+  "noResults": "Ningún usuario coincide con tu búsqueda",
+  "noSubscription": "Sin suscripción",
+  "showing": "Mostrando {count} de {total} usuarios"
+}

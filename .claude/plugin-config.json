@@ -1,0 +1,112 @@
+{
+  "name": "saas-blueprint-accelerator",
+  "version": "0.9.0",
+  "private": true,
+  "description": "Professional SaaS development accelerator with VSA+CQRS architecture, complete auth, billing, and admin systems",
+  "author": {
+    "name": "SaaS Blueprint Team",
+    "email": "team@saasblueprint.dev"
+  },
+  "stack": {
+    "framework": "nextjs-16",
+    "router": "app-router",
+    "database": "supabase",
+    "auth": "supabase-auth",
+    "payments": "stripe",
+    "ui": "shadcn-ui",
+    "styling": "tailwind-css",
+    "i18n": "next-intl",
+    "forms": "react-hook-form",
+    "validation": "zod",
+    "analytics": "posthog",
+    "support": "crisp",
+    "email": "resend"
+  },
+  "architecture": {
+    "pattern": "VSA+CQRS",
+    "features": "modular",
+    "imports": "strict-boundaries"
+  },
+  "features": [
+    "auth",
+    "billing",
+    "admin",
+    "organizations",
+    "home",
+    "dashboard",
+    "my-account",
+    "consent",
+    "crisp"
+  ],
+  "mcp_servers": [
+    "magicui",
+    "context7"
+  ],
+  "distribution": {
+    "type": "private",
+    "method": "github-private-repo",
+    "access": "invite-only",
+    "license": "proprietary"
+  },
+  "compatibility": {
+    "claude_code": ">=1.0.0",
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "components_classification": {
+    "generic": {
+      "description": "Works with any Next.js + TypeScript project (70%)",
+      "commands": [
+        "add-page.md",
+        "add-translation.md",
+        "fix-types.md",
+        "pre-compact.md"
+      ],
+      "skills": [
+        "component.md",
+        "seo-landing.md",
+        "testing.md"
+      ],
+      "hooks": [
+        "typescript-auto-check"
+      ]
+    },
+    "stack_specific": {
+      "description": "Requires Supabase + Stripe stack (30%)",
+      "commands": [
+        "new-feature.md",
+        "add-action.md",
+        "review-feature.md",
+        "update-feature-context.md"
+      ],
+      "skills": [
+        "feature.md",
+        "migration.md"
+      ]
+    },
+    "hybrid": {
+      "description": "Partially generic, partially specific",
+      "commands": [
+        "audit.md",
+        "security-audit.md"
+      ]
+    }
+  },
+  "future_plugin": {
+    "estimated_conversion_time": "1-2 days",
+    "components": {
+      "commands": 10,
+      "skills": 5,
+      "hooks": 1,
+      "templates": "multiple"
+    },
+    "reusability": "70% generic, 30% project-specific"
+  },
+  "evolution_path": {
+    "current": "Manual commands and skills",
+    "v1.0": "Self-verification and auto-testing",
+    "v1.5": "Self-learning from patterns",
+    "v2.0": "Autonomous development",
+    "v3.0": "Full meta-agent capabilities"
+  }
+}

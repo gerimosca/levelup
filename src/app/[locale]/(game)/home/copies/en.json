@@ -1,0 +1,54 @@
+{
+  "levelLabel": "Level {level}",
+  "xpProgress": "{current} / {max} XP",
+  "missionsTitle": "Today's missions",
+  "dailyPick": "Today's pick",
+  "loading": "Preparing your adventure...",
+  "offlineTitle": "You're offline",
+  "offlineBody": "Log back in when you have a signal and your streak will still be here.",
+  "offlineRetry": "Try again",
+  "journalCta": "Tonight's journal",
+  "expedition": {
+    "ready": "Your hero is back — see what they found!",
+    "outTitle": "Your hero is out exploring",
+    "out": "Your hero is exploring… back in ~{time}",
+    "departHint": "Complete your main mission to send your hero out exploring"
+  },
+  "build": {
+    "cost": "Cost",
+    "action": "Build",
+    "maxed": "Your camp is at its peak — for now"
+  },
+  "newVillager": "A new villager arrived: {name}!",
+  "chapterReveal": {
+    "label": "New chapter",
+    "continue": "Continue"
+  },
+  "expeditionReward": {
+    "title": "The hero returns!",
+    "tier_quiet": "A quiet trip.",
+    "tier_good": "A good haul!",
+    "tier_great": "A great expedition!",
+    "discovery": "New discovery!",
+    "close": "Add to camp"
+  },
+  "forge": {
+    "title": "Forge",
+    "craft": "Craft",
+    "owned": "Owned",
+    "crafted": "{name} crafted!",
+    "alreadyOwned": "You already own this item.",
+    "insufficient": "Not enough materials."
+  },
+  "journal": {
+    "moodLabel": "How did today go?",
+    "moods": { "1": "Hard", "2": "Rough", "3": "OK", "4": "Good", "5": "Great!" },
+    "feltLabel": "What stood out?",
+    "feltPlaceholder": "Something that happened, something you felt...",
+    "learnedLabel": "What do you want to carry forward?",
+    "learnedPlaceholder": "Even something small counts.",
+    "save": "Save · +{xp} XP",
+    "skip": "Skip for tonight",
+    "saved": "+{xp} XP — journal saved!"
+  }
+}

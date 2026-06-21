@@ -1,0 +1,64 @@
+{
+  "title": "Tu héroe",
+  "loading": "Cargando tu héroe...",
+  "levelLabel": "Nivel {level}",
+  "attributesTitle": "Atributos",
+  "attributesHint": "Cada atributo sube con los hábitos que cumples: por eso unos están más altos que otros.",
+  "rank": "Rango {rank}",
+  "attrHint": {
+    "vitality": "Sube al no beber, hidratarte y comer bien",
+    "strength": "Sube entrenando",
+    "discipline": "Sube leyendo y meditando",
+    "energy": "Sube durmiendo bien",
+    "resistance": "Sube caminando"
+  },
+  "achievementsTitle": "Logros",
+  "noAchievements": "Aún sin logros. El primero está cerca.",
+  "equipmentTitle": "Equipo",
+  "nextUnlocksTitle": "Lo que viene",
+  "unlocked": "Desbloqueado",
+  "statsLink": "Tu progreso",
+  "equip": "Toca para equipar",
+  "equipped": "Equipado · toca para quitar",
+  "slots": {
+    "head": "Cabeza",
+    "back": "Espalda",
+    "chest": "Pecho",
+    "hands": "Arma",
+    "feet": "Pies",
+    "accessory": "Accesorio"
+  },
+  "settings": "Ajustes",
+  "appearance": {
+    "title": "Apariencia",
+    "nameLabel": "Nombre del héroe",
+    "namePlaceholder": "ej. Lobodehierro",
+    "nameEmpty": "Pon un nombre…",
+    "nameEdit": "Editar",
+    "nameSave": "Guardar",
+    "skinLabel": "Tono de piel",
+    "hairLabel": "Color de pelo"
+  },
+  "attrTitle": {
+    "initiate": "Aprendiz de",
+    "bearer": "Portador de",
+    "master": "Maestro de"
+  },
+  "achievementsProgress": "{unlocked} / {total}",
+  "achievementGroup": {
+    "first": "Primeros pasos",
+    "streak": "Rachas",
+    "clean": "Sin alcohol",
+    "volume": "Volumen",
+    "level": "Niveles",
+    "season": "Temporadas"
+  },
+  "share": {
+    "button": "Compartir mi progreso",
+    "streak": "Racha de {days} días 🔥",
+    "level": "Nivel {level} · {tier}",
+    "achievements": "{done}/{total} logros",
+    "tagline": "LevelUP — construye hábitos reales, un día a la vez.",
+    "copied": "¡Copiado al portapapeles!"
+  }
+}

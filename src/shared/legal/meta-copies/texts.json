@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate legal pages (Privacy, Cookies, Terms). MUST be reviewed by legal professional.",
+    "usage": "Read by Claude to generate app/[locale]/(landing)/[legal-page]/copies/[locale].json",
+    "note": "Legal text must be compliant with jurisdiction (GDPR, CCPA, etc.). Always include disclaimer that this is template. Include {companyName} placeholders."
+  },
+
+  "privacy": {
+    "meta": {
+      "title": "Page title for SEO. Ex: 'Privacy Policy', 'Privacy - {companyName}'",
+      "description": "Meta description for SEO. ~150 chars. Ex: 'Learn how we collect, use, and protect your personal information'"
+    },
+    "title": "Page heading. Standard. Ex: 'Privacy Policy', 'Data Privacy'",
+    "lastUpdated": "Label for last update date. Ex: 'Last updated', 'Effective date'",
+    "warning": {
+      "_note": "Development warning - remove in production after legal review",
+      "title": "Warning heading. Ex: 'Development Template - Not Legal', 'Template Notice'",
+      "message": "Warning message. Ex: 'This is a template for development only. Customize with your actual business details and review with a legal professional before launch.'"
+    },
+    "sections": {
+      "_note": "Each section should be clear, transparent, and GDPR-compliant. Explain in plain language what data you collect, why, and how it's protected.",
+      "intro": {
+        "title": "Ex: 'Introduction', 'Overview', 'Our Commitment'",
+        "content": "Set the tone. Reassure users. Include {companyName} placeholder. Ex: 'At {companyName}, we respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information.'"
+      },
+      "dataCollection": {
+        "title": "Ex: 'Information We Collect', 'Data Collection', 'What We Collect'",
+        "intro": "Ex: 'We collect the following types of personal information:'",
+        "items": "List of data types collected. Be specific about what and why. Ex: 'Email address and name for account creation', 'Payment information via Stripe', 'Usage data and analytics'"
+      },
+      "dataUsage": {
+        "title": "Ex: 'How We Use Your Information', 'Data Usage', 'Purpose of Processing'",
+        "intro": "Ex: 'We use your personal data to:'",
+        "items": "List of uses. Map to legal bases (contract, legitimate interest). Ex: 'Provide and maintain our services', 'Send service updates', 'Comply with legal obligations'"
+      },
+      "dataSharing": {
+        "title": "Ex: 'Data Sharing and Third Parties', 'Who We Share With', 'Third-Party Services'",
+        "intro": "Ex: 'We share your data only with trusted service providers:'",
+        "items": "List third parties and their compliance. Ex: 'Stripe (PCI-DSS compliant) for payments', 'Supabase (SOC 2 certified) for database'"
+      },
+      "yourRights": {
+        "title": "Ex: 'Your Rights (GDPR)', 'Your Data Rights', 'Privacy Rights'",
+        "intro": "Ex: 'Under GDPR, you have the following rights:'",
+        "rights": "List GDPR rights clearly. Ex: 'Right to access your data', 'Right to deletion', 'Right to data portability'",
+        "contact": "How to exercise rights. Ex: 'To exercise these rights, contact us at:', 'Email us to request...'"
+      },
+      "dataSecurity": {
+        "title": "Ex: 'Data Security', 'How We Protect Your Data', 'Security Measures'",
+        "content": "Explain security measures. Be honest about limitations. Ex: 'We implement industry-standard security measures including encryption and secure servers. However, no method is 100% secure.'"
+      },
+      "cookies": {
+        "title": "Ex: 'Cookies and Tracking', 'Cookie Use', 'Tracking Technologies'",
+        "content": "Explain cookie use. Link to cookie policy if separate. Ex: 'We use essential cookies for auth and optional analytics cookies. Manage preferences via our consent banner.'"
+      },
+      "changes": {
+        "title": "Ex: 'Changes to This Policy', 'Policy Updates', 'Modifications'",
+        "content": "How you'll notify of changes. Ex: 'We may update this policy occasionally. We'll notify you by posting the new policy and updating the date.'"
+      },
+      "contact": {
+        "title": "Ex: 'Contact Us', 'Get in Touch', 'Questions?'",
+        "content": "How to contact for privacy questions. Include email/address placeholders. Ex: 'For questions about this policy, contact us:'",
+        "updatePrompt": "Reminder for production. Ex: '⚠️ Update with actual legal contact before launch'"
+      }
+    }
+  },
+
+  "cookies": {
+    "meta": {
+      "title": "Ex: 'Cookie Policy', 'Cookies - {companyName}'",
+      "description": "Ex: 'Learn about how we use cookies and tracking technologies'"
+    },
+    "title": "Ex: 'Cookie Policy', 'About Cookies'",
+    "lastUpdated": "Ex: 'Last updated'",
+    "warning": {
+      "title": "Ex: 'Development Template - Configure Iubenda'",
+      "message": "Ex: 'For production, configure Iubenda to auto-generate compliant Cookie Policy.'"
+    },
+    "sections": {
+      "intro": {
+        "title": "Ex: 'What Are Cookies', 'Cookie Overview'",
+        "content": "Explain cookies simply. Include {companyName}. Ex: '{companyName} uses cookies to improve experience, analyze usage, and for marketing. This policy explains what cookies are and how to control them.'"
+      },
+      "necessary": {
+        "title": "Ex: 'Necessary Cookies', 'Essential Cookies'",
+        "description": "Explain they're required. Ex: 'Essential for the site to function. Cannot be disabled.'",
+        "items": "List of necessary cookies. Ex: 'Session cookies for auth', 'User preferences (language, theme)'"
+      },
+      "analytics": {
+        "title": "Ex: 'Analytics Cookies (Optional)', 'Performance Cookies'",
+        "description": "Ex: 'Help us understand site usage. Data used to improve service.'",
+        "items": "List analytics cookies. Ex: 'Page visit tracking', 'Performance monitoring'"
+      },
+      "marketing": {
+        "title": "Ex: 'Marketing Cookies (Optional)', 'Advertising Cookies'",
+        "description": "Ex: 'Used to show relevant ads and measure campaigns. Opt out anytime.'",
+        "items": "List marketing cookies and platforms. Ex: 'Google Ads for conversion tracking', 'Meta Pixel for Facebook ads'"
+      },
+      "manage": {
+        "title": "Ex: 'How to Manage Cookies', 'Control Your Cookies'",
+        "content": "How to manage. Ex: 'Control preferences via our consent banner. You can also block via browser settings.'"
+      },
+      "contact": {
+        "title": "Ex: 'Contact Us', 'Questions?'",
+        "content": "Ex: 'Questions about cookies? Contact us:'"
+      }
+    }
+  },
+
+  "terms": {
+    "meta": {
+      "title": "Ex: 'Terms of Service', 'Terms & Conditions - {companyName}'",
+      "description": "Ex: 'Terms and conditions for using our service'"
+    },
+    "title": "Ex: 'Terms of Service', 'Terms & Conditions'",
+    "lastUpdated": "Ex: 'Last updated'",
+    "warning": {
+      "title": "Ex: 'Review with Legal Professional', 'Legal Review Required'",
+      "message": "Ex: 'These Terms have been generated with your data. Review with legal professional before launch.'"
+    },
+    "sections": {
+      "intro": {
+        "title": "Ex: 'Agreement to Terms', 'Acceptance'",
+        "content": "Standard acceptance clause. Include {companyName}. Ex: 'By using {companyName}, you agree to these Terms. If you disagree, do not use the service.'"
+      },
+      "accounts": {
+        "title": "Ex: 'Accounts', 'User Accounts', 'Registration'",
+        "content": "Account responsibilities. Ex: 'You must provide accurate info. You're responsible for safeguarding your password and all account activity.'"
+      },
+      "service": {
+        "title": "Ex: 'Use of Service', 'Acceptable Use', 'User Conduct'",
+        "intro": "Ex: 'You agree not to:'",
+        "items": "List prohibited uses. Ex: 'Use for illegal purposes', 'Interfere with system security', 'Abuse or harass others', 'Send spam'"
+      },
+      "payments": {
+        "title": "Ex: 'Payments and Billing', 'Subscription Terms', 'Billing'",
+        "content": "Payment terms. Be clear about refunds. Ex: 'Subscriptions billed in advance. Payments non-refundable except as required by law.'"
+      },
+      "termination": {
+        "title": "Ex: 'Termination', 'Account Termination', 'Suspension'",
+        "content": "Termination rights. Ex: 'We may terminate your account immediately for breach of Terms.'"
+      },
+      "liability": {
+        "title": "Ex: 'Limitation of Liability', 'Liability Limits', 'Disclaimers'",
+        "content": "Liability limitations. Include {companyName}. Ex: '{companyName} is not liable for indirect, incidental, or consequential damages, including loss of profits or data.'"
+      },
+      "changes": {
+        "title": "Ex: 'Changes to Terms', 'Modifications', 'Updates'",
+        "content": "How terms may change. Ex: 'We may modify these Terms. Material changes require 30 days notice.'"
+      },
+      "contact": {
+        "title": "Ex: 'Contact Us', 'Questions?'",
+        "content": "Legal contact info. Ex: 'Questions about these Terms? Contact us:'",
+        "updatePrompt": "Ex: '⚠️ Update with actual legal contact before launch'"
+      }
+    }
+  }
+}

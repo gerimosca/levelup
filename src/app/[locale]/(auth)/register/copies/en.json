@@ -1,0 +1,23 @@
+{
+  "register": "Sign Up",
+  "createAccount": "Create Account",
+  "creatingAccount": "Creating account...",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "alreadyHaveAccount": "Already have an account?",
+  "login": "Log In",
+  "agreeToTerms": "I agree to the",
+  "termsOfService": "Terms of Service",
+  "privacyPolicy": "Privacy Policy",
+  "and": "and",
+  "orContinueWith": "Or continue with",
+  "oauthSignUp": "Sign up with {provider}",
+  "backToHome": "Back to Home",
+  "passwordRequirements": {
+    "minLength": "At least 6 characters",
+    "hasNumber": "Contains a number",
+    "hasLetter": "Contains a letter",
+    "hasSpecial": "Contains a special character"
+  }
+}

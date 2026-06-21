@@ -1,0 +1,16 @@
+{
+  "title": "Facturación",
+  "description": "Gestiona tu suscripción y detalles de facturación",
+  "subscription": "Suscripción",
+  "currentPlan": "Tu plan actual e información de facturación",
+  "noSubscription": "No tienes una suscripción activa.",
+  "viewPlans": "Ver Planes",
+  "manageSubscription": "Gestionar Suscripción",
+  "paymentMethods": "Métodos de Pago",
+  "invoices": "Facturas",
+  "includedFeatures": "Características Incluidas",
+  "renewsOn": "Se renueva el {date}",
+  "trialEnds": "Prueba termina el {date}",
+  "cancelsOn": "Se cancela el {date}",
+  "paymentFailed": "Tu último pago falló. Por favor, actualiza tu método de pago para continuar tu suscripción."
+}

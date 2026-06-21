@@ -1,0 +1,180 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Política de Privacidad",
+      "description": "Cómo recopilamos, usamos y protegemos tu información personal"
+    },
+    "title": "Política de Privacidad",
+    "lastUpdated": "Última actualización",
+    "warning": {
+      "title": "Plantilla de Desarrollo - No Legal",
+      "message": "Esta es una plantilla solo para desarrollo. Personalízala con los detalles reales de tu negocio y revísala con un profesional legal antes del lanzamiento."
+    },
+    "sections": {
+      "intro": {
+        "title": "Introducción",
+        "content": "En {companyName}, respetamos tu privacidad y nos comprometemos a proteger tus datos personales. Esta política de privacidad explica cómo recopilamos, usamos y protegemos tu información."
+      },
+      "dataCollection": {
+        "title": "Información que Recopilamos",
+        "intro": "Recopilamos los siguientes tipos de información personal:",
+        "items": {
+          "email": "Dirección de correo electrónico y nombre para crear cuenta y autenticación",
+          "payment": "Información de pago procesada de forma segura a través de Stripe (no almacenamos detalles de tarjetas de crédito)",
+          "usage": "Datos de uso y analíticas para mejorar nuestro servicio",
+          "cookies": "Cookies y tecnologías similares para funcionalidad y analíticas"
+        }
+      },
+      "dataUsage": {
+        "title": "Cómo Usamos tu Información",
+        "intro": "Usamos tus datos personales para:",
+        "items": {
+          "service": "Proporcionar y mantener nuestros servicios",
+          "communication": "Enviarte actualizaciones del servicio, alertas de seguridad y mensajes de soporte",
+          "improvements": "Analizar el uso para mejorar nuestros productos y servicios",
+          "legal": "Cumplir con obligaciones legales y hacer cumplir nuestros términos"
+        }
+      },
+      "dataSharing": {
+        "title": "Compartir Datos y Terceros",
+        "intro": "Solo compartimos tus datos con proveedores de servicios confiables:",
+        "stripe": "Procesamiento de pagos (cumple con PCI-DSS)",
+        "supabase": "Servicios de base de datos y autenticación (certificado SOC 2)"
+      },
+      "yourRights": {
+        "title": "Tus Derechos (RGPD)",
+        "intro": "Bajo el RGPD, tienes los siguientes derechos:",
+        "rights": {
+          "access": "Derecho a acceder a tus datos personales",
+          "rectification": "Derecho a corregir datos inexactos",
+          "erasure": "Derecho a solicitar la eliminación de tus datos",
+          "portability": "Derecho a recibir tus datos en formato portable",
+          "objection": "Derecho a oponerte al procesamiento de tus datos",
+          "withdrawal": "Derecho a retirar el consentimiento en cualquier momento"
+        },
+        "contact": "Para ejercer estos derechos, contáctanos en:"
+      },
+      "dataSecurity": {
+        "title": "Seguridad de Datos",
+        "content": "Implementamos medidas de seguridad estándar de la industria para proteger tus datos, incluyendo cifrado, servidores seguros y auditorías de seguridad regulares. Sin embargo, ningún método de transmisión por internet es 100% seguro."
+      },
+      "cookies": {
+        "title": "Cookies y Seguimiento",
+        "content": "Usamos cookies esenciales para autenticación y cookies opcionales de analíticas. Puedes gestionar tus preferencias de cookies a través de nuestro banner de consentimiento."
+      },
+      "changes": {
+        "title": "Cambios a esta Política",
+        "content": "Podemos actualizar esta política de privacidad ocasionalmente. Te notificaremos de cualquier cambio publicando la nueva política en esta página y actualizando la fecha de 'Última actualización'."
+      },
+      "contact": {
+        "title": "Contáctanos",
+        "content": "Si tienes preguntas sobre esta política de privacidad o nuestras prácticas de datos, contáctanos:",
+        "updatePrompt": "⚠️ Recuerda actualizar esta información de contacto con tus datos legales reales antes de lanzar a producción."
+      }
+    }
+  },
+  "cookies": {
+    "meta": {
+      "title": "Política de Cookies",
+      "description": "Cómo usamos cookies y tecnologías de seguimiento"
+    },
+    "title": "Política de Cookies",
+    "lastUpdated": "Última actualización",
+    "warning": {
+      "title": "Plantilla de Desarrollo - Configurar Iubenda",
+      "message": "Esta es una plantilla básica para desarrollo. Para producción, configura Iubenda para generar y mantener automáticamente una Política de Cookies conforme."
+    },
+    "sections": {
+      "intro": {
+        "title": "Qué Son las Cookies",
+        "content": "{companyName} utiliza cookies y tecnologías de seguimiento similares para mejorar tu experiencia, analizar el uso y con fines de marketing. Esta política explica qué son las cookies, cómo las usamos y cómo puedes controlarlas."
+      },
+      "necessary": {
+        "title": "Cookies Necesarias",
+        "description": "Estas cookies son esenciales para el correcto funcionamiento del sitio web. No se pueden desactivar.",
+        "items": {
+          "session": "Cookies de sesión para autenticación y acceso a la cuenta",
+          "auth": "Tokens de autenticación para mantener tu sesión segura",
+          "preferences": "Preferencias y configuración del usuario (idioma, tema, etc.)"
+        }
+      },
+      "analytics": {
+        "title": "Cookies de Análisis (Opcionales)",
+        "description": "Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web. Usamos estos datos para mejorar nuestro servicio.",
+        "items": {
+          "usage": "Rastrear qué páginas visitas y cómo navegas por el sitio",
+          "performance": "Monitorear el rendimiento del sitio e identificar problemas técnicos"
+        }
+      },
+      "marketing": {
+        "title": "Cookies de Marketing (Opcionales)",
+        "description": "Estas cookies se utilizan para mostrarte anuncios relevantes y medir la efectividad de las campañas. Puedes optar por no participar en cualquier momento.",
+        "items": {
+          "googleAds": "Google Ads: Rastrear conversiones de anuncios y rendimiento de campañas",
+          "metaPixel": "Meta Pixel: Medir la efectividad de anuncios en Facebook/Instagram"
+        }
+      },
+      "manage": {
+        "title": "Cómo Gestionar las Cookies",
+        "content": "Puedes controlar las preferencias de cookies a través de nuestro banner de consentimiento. También puedes bloquear cookies mediante la configuración de tu navegador, pero esto puede afectar la funcionalidad del sitio."
+      },
+      "contact": {
+        "title": "Contáctanos",
+        "content": "Si tienes preguntas sobre nuestro uso de cookies, contáctanos:"
+      }
+    }
+  },
+  "terms": {
+    "meta": {
+      "title": "Términos de Servicio",
+      "description": "Términos y condiciones para usar nuestro servicio"
+    },
+    "title": "Términos de Servicio",
+    "lastUpdated": "Última actualización",
+    "warning": {
+      "title": "Revisar con Profesional Legal",
+      "message": "Estos Términos han sido generados con los datos de tu empresa. Revísalos con un profesional legal familiarizado con tu jurisdicción antes del lanzamiento."
+    },
+    "sections": {
+      "intro": {
+        "title": "Acuerdo con los Términos",
+        "content": "Al acceder o usar {companyName}, aceptas estar sujeto a estos Términos de Servicio. Si no estás de acuerdo con alguna parte de los términos, no puedes acceder al servicio."
+      },
+      "accounts": {
+        "title": "Cuentas",
+        "content": "Cuando creas una cuenta con nosotros, debes proporcionar información precisa, completa y actualizada. Eres responsable de proteger tu contraseña y de todas las actividades bajo tu cuenta."
+      },
+      "service": {
+        "title": "Uso del Servicio",
+        "intro": "Aceptas no:",
+        "items": {
+          "illegal": "Usar el servicio con fines ilegales o en violación de cualquier ley",
+          "harm": "Intentar interferir o comprometer la integridad o seguridad del sistema",
+          "abuse": "Abusar, acosar, amenazar o intimidar a otros usuarios",
+          "spam": "Enviar material publicitario o promocional no solicitado o no autorizado"
+        }
+      },
+      "payments": {
+        "title": "Pagos y Facturación",
+        "content": "Algunas partes del servicio se facturan por suscripción. Se te facturará por adelantado de forma recurrente. Los pagos no son reembolsables excepto según lo requiera la ley."
+      },
+      "termination": {
+        "title": "Terminación",
+        "content": "Podemos terminar o suspender tu cuenta inmediatamente, sin aviso previo, por cualquier motivo, incluyendo el incumplimiento de estos Términos."
+      },
+      "liability": {
+        "title": "Limitación de Responsabilidad",
+        "content": "En ningún caso {companyName} será responsable de daños indirectos, incidentales, especiales, consecuentes o punitivos, incluyendo pérdida de beneficios, datos u otras pérdidas intangibles."
+      },
+      "changes": {
+        "title": "Cambios a los Términos",
+        "content": "Nos reservamos el derecho de modificar o reemplazar estos Términos en cualquier momento. Si una revisión es material, proporcionaremos al menos 30 días de aviso antes de que los nuevos términos entren en vigor."
+      },
+      "contact": {
+        "title": "Contáctanos",
+        "content": "Si tienes preguntas sobre estos Términos, contáctanos:",
+        "updatePrompt": "⚠️ Recuerda actualizar esta información de contacto con tus datos legales reales antes de lanzar a producción."
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Codex",
+  "loading": "Opening the codex...",
+  "progress": "{found} / {total} discovered",
+  "tabStory": "Chronicle",
+  "tabDiscoveries": "Discoveries",
+  "prologue": "Prologue",
+  "chapterLabel": "Chapter {n}",
+  "chapterLocked": "Build the {structure} to continue the story",
+  "filterAll": "All"
+}

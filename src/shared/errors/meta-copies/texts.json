@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate error page text (404, 500, etc.)",
+    "usage": "Read by Claude to generate app/[locale]/[...rest]/copies/[locale].json (404) and error pages",
+    "note": "Error pages should be helpful, not frustrating. Provide clear next steps. Keep tone empathetic."
+  },
+
+  "notFound": {
+    "title": "404 error heading. Don't blame user. Ex: 'Page Not Found', 'Oops! Lost?', 'This page doesn't exist'",
+    "description": "Explain what happened and what they can do. Be helpful. Ex: 'Sorry, we couldn't find the page you're looking for.', 'The page may have moved or doesn't exist.'",
+    "backHome": "Button to return home. Ex: 'Back to Home', 'Go Home', 'Take Me Home'",
+    "searchPrompt": "Optional: suggest searching. Ex: 'Try searching for what you need', 'Looking for something specific?'"
+  },
+
+  "serverError": {
+    "title": "500 error heading. Take responsibility. Ex: 'Something Went Wrong', 'Our bad!', 'Server Error'",
+    "description": "Explain it's on our end and we're working on it. Ex: 'Something went wrong on our end. We're working to fix it. Please try again in a few minutes.'",
+    "refresh": "Button to refresh page. Ex: 'Refresh Page', 'Try Again', 'Reload'",
+    "status": "Optional: link to status page. Ex: 'Check System Status', 'Service Status'"
+  },
+
+  "unauthorized": {
+    "title": "403 error heading. Ex: 'Access Denied', 'Not Authorized', 'Permission Required'",
+    "description": "Explain why and what they can do. Ex: 'You don't have permission to access this page. If you believe this is an error, contact support.'",
+    "login": "Button to log in if not authenticated. Ex: 'Log In', 'Sign In to Continue'",
+    "contact": "Link to contact support. Ex: 'Contact Support', 'Get Help'"
+  },
+
+  "generic": {
+    "title": "Generic error heading. Ex: 'Error', 'Something's Not Right'",
+    "description": "Generic error message. Ex: 'An unexpected error occurred. Please try again or contact support if the problem persists.'",
+    "retry": "Button to retry action. Ex: 'Try Again', 'Retry', 'Refresh'"
+  }
+}

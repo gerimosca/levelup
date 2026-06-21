@@ -1,0 +1,16 @@
+{
+  "home": "Inicio",
+  "pricing": "Precios",
+  "about": "Acerca de",
+  "dashboard": "Panel",
+  "myAccount": "Mi Cuenta",
+  "settings": "Configuración",
+  "logout": "Cerrar Sesión",
+  "login": "Iniciar Sesión",
+  "register": "Registrarse",
+  "pwaInstall": "Instalar LevelUP",
+  "pwaInstallHint": "Añade a la pantalla de inicio para la mejor experiencia",
+  "pwaInstallCta": "Instalar",
+  "pwaInstallIos": "Pulsa Compartir ↑ y luego \"Añadir a inicio\"",
+  "pwaInstallDismiss": "Ahora no"
+}

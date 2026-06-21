@@ -1,0 +1,54 @@
+{
+  "levelLabel": "Nivel {level}",
+  "xpProgress": "{current} / {max} XP",
+  "missionsTitle": "Misiones de hoy",
+  "dailyPick": "Las de hoy",
+  "offlineTitle": "Sin conexión",
+  "offlineBody": "Vuelve cuando tengas señal — tu racha te estará esperando.",
+  "offlineRetry": "Reintentar",
+  "loading": "Preparando tu aventura...",
+  "journalCta": "Diario de esta noche",
+  "expedition": {
+    "ready": "¡Tu héroe ha vuelto! Mira qué trajo",
+    "outTitle": "Tu héroe está explorando",
+    "out": "Tu héroe está explorando… vuelve en ~{time}",
+    "departHint": "Cumple tu misión principal para enviar a tu héroe a explorar"
+  },
+  "build": {
+    "cost": "Coste",
+    "action": "Construir",
+    "maxed": "Tu campamento está al máximo… de momento"
+  },
+  "newVillager": "¡Llegó un nuevo habitante: {name}!",
+  "chapterReveal": {
+    "label": "Nuevo capítulo",
+    "continue": "Continuar"
+  },
+  "expeditionReward": {
+    "title": "¡El héroe regresa!",
+    "tier_quiet": "Un viaje tranquilo.",
+    "tier_good": "¡Buen botín!",
+    "tier_great": "¡Gran expedición!",
+    "discovery": "¡Nuevo descubrimiento!",
+    "close": "Llevar al campamento"
+  },
+  "forge": {
+    "title": "Fragua",
+    "craft": "Forjar",
+    "owned": "Obtenido",
+    "crafted": "¡{name} forjado!",
+    "alreadyOwned": "Ya tienes este item.",
+    "insufficient": "No tienes suficientes materiales."
+  },
+  "journal": {
+    "moodLabel": "¿Cómo fue el día?",
+    "moods": { "1": "Duro", "2": "Regular", "3": "Bien", "4": "Muy bien", "5": "¡Genial!" },
+    "feltLabel": "¿Qué destacó?",
+    "feltPlaceholder": "Algo que pasó, algo que sentiste...",
+    "learnedLabel": "¿Qué quieres llevar contigo?",
+    "learnedPlaceholder": "Aunque sea algo pequeño cuenta.",
+    "save": "Guardar · +{xp} XP",
+    "skip": "Saltar por esta noche",
+    "saved": "+{xp} XP — ¡diario guardado!"
+  }
+}

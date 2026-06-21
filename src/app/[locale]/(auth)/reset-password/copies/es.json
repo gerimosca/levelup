@@ -1,0 +1,18 @@
+{
+  "resetPassword": "Restablecer Contraseña",
+  "sendResetLink": "Enviar Enlace",
+  "sendingResetLink": "Enviando...",
+  "resetPasswordSuccess": "Revisa tu correo para el enlace de restablecimiento",
+  "email": "Correo electrónico",
+  "newPassword": "Nueva Contraseña",
+  "updatePassword": "Actualizar Contraseña",
+  "updatingPassword": "Actualizando...",
+  "passwordUpdated": "Tu contraseña ha sido actualizada exitosamente",
+  "backToLogin": "Volver al inicio de sesión",
+  "passwordRequirements": {
+    "minLength": "Al menos 6 caracteres",
+    "hasNumber": "Contiene un número",
+    "hasLetter": "Contiene una letra",
+    "hasSpecial": "Contiene un carácter especial"
+  }
+}

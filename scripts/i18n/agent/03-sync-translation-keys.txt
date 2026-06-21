@@ -1,0 +1,96 @@
+Claude Agent Command: /sync-i18n
+
+🎯 Propósito:
+   Sincronizar keys faltantes entre idiomas (EN ↔ ES)
+
+📍 Comando real en:
+   /.claude/commands/sync-translations.md
+
+⚙️ Scripts que ejecuta internamente:
+   1. npm run i18n:sync-keys
+
+🔄 Flujo:
+   Usuario → /sync-i18n → Claude Code → Script → Archivos actualizados
+
+📖 Uso:
+   /sync-i18n                           # Sincronizar todos
+   /sync-i18n --path=app/[locale]/(auth)/login  # Path específico
+   /sync-i18n --ai                      # Con traducción AI
+   /sync-i18n --dry-run                 # Ver sin cambiar
+
+💡 Claude añade:
+   ✅ Pregunta si quieres usar AI para traducir
+   ✅ Muestra preview de cambios antes de aplicar
+   ✅ Explica qué keys se añadieron y dónde
+   ✅ Sugiere revisar traducciones automáticas
+
+🔧 Alternativa sin Claude:
+   npm run i18n:sync-keys
+   npm run i18n:sync-keys -- --path=app/[locale]/(landing)/pricing/copies
+   npm run i18n:sync-keys -- --ai
+   npm run i18n:sync-keys -- --dry-run
+
+✅ Qué hace:
+   - Encuentra keys en EN que no están en ES (y viceversa)
+   - Añade keys faltantes con placeholder "[NEEDS TRANSLATION]"
+   - Con --ai: genera traducción automática usando Claude
+   - Con --dry-run: muestra qué cambiaría sin escribir archivos
+
+📝 Ejemplo output de Claude:
+   "Sincronizando traducciones...
+
+    📁 app/[locale]/(landing)/pricing/copies
+       📝 Missing in ES: 2 keys
+          + cta.button: "[NEEDS TRANSLATION]"
+          + pricing.annual: "[NEEDS TRANSLATION]"
+       ✅ Updated files
+
+    📁 app/[locale]/(auth)/login/copies
+       ✅ All keys in sync
+
+    Resultado:
+    ✅ Añadidas 2 keys
+
+    Sugerencia:
+    Revisa y edita las traducciones con placeholder en:
+    - app/[locale]/(landing)/pricing/copies/es.json"
+
+⏰ Cuándo usarlo:
+   - Después de añadir nuevas keys en un idioma
+   - Antes de hacer commit (para asegurar sincronización)
+   - Cuando detectas keys faltantes en validación
+   - Al fusionar branches con cambios en traducciones
+
+🤖 Modo AI (--ai):
+   - Requiere ANTHROPIC_API_KEY
+   - Traduce automáticamente las keys faltantes
+   - Usa contexto de brand para mejores traducciones
+   - Más lento pero produce traducciones coherentes
+
+   Ejemplo:
+   EN: "Start your free trial today"
+   ES (AI): "Comienza tu prueba gratuita hoy"
+
+   vs placeholder:
+   ES (manual): "[NEEDS TRANSLATION]"
+
+🔍 Modo Dry-Run (--dry-run):
+   - Muestra qué cambiaría sin modificar archivos
+   - Útil para revisar antes de aplicar
+   - Perfecto para CI checks
+
+   Ejemplo:
+   npm run i18n:sync-keys -- --dry-run
+
+   Output:
+   "🔍 DRY RUN COMPLETE
+    Would add: 5 keys
+    Errors: 0 directories
+
+    Run without --dry-run to apply changes"
+
+💡 Tip: Workflow recomendado:
+   1. /sync-i18n --dry-run  # Ver qué falta
+   2. /sync-i18n --ai       # Generar con AI
+   3. Revisar traducciones generadas
+   4. /validate-i18n        # Confirmar todo OK

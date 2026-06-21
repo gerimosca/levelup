@@ -1,0 +1,88 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate auth-related copy. These describe WHAT each text should accomplish, not the final text itself.",
+    "usage": "Read by Claude to generate app/[locale]/(auth)/[route]/copies/[locale].json"
+  },
+
+  "common": {
+    "email": "Email input label. Keep it simple and clear.",
+    "password": "Password input label. Standard form label.",
+    "confirmPassword": "Password confirmation input label. Make it clear it should match the first password.",
+    "rememberMe": "Checkbox label to stay logged in. Optional convenience feature.",
+    "orContinueWith": "Divider text before OAuth buttons. Keep it short.",
+    "and": "Conjunction for legal links. Ex: 'Terms of Service and Privacy Policy'",
+    "backToHome": "Link to return to homepage. Ex: 'Back to Home', 'Go home'",
+    "backToLogin": "Link to return to login page from other auth pages."
+  },
+
+  "login": {
+    "login": "Primary heading for login page or button text. Ex: 'Log In', 'Sign In', 'Welcome Back'",
+    "welcomeBack": "Welcoming heading for login page. Make it friendly and personal.",
+    "forgotPassword": "Link text for password reset flow. Make it obvious and helpful.",
+    "dontHaveAccount": "Prompt to register. Include context. Ex: 'Don't have an account?'",
+    "loggingIn": "Button text while login is processing. Ex: 'Signing in...', 'Logging in...'",
+    "magicLink": "Button text to request magic link (passwordless). Ex: 'Send magic link', 'Email me a login link'",
+    "loginWithMagicLink": "Alternative login option heading. Ex: 'Sign in with magic link'",
+    "sendingMagicLink": "Status text while sending magic link. Ex: 'Sending link...', 'Sending...'",
+    "lastUsed": "Label showing when auth method was last used. Ex: 'Last used', 'Used recently'",
+    "tryResetPassword": "Helpful prompt when password fails. Ex: 'Wrong password?', 'Forgot it?'",
+    "autoMagicLinkSent": "Info message when auto-sending magic link as fallback. Include {email} placeholder. Ex: 'We couldn't verify your password. We've sent a login link to {email}'"
+  },
+
+  "register": {
+    "register": "Primary heading for registration page or button text. Ex: 'Sign Up', 'Create Account', 'Get Started'",
+    "createAccount": "Button text to submit registration. Action-oriented. Ex: 'Create Account', 'Join Now', 'Sign Up'",
+    "creatingAccount": "Button text while registration is processing. Ex: 'Creating account...', 'Setting up...'",
+    "alreadyHaveAccount": "Prompt to login instead of register. Include context.",
+    "agreeToTerms": "Checkbox label for legal agreement. Be clear but concise. Ex: 'I agree to the'",
+    "termsOfService": "Link text for terms document. Ex: 'Terms of Service', 'Terms & Conditions'",
+    "privacyPolicy": "Link text for privacy document. Standard legal term."
+  },
+
+  "magicLink": {
+    "checkEmail": "Success message after sending magic link. Tell user what to do next. Ex: 'Check your email for a magic link'",
+    "sendingResetLink": "Status text while sending. Ex: 'Sending...', 'Sending link...'"
+  },
+
+  "resetPassword": {
+    "resetPassword": "Heading for password reset page. Ex: 'Reset Password', 'Forgot Password?'",
+    "sendResetLink": "Button text to request reset link. Ex: 'Send Reset Link', 'Email me a reset link'",
+    "resetPasswordSuccess": "Success message after sending reset email. Tell user what to do next.",
+    "newPassword": "Label for new password input. Ex: 'New Password', 'Choose a new password'",
+    "updatePassword": "Button to submit new password. Ex: 'Update Password', 'Save New Password'",
+    "updatingPassword": "Status text while updating. Ex: 'Updating...', 'Saving...'",
+    "passwordUpdated": "Success message after password change. Reassure user and suggest next step.",
+    "passwordRequirements": {
+      "_note": "Requirements list shown to help user create valid password",
+      "minLength": "Minimum character requirement. Ex: 'At least 6 characters', '8+ characters'",
+      "hasNumber": "Must include number requirement. Ex: 'Contains a number'",
+      "hasLetter": "Must include letter requirement. Ex: 'Contains a letter'",
+      "hasSpecial": "Must include special char requirement. Ex: 'Contains a special character (!@#$...)'"
+    }
+  },
+
+  "verifyEmail": {
+    "verifyEmail": "Heading for email verification page. Ex: 'Verify Your Email', 'Check Your Inbox'",
+    "verifyEmailDescription": "Explanation of what happened and what user should do. Be clear and helpful. Mention checking inbox and clicking link.",
+    "checkEmailVerification": "Alternative short message. Ex: 'Check your email to verify your account'",
+    "resendEmail": "Button to resend verification email. Ex: 'Resend email', 'Send again'",
+    "resendingEmail": "Status while resending. Ex: 'Resending...', 'Sending...'",
+    "emailResent": "Success message after resending. Ex: 'Verification email resent', 'Email sent!'"
+  },
+
+  "oauth": {
+    "oauthSignIn": "Button text for OAuth login. Include {provider} placeholder. Ex: 'Sign in with {provider}', 'Continue with {provider}'",
+    "oauthSignUp": "Button text for OAuth registration. Include {provider} placeholder. Ex: 'Sign up with {provider}'",
+    "googleOneTapError": "Error message when Google One Tap fails. Be helpful. Ex: 'Could not sign in with Google. Please try again.'"
+  },
+
+  "errors": {
+    "authError": "Generic error heading. Ex: 'Authentication Error', 'Something went wrong'",
+    "authErrorDescription": "Generic error explanation. Be reassuring and suggest action. Ex: 'Something went wrong during authentication. Please try again.'",
+    "tryAgain": "Button to retry after error. Ex: 'Try Again', 'Retry'"
+  },
+
+  "states": {
+    "loggedOut": "Success message after logout. Ex: 'You have been logged out successfully', 'See you soon!'"
+  }
+}

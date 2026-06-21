@@ -1,0 +1,32 @@
+{
+  "page": {
+    "title": "Admin Dashboard",
+    "description": "Manage your SaaS platform, configure settings, and view analytics"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "emails": "Email Journeys",
+    "users": "Users",
+    "backToApp": "Back to App"
+  },
+  "stats": {
+    "title": "Business Metrics",
+    "totalUsers": "Total Users",
+    "totalUsersDesc": "All registered users on the platform",
+    "activeSubscriptions": "Active Subscriptions",
+    "activeSubscriptionsDesc": "Users with active paid plans",
+    "trialUsers": "Trial Users",
+    "trialUsersDesc": "Users currently in trial period",
+    "mrr": "Monthly Recurring Revenue",
+    "mrrDesc": "Total monthly revenue from subscriptions",
+    "newUsersThisMonth": "New Users This Month",
+    "newUsersThisMonthDesc": "Users registered this month",
+    "canceledSubscriptions": "Canceled Subscriptions",
+    "canceledSubscriptionsDesc": "Subscriptions that have been canceled"
+  },
+  "crossSell": {
+    "title": "Recommended Add-ons",
+    "description": "Boost your SaaS with these premium features"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate landing page copy. Focus on conversion and clarity.",
+    "usage": "Read by Claude to generate app/[locale]/(landing)/copies/[locale].json",
+    "note": "Landing page is the first impression. Every word should drive towards signup/trial."
+  },
+
+  "hero": {
+    "badge": "Optional badge above headline. Create credibility or urgency. Ex: 'Trusted by 10k+ founders', 'Production-ready', '#1 on Product Hunt'",
+    "titleStart": "First part of headline if split design is used. Can be descriptive. Ex: 'Build Your'",
+    "titleHighlight": "Highlighted/colored part of headline. Your unique value prop. Ex: 'AI SaaS', 'Dream App', product name",
+    "titleEnd": "Ending of headline. The transformation/outcome. Ex: 'Faster Than Ever', 'In Days, Not Months', 'Without Code'",
+    "subtitle": "Expand on headline. 1-2 sentences. Address WHO this is for and HOW it helps. Include key differentiator.",
+    "cta": "Primary action button. Be specific about what happens next. Ex: 'Start Free Trial', 'Get Started Free', 'See It in Action'",
+    "viewPricing": "Secondary button to pricing. Ex: 'View Pricing', 'See Plans', 'Compare Options'"
+  },
+
+  "features": {
+    "label": "Section eyebrow/label. Ex: 'Features', 'What's Included', 'Everything You Need'",
+    "title": "Section heading. Create desire or emphasize completeness. Ex: 'Everything you need to ship fast', 'Built for speed', 'Your complete toolkit'",
+    "description": "Subheading explaining the value. Focus on time saved or pain removed. Ex: 'Stop rebuilding the same features. Focus on what makes your product unique.'",
+    "featureItems": {
+      "_note": "Each feature should have name + description. Focus on BENEFITS, not just features.",
+      "name": "Feature name. Benefit-oriented. Ex: 'Auth with Supabase' → emphasize 'with Supabase' for credibility",
+      "description": "What it does + why it matters. ~10-15 words. Ex: 'Email/password, magic links, and OAuth providers. Session management included.'",
+      "learnMore": "Link text to feature details. Ex: 'Learn more', 'See how it works'"
+    }
+  },
+
+  "stats": {
+    "_note": "Impressive numbers that build confidence. Use concrete metrics.",
+    "setupTime": "Label for setup speed. Ex: 'Setup time', 'Time to launch'",
+    "components": "Label for component count. Ex: 'Components', 'Ready-to-use components'",
+    "typeSafe": "Label for type safety. Ex: 'Type-safe', 'TypeScript coverage'",
+    "vendorLockIn": "Label for vendor independence. Ex: 'Vendor lock-in', 'Dependencies'",
+    "min": "Time unit abbreviation. Ex: 'min', 'minutes'"
+  },
+
+  "tech": {
+    "label": "Section eyebrow. Ex: 'Tech Stack', 'Built With', 'Technology'",
+    "title": "Section heading. Emphasize quality/modernity. Ex: 'Built with modern tech', 'Production-ready stack', 'Technologies you trust'",
+    "description": "Why the tech stack matters. Ex: 'Production-ready stack you already know and love', 'Battle-tested technologies, zero learning curve'"
+  },
+
+  "social_proof": {
+    "_note": "Build trust through testimonials, logos, or stats",
+    "title": "Section heading. Ex: 'Loved by founders', 'Join 10,000+ builders', 'Trusted by teams at'",
+    "testimonialQuote": "Actual result or transformation achieved. Include metrics when possible. Ex: 'Launched my SaaS in 3 days instead of 3 months'",
+    "testimonialAuthor": "Name + role/company. Ex: 'Sarah Chen, Founder of TaskFlow'",
+    "testimonialRole": "Job title or company. Ex: 'Founder, TaskFlow' or 'Engineering Lead at Acme'"
+  },
+
+  "cta": {
+    "_note": "Final call-to-action section before footer",
+    "title": "Create urgency or reinforce value. Ex: 'Ready to ship faster?', 'Start building today', 'Join thousands of founders'",
+    "description": "Remove friction, reassure. Ex: 'Get started in 60 seconds. No credit card required.', 'Join 10,000+ founders who chose to ship instead of build infrastructure.'",
+    "button": "Match or vary hero CTA slightly. Ex: 'Start Free Trial', 'Get Started Now'"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Billing",
+  "description": "Manage your subscription and billing details",
+  "subscription": "Subscription",
+  "currentPlan": "Your current plan and billing information",
+  "noSubscription": "You don't have an active subscription.",
+  "viewPlans": "View Plans",
+  "manageSubscription": "Manage Subscription",
+  "paymentMethods": "Payment Methods",
+  "invoices": "Invoices",
+  "includedFeatures": "Included Features",
+  "renewsOn": "Renews on {date}",
+  "trialEnds": "Trial ends on {date}",
+  "cancelsOn": "Cancels on {date}",
+  "paymentFailed": "Your last payment failed. Please update your payment method to continue your subscription."
+}

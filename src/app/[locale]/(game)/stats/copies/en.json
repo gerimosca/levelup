@@ -1,0 +1,31 @@
+{
+  "title": "Your progress",
+  "loading": "Crunching your numbers...",
+  "daysValue": "{days} days",
+  "daysShort": "days",
+  "streakGoal": "Goal: {days} days",
+  "activityTitle": "Consistency (8 weeks)",
+  "xpDailyTitle": "XP last 14 days",
+  "activityCaption": "Habits per day · {current} this month vs {prev} last month",
+  "daysAlcoholFree": "Days alcohol-free",
+  "moneySaved": "Money saved",
+  "currentStreak": "Current streak",
+  "longestStreak": "Best streak",
+  "trainings": "Trainings",
+  "kmWalked": "Distance walked",
+  "reads": "Reading sessions",
+  "level": "Level",
+  "xpChartTitle": "XP per week",
+  "xpChartThisWeek": "this week",
+  "xpChartWeeksAgo": "{n}w ago",
+  "attributesTitle": "Attributes",
+  "streakWeekTitle": "Last 7 days",
+  "milestonesTitle": "Milestones",
+  "habitRankingTitle": "Most completed habits (last 90 days)",
+  "dowTitle": "Best day of the week",
+  "dowBest": "{day} is your strongest day",
+  "dow": {
+    "sun": "Sunday", "mon": "Monday", "tue": "Tuesday", "wed": "Wednesday",
+    "thu": "Thursday", "fri": "Friday", "sat": "Saturday"
+  }
+}

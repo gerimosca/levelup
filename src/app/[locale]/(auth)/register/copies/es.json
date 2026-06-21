@@ -1,0 +1,23 @@
+{
+  "register": "Registrarse",
+  "createAccount": "Crear Cuenta",
+  "creatingAccount": "Creando cuenta...",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "confirmPassword": "Confirmar Contraseña",
+  "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+  "login": "Iniciar Sesión",
+  "agreeToTerms": "Acepto los",
+  "termsOfService": "Términos de Servicio",
+  "privacyPolicy": "Política de Privacidad",
+  "and": "y",
+  "orContinueWith": "O continúa con",
+  "oauthSignUp": "Registrarse con {provider}",
+  "backToHome": "Volver al inicio",
+  "passwordRequirements": {
+    "minLength": "Al menos 6 caracteres",
+    "hasNumber": "Contiene un número",
+    "hasLetter": "Contiene una letra",
+    "hasSpecial": "Contiene un carácter especial"
+  }
+}

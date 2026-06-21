@@ -1,0 +1,16 @@
+{
+  "home": "Home",
+  "pricing": "Pricing",
+  "about": "About",
+  "dashboard": "Dashboard",
+  "myAccount": "My Account",
+  "settings": "Settings",
+  "logout": "Logout",
+  "login": "Log In",
+  "register": "Sign Up",
+  "pwaInstall": "Install LevelUP",
+  "pwaInstallHint": "Add to home screen for the best experience",
+  "pwaInstallCta": "Install",
+  "pwaInstallIos": "Tap Share ↑ then \"Add to Home Screen\"",
+  "pwaInstallDismiss": "Not now"
+}

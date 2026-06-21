@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate cookie consent banner/modal copy. Must be GDPR-compliant.",
+    "usage": "Read by Claude to generate consent UI copies",
+    "note": "Keep it simple and transparent. Explain what cookies do in plain language. Comply with GDPR."
+  },
+
+  "banner": {
+    "title": "Banner heading. Be direct. Ex: 'We use cookies', 'Cookies on {site name}'",
+    "description": "Brief explanation of cookie use. Be transparent. Ex: 'We use cookies to personalize your experience and for marketing. You can manage your preferences anytime.'",
+    "learnMore": "Link to full policy. Ex: 'Learn more', 'Cookie Policy', 'More info'",
+    "acceptAll": "Button to accept all cookies. Ex: 'Accept all', 'Accept', 'OK'",
+    "rejectAll": "Button to reject non-essential. Ex: 'Reject all', 'Only necessary', 'Decline'",
+    "customize": "Button to open preferences. Ex: 'Customize', 'Manage preferences', 'Settings'"
+  },
+
+  "modal": {
+    "title": "Modal heading. Ex: 'Cookie preferences', 'Manage Cookies', 'Privacy Settings'",
+    "description": "Explanation with link to policy. Mention they can change later. Ex: 'Choose which cookies you want to allow. You can change these settings anytime. Read our'",
+    "privacyPolicy": "Link text to privacy policy. Ex: 'Privacy Policy', 'full policy'",
+    "save": "Button to save custom preferences. Ex: 'Save preferences', 'Save choices', 'Confirm'",
+    "acceptAll": "Button to accept all in modal. Ex: 'Accept all', 'Allow all'",
+    "rejectAll": "Button to reject all in modal. Ex: 'Reject all', 'Only necessary'"
+  },
+
+  "categories": {
+    "necessary": {
+      "name": "Category name. Ex: 'Necessary', 'Essential', 'Required'",
+      "description": "Explain what necessary cookies do. Be specific. Ex: 'Essential for the site to work. Includes session, authentication, and personalization based on your referral source.'"
+    },
+    "marketing": {
+      "name": "Category name. Ex: 'Marketing', 'Advertising', 'Analytics & Ads'",
+      "description": "Explain marketing cookies. Be transparent about what services. Ex: 'Help us measure ad performance and show you relevant content. Includes Google Ads and Meta Pixel.'"
+    }
+  },
+
+  "footer": {
+    "privacy": "Footer link to privacy policy. Ex: 'Privacy', 'Privacy Policy'",
+    "manageCookies": "Footer link to reopen preferences. Ex: 'Manage cookies', 'Cookie settings', 'Cookie preferences'"
+  }
+}

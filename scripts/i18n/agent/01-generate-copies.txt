@@ -1,0 +1,48 @@
+Claude Agent Command: /generate-copies
+
+🎯 Propósito:
+   Generar estructura completa de copies para nueva página/componente
+
+📍 Comando real en:
+   /.claude/commands/generate-copies.md
+
+⚙️ Scripts que ejecuta internamente:
+   1. npm run i18n:create-structure (crear directorios y archivos vacíos)
+   2. npm run i18n:generate-ai (generar contenido - OPCIONAL si tienes meta-copies)
+   3. npm run i18n:validate (validar estructura)
+
+🔄 Flujo:
+   Usuario → /generate-copies → Claude Code → Scripts → Resultado
+
+📖 Uso:
+   /generate-copies --path=app/[locale]/(landing)/pricing
+
+   Claude te preguntará:
+   - "¿Tienes meta-copies para generar automáticamente?"
+   - "¿Quieres que genere con AI o prefieres editar manualmente?"
+
+💡 Claude añade:
+   ✅ Valida que el path existe
+   ✅ Detecta si hay meta-copies disponibles
+   ✅ Explica el namespace auto-detectado
+   ✅ Sugiere siguiente paso
+
+🔧 Alternativa sin Claude:
+   npm run i18n:create-structure -- --path=app/[locale]/(landing)/pricing
+   # Editar archivos manualmente o:
+   npm run i18n:generate-ai -- --source=... --target=...
+   npm run i18n:validate
+
+📝 Ejemplo completo:
+   /generate-copies --path=app/[locale]/(landing)/about
+
+   Output de Claude:
+   "Voy a crear la estructura de copies para 'about'.
+
+    Ejecutando: npm run i18n:create-structure...
+    ✅ Creado: app/[locale]/(landing)/about/copies/en.json
+    ✅ Creado: app/[locale]/(landing)/about/copies/es.json
+
+    Namespace detectado: 'about'
+
+    ¿Tienes meta-copies para esta página? (Y/N)"

@@ -1,0 +1,99 @@
+{
+  "name": "saas-blueprint-private",
+  "owner": {
+    "name": "SaaS Blueprint Team",
+    "email": "team@saasblueprint.dev"
+  },
+  "metadata": {
+    "description": "Private marketplace for SaaS Blueprint meta-agent and related tools",
+    "version": "1.0.0",
+    "access": "invite-only",
+    "support": "team@saasblueprint.dev"
+  },
+  "plugins": [
+    {
+      "name": "saas-blueprint-meta",
+      "source": "..",
+      "description": "Meta-agent for AI-first SaaS development with self-improving capabilities",
+      "version": "0.9.0",
+      "author": {
+        "name": "SaaS Blueprint Team",
+        "email": "team@saasblueprint.dev"
+      },
+      "homepage": "https://github.com/saasblueprint/meta-agent",
+      "category": "full-stack",
+      "tags": [
+        "saas",
+        "meta-agent",
+        "nextjs",
+        "supabase",
+        "stripe",
+        "ai-first",
+        "self-improving"
+      ],
+      "keywords": [
+        "autonomous",
+        "vsa-cqrs",
+        "production-ready",
+        "enterprise"
+      ],
+      "license": "Proprietary",
+      "strict": true,
+      "metadata": {
+        "maturity": "beta",
+        "recommended": true,
+        "featured": true,
+        "capabilities": [
+          "Auto type-checking on file edit",
+          "10 specialized SaaS commands",
+          "5 implementation skills",
+          "VSA+CQRS architecture patterns",
+          "Production-ready templates"
+        ],
+        "requirements": {
+          "stack": "Next.js + Supabase + Stripe",
+          "claude_code": ">=1.0.0",
+          "node": ">=18.0.0"
+        },
+        "pricing": {
+          "model": "subscription",
+          "beta": "free",
+          "future": "$99-999/month"
+        }
+      }
+    }
+  ],
+  "categories": [
+    {
+      "name": "full-stack",
+      "description": "Complete application development tools"
+    },
+    {
+      "name": "meta-agent",
+      "description": "Self-improving AI development systems"
+    }
+  ],
+  "installation": {
+    "instructions": [
+      "Add this marketplace: /plugin marketplace add [private-repo-url]",
+      "Install the plugin: /plugin install saas-blueprint-meta",
+      "Configure your environment variables",
+      "Run /health-check to verify installation"
+    ],
+    "prerequisites": [
+      "Claude Code v1.0.0 or higher",
+      "Next.js 14+ project (or create new)",
+      "Node.js 18+ and npm 9+",
+      "Git repository initialized"
+    ]
+  },
+  "support": {
+    "channels": [
+      "GitHub Issues (private repo)",
+      "Email: team@saasblueprint.dev",
+      "Discord: Coming soon"
+    ],
+    "documentation": "https://docs.saasblueprint.dev",
+    "response_time": "24-48 hours (beta)"
+  }
+}

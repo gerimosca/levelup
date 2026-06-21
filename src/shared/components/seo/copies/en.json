@@ -1,0 +1,22 @@
+{
+  "landing": {
+    "title": "Build Your SaaS Faster",
+    "description": "Production-ready SaaS boilerplate with authentication, payments, and everything you need to launch quickly."
+  },
+  "pricing": {
+    "title": "Pricing Plans",
+    "description": "Choose the perfect plan for your needs. Start free, upgrade when you're ready."
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Learn more about our mission to help developers build better products faster."
+  },
+  "login": {
+    "title": "Log In",
+    "description": "Sign in to your account to access your dashboard and manage your subscription."
+  },
+  "register": {
+    "title": "Create Account",
+    "description": "Sign up for a free account and start building your project today."
+  }
+}

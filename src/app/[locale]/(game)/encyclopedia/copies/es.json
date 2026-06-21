@@ -1,0 +1,11 @@
+{
+  "title": "Códice",
+  "loading": "Abriendo el códice...",
+  "progress": "{found} / {total} descubiertos",
+  "tabStory": "Crónica",
+  "tabDiscoveries": "Descubrimientos",
+  "prologue": "Prólogo",
+  "chapterLabel": "Capítulo {n}",
+  "chapterLocked": "Construye {structure} para continuar la historia",
+  "filterAll": "Todo"
+}

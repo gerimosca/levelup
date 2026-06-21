@@ -1,0 +1,64 @@
+{
+  "title": "Your hero",
+  "loading": "Loading your hero...",
+  "levelLabel": "Level {level}",
+  "attributesTitle": "Attributes",
+  "attributesHint": "Each attribute grows from the habits you keep — that's why some are higher than others.",
+  "rank": "Rank {rank}",
+  "attrHint": {
+    "vitality": "Grows by staying alcohol-free, hydrating and eating well",
+    "strength": "Grows by training",
+    "discipline": "Grows by reading and meditating",
+    "energy": "Grows by sleeping well",
+    "resistance": "Grows by walking"
+  },
+  "achievementsTitle": "Achievements",
+  "noAchievements": "No achievements yet. Your first one is close.",
+  "equipmentTitle": "Gear",
+  "nextUnlocksTitle": "Coming up",
+  "unlocked": "Unlocked",
+  "statsLink": "Your progress",
+  "equip": "Tap to equip",
+  "equipped": "Equipped · tap to remove",
+  "slots": {
+    "head": "Head",
+    "back": "Back",
+    "chest": "Chest",
+    "hands": "Weapon",
+    "feet": "Feet",
+    "accessory": "Accessory"
+  },
+  "settings": "Settings",
+  "appearance": {
+    "title": "Appearance",
+    "nameLabel": "Hero name",
+    "namePlaceholder": "e.g. Ironwolf",
+    "nameEmpty": "Set a name…",
+    "nameEdit": "Edit",
+    "nameSave": "Save",
+    "skinLabel": "Skin tone",
+    "hairLabel": "Hair color"
+  },
+  "attrTitle": {
+    "initiate": "Initiate of",
+    "bearer": "Bearer of",
+    "master": "Master of"
+  },
+  "achievementsProgress": "{unlocked} / {total}",
+  "achievementGroup": {
+    "first": "First steps",
+    "streak": "Streaks",
+    "clean": "Alcohol-free",
+    "volume": "Volume",
+    "level": "Levels",
+    "season": "Seasons"
+  },
+  "share": {
+    "button": "Share my progress",
+    "streak": "{days}-day streak 🔥",
+    "level": "Level {level} · {tier}",
+    "achievements": "{done}/{total} achievements",
+    "tagline": "LevelUP — build real habits, one day at a time.",
+    "copied": "Copied to clipboard!"
+  }
+}

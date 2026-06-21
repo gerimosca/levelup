@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate account settings copy",
+    "usage": "Read by Claude to generate app/[locale]/(app)/my-account/copies/[locale].json"
+  },
+
+  "page": {
+    "title": "Page title for account settings. Ex: 'My Account', 'Settings', 'Profile Settings'"
+  },
+
+  "sections": {
+    "profile": "Section heading for profile information (name, avatar). Ex: 'Profile', 'Personal Information'",
+    "preferences": "Section heading for user preferences (language, timezone, theme). Ex: 'Preferences', 'Your Preferences'"
+  },
+
+  "fields": {
+    "fullName": "Label for full name input. Ex: 'Full Name', 'Your Name'",
+    "language": "Label for language selector. Ex: 'Language', 'Preferred Language'",
+    "timezone": "Label for timezone selector. Ex: 'Timezone', 'Your Timezone'",
+    "appearance": "Label for appearance/theme settings. Ex: 'Appearance', 'Theme'",
+    "theme": "Label for theme toggle (light/dark). Ex: 'Theme', 'Color Mode'"
+  },
+
+  "actions": {
+    "save": "Button to save changes. Ex: 'Save Changes', 'Update Profile'",
+    "saving": "Button text while saving. Ex: 'Saving...', 'Updating...'",
+    "saved": "Success message after save. Ex: 'Changes saved successfully', 'Profile updated!'"
+  }
+}

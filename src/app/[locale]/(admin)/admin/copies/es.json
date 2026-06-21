@@ -1,0 +1,32 @@
+{
+  "page": {
+    "title": "Panel de Administración",
+    "description": "Gestiona tu plataforma SaaS, configura ajustes y visualiza analíticas"
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "settings": "Configuración",
+    "emails": "Jornadas de Email",
+    "users": "Usuarios",
+    "backToApp": "Volver a la App"
+  },
+  "stats": {
+    "title": "Métricas del Negocio",
+    "totalUsers": "Usuarios Totales",
+    "totalUsersDesc": "Todos los usuarios registrados en la plataforma",
+    "activeSubscriptions": "Suscripciones Activas",
+    "activeSubscriptionsDesc": "Usuarios con planes de pago activos",
+    "trialUsers": "Usuarios en Prueba",
+    "trialUsersDesc": "Usuarios actualmente en período de prueba",
+    "mrr": "Ingresos Recurrentes Mensuales",
+    "mrrDesc": "Ingresos mensuales totales de suscripciones",
+    "newUsersThisMonth": "Nuevos Usuarios Este Mes",
+    "newUsersThisMonthDesc": "Usuarios registrados este mes",
+    "canceledSubscriptions": "Suscripciones Canceladas",
+    "canceledSubscriptionsDesc": "Suscripciones que han sido canceladas"
+  },
+  "crossSell": {
+    "title": "Complementos Recomendados",
+    "description": "Mejora tu SaaS con estas características premium"
+  }
+}

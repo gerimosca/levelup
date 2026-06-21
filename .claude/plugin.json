@@ -1,0 +1,95 @@
+{
+  "name": "saas-blueprint-meta",
+  "version": "0.9.0",
+  "description": "Meta-agent for AI-first SaaS development with self-improving capabilities",
+  "author": {
+    "name": "SaaS Blueprint Team",
+    "email": "team@saasblueprint.dev"
+  },
+  "homepage": "https://github.com/saasblueprint/meta-agent",
+  "repository": "https://github.com/saasblueprint/meta-agent",
+  "license": "Proprietary",
+  "keywords": [
+    "saas",
+    "meta-agent",
+    "ai-first",
+    "self-improving",
+    "nextjs",
+    "supabase",
+    "stripe",
+    "vsa-cqrs",
+    "autonomous"
+  ],
+
+  "commands": "./commands/",
+  "agents": "./skills/",
+
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "pattern": "\\.(ts|tsx)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ \"$CLAUDE_TOOL_ARG_FILE_PATH\" =~ \\.(ts|tsx)$ ]]; then cd ${CLAUDE_PROJECT_ROOT} && npx tsc --noEmit --skipLibCheck 2>&1 | head -30 || true; fi"
+          }
+        ]
+      }
+    ]
+  },
+
+  "permissions": {
+    "allow": [
+      "npm install:*",
+      "npm run build:*",
+      "npm run dev:*",
+      "npm run type-check:*",
+      "npm run lint:*",
+      "npm run test:*",
+      "npm run generate:slice:*",
+      "npm run gen:types:*",
+      "npx supabase:*",
+      "npx shadcn:*",
+      "npx tsc:*",
+      "npx next:*"
+    ]
+  },
+
+  "mcpServers": {
+    "magicui": {
+      "enabled": true,
+      "description": "UI components and animations"
+    },
+    "context7": {
+      "enabled": true,
+      "description": "Updated library documentation"
+    }
+  },
+
+  "metadata": {
+    "category": "full-stack",
+    "maturity": "beta",
+    "requirements": {
+      "claude_code": ">=1.0.0",
+      "node": ">=18.0.0",
+      "framework": "nextjs>=14.0.0"
+    },
+    "capabilities": {
+      "auto_type_check": true,
+      "auto_documentation": true,
+      "visual_regression": false,
+      "self_learning": false,
+      "autonomous_development": false
+    },
+    "roadmap": {
+      "next_version": "1.0.0",
+      "planned_features": [
+        "Pre-deploy validation",
+        "Visual regression testing",
+        "Self-healing capabilities",
+        "UI auto-optimization"
+      ]
+    }
+  }
+}

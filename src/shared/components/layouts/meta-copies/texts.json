@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "description": "Prompts for LLM to generate navigation and layout text",
+    "usage": "Read by Claude to generate app/[locale]/_shared/layouts/copies/[locale].json",
+    "note": "Navigation labels should be short (1-2 words) and clear about destination."
+  },
+
+  "navigation": {
+    "home": "Link to homepage. Ex: 'Home', 'Start', 'Main'",
+    "pricing": "Link to pricing page. Ex: 'Pricing', 'Plans', 'Plans & Pricing'",
+    "about": "Link to about page. Ex: 'About', 'About Us', 'Our Story'",
+    "dashboard": "Link to main dashboard. Ex: 'Dashboard', 'Overview', 'Home'",
+    "myAccount": "Link to account settings. Ex: 'My Account', 'Account', 'Profile'",
+    "settings": "Link to settings. Ex: 'Settings', 'Preferences', 'Configuration'",
+    "logout": "Link/button to log out. Ex: 'Logout', 'Sign Out', 'Log Out'",
+    "login": "Link to login page. Ex: 'Log In', 'Sign In', 'Login'",
+    "register": "Link to registration. Ex: 'Sign Up', 'Register', 'Get Started'"
+  },
+
+  "footer": {
+    "product": "Footer section heading for product links. Ex: 'Product', 'Features'",
+    "company": "Footer section heading for company links. Ex: 'Company', 'About'",
+    "legal": "Footer section heading for legal links. Ex: 'Legal', 'Terms & Privacy'",
+    "support": "Footer section heading for support links. Ex: 'Support', 'Help'",
+    "social": "Footer section heading for social links. Ex: 'Social', 'Follow Us', 'Connect'",
+    "copyright": "Copyright text. Include {year} and {companyName} placeholders. Ex: '© {year} {companyName}. All rights reserved.'"
+  },
+
+  "mobile": {
+    "menu": "Mobile menu button label. Ex: 'Menu', 'Navigation', 'Open menu'",
+    "closeMenu": "Close mobile menu button. Ex: 'Close menu', 'Close', 'Hide menu'"
+  }
+}
