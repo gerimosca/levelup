@@ -404,21 +404,30 @@ export function HomeClient() {
             />
           )}
           <CampScene built={today.camp.built} expeditionReady={today.expedition.ready}>
-            <CharacterStage
-              tier={level.tier}
-              tierLabel={tg(`tiers.${level.tier}`)}
-              levelLabel={th('levelLabel', { level: level.level })}
-              equipped={today.equipped}
-              avatarConfig={today.avatarConfig}
-              celebrateKey={celebrate}
-              attackKey={attackKey}
-              auraColor={heroAuraColor}
-              auraStrength={heroAuraStrength}
-              titleText={heroTitle}
-            />
-            <Link href={`/${locale}/pet`} aria-label={tg(`petStage.${today.pet.stage}`)} className="pb-2">
-              <PetStage stage={today.pet.stage} mood={today.pet.mood} size={56} activity={petActivity} />
-            </Link>
+            {/* Héroe centrado como protagonista de la escena */}
+            <div className="relative">
+              <CharacterStage
+                size="hero"
+                tier={level.tier}
+                tierLabel={tg(`tiers.${level.tier}`)}
+                levelLabel={th('levelLabel', { level: level.level })}
+                equipped={today.equipped}
+                avatarConfig={today.avatarConfig}
+                celebrateKey={celebrate}
+                attackKey={attackKey}
+                auraColor={heroAuraColor}
+                auraStrength={heroAuraStrength}
+                titleText={heroTitle}
+              />
+              {/* Mascota — flotando en la esquina inferior derecha del personaje */}
+              <Link
+                href={`/${locale}/pet`}
+                aria-label={tg(`petStage.${today.pet.stage}`)}
+                className="absolute -bottom-2 -right-10"
+              >
+                <PetStage stage={today.pet.stage} mood={today.pet.mood} size={72} activity={petActivity} />
+              </Link>
+            </div>
           </CampScene>
         </div>
 

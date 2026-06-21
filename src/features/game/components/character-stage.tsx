@@ -43,7 +43,7 @@ export function CharacterStage({
   levelLabel: string;
   equipped?: EquippedSlots;
   avatarConfig?: AvatarConfig;
-  size?: 'lg' | 'xl';
+  size?: 'lg' | 'xl' | 'hero';
   celebrateKey?: number;
   attackKey?: number;
   auraColor?: string;
@@ -51,7 +51,7 @@ export function CharacterStage({
   titleText?: string;
 }) {
   const v = RING[tier];
-  const dim = size === 'xl' ? 'h-44 w-44' : 'h-32 w-32';
+  const dim = size === 'hero' ? 'h-60 w-60' : size === 'xl' ? 'h-44 w-44' : 'h-32 w-32';
   const controls = useAnimationControls();
   const [expression, setExpression] = useState<AvatarExpression>('idle');
   const [particles, setParticles] = useState<Particle[]>([]);
