@@ -26,17 +26,6 @@ export async function getPlayerRow(userId: string): Promise<PlayerRow | null> {
   return (data as PlayerRow | null) ?? null;
 }
 
-/** ¿Hay una entrada de journal para ese día? */
-export async function hasJournalToday(userId: string, dayDate: string): Promise<boolean> {
-  const supabase = await createClientServer();
-  const { count } = await supabase
-    .from('journal_entries')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', userId)
-    .eq('day_date', dayDate);
-  return (count ?? 0) > 0;
-}
-
 /** ¿Hay una recaída registrada en ese día? */
 export async function hasRelapseOn(userId: string, dayDate: string): Promise<boolean> {
   const supabase = await createClientServer();
@@ -257,19 +246,6 @@ export async function getAchievementStats(
   };
 }
 
-export async function getJournalEntries(userId: string): Promise<
-  { day_date: string; mood: string | null; felt_text: string | null; learned_text: string | null }[]
-> {
-  const supabase = await createClientServer();
-  const { data } = await supabase
-    .from('journal_entries')
-    .select('day_date, mood, felt_text, learned_text')
-    .eq('user_id', userId)
-    .order('day_date', { ascending: false })
-    .limit(60);
-  return (data as { day_date: string; mood: string | null; felt_text: string | null; learned_text: string | null }[] | null) ?? [];
-}
-
 /** Registros de hábitos desde una fecha (para la gráfica de constancia). */
 export async function getRecentHabitLogs(
   userId: string,
@@ -315,7 +291,6 @@ export async function getAllGameData(userId: string): Promise<Record<string, unk
     'achievements',
     'equipment',
     'daily_event',
-    'journal_entries',
   ];
   const result: Record<string, unknown[]> = {};
   for (const table of tables) {

@@ -7,11 +7,9 @@
   "offlineBody": "Vuelve cuando tengas señal — tu racha te estará esperando.",
   "offlineRetry": "Reintentar",
   "loading": "Preparando tu aventura...",
-  "journalCta": "Diario de esta noche",
-  "journalCtaDone": "Diario escrito ✓",
   "dayComplete": {
     "title": "¡Día completado!",
-    "body": "Misiones reclamadas. Escribe en tu diario para ganar XP extra."
+    "body": "Misiones reclamadas. ¡Gran trabajo hoy!"
   },
   "shields": "{count} 🛡️",
   "expedition": {
@@ -46,16 +44,5 @@
     "crafted": "¡{name} forjado!",
     "alreadyOwned": "Ya tienes este item.",
     "insufficient": "No tienes suficientes materiales."
-  },
-  "journal": {
-    "moodLabel": "¿Cómo fue el día?",
-    "moods": { "1": "Duro", "2": "Regular", "3": "Bien", "4": "Muy bien", "5": "¡Genial!" },
-    "feltLabel": "¿Qué destacó?",
-    "feltPlaceholder": "Algo que pasó, algo que sentiste...",
-    "learnedLabel": "¿Qué quieres llevar contigo?",
-    "learnedPlaceholder": "Aunque sea algo pequeño cuenta.",
-    "save": "Guardar · +{xp} XP",
-    "skip": "Saltar por esta noche",
-    "saved": "+{xp} XP — ¡diario guardado!"
   }
 }

@@ -157,7 +157,6 @@ export interface TodayState {
   materials: Record<string, number>;
   camp: CampView;
   avatarConfig: AvatarConfig;
-  journalDoneToday: boolean;
   /** Atributo dominante del jugador para el aura del héroe (null si no hay puntos aún). */
   dominantAttr: { key: string; rank: number } | null;
 }
@@ -263,28 +262,6 @@ export interface ChallengeView {
   createdBy: string;
   isOwner: boolean;
   members: ChallengeMemberView[];
-}
-
-/** Entrada del diario nocturno. */
-export interface JournalEntry {
-  dayDate: string;
-  mood: string | null;
-  felt: string;
-  learned: string;
-}
-
-export const saveJournalSchema = z.object({
-  dayDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-  mood: z.string().max(24).optional(),
-  felt: z.string().max(1000).default(''),
-  learned: z.string().max(1000).default(''),
-});
-export type SaveJournalInput = z.infer<typeof saveJournalSchema>;
-
-export interface SaveJournalResult {
-  success: boolean;
-  error?: string;
-  xpAwarded: number;
 }
 
 /** Ajustes de economía del usuario (dinero ahorrado). */

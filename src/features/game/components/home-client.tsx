@@ -40,7 +40,6 @@ import { FloatingReward } from './floating-reward';
 import { Onboarding } from './onboarding';
 import { ClaimValueDialog } from './claim-value-dialog';
 import { LevelUpOverlay, MissionCompleteOverlay, StreakMilestoneOverlay, SeasonVictoryOverlay, SeasonStartOverlay } from './overlays';
-import { JournalModal } from './journal-modal';
 import { CraftForge } from './craft-forge';
 
 const ZONE_EMOJI: Record<string, string> = {
@@ -96,7 +95,6 @@ export function HomeClient() {
   const floatKey = useRef(0);
   const [dayDate] = useState(localDayDate);
   const [npcLineIdx, setNpcLineIdx] = useState(0);
-  const [journalOpen, setJournalOpen] = useState(false);
   const [streakMilestoneHit, setStreakMilestoneHit] = useState<number | null>(null);
   const [achievementQueue, setAchievementQueue] = useState<string[]>([]);
   const [victoryPending, setVictoryPending] = useState(false);
@@ -645,26 +643,6 @@ export function HomeClient() {
         )}
       </section>
 
-      {/* Diario nocturno */}
-      <button
-        type="button"
-        onClick={() => setJournalOpen(true)}
-        className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3.5 text-left transition-colors active:bg-accent/5 ${
-          today.journalDoneToday
-            ? 'border-primary/30 bg-primary/6'
-            : 'border-dashed border-border bg-card/60'
-        }`}
-      >
-        <div className="flex items-center gap-3">
-          <span className="text-xl" aria-hidden="true">📓</span>
-          <span className={`text-sm font-medium ${today.journalDoneToday ? 'text-primary' : ''}`}>
-            {today.journalDoneToday ? th('journalCtaDone') : th('journalCta')}
-          </span>
-        </div>
-        <span className="text-xs text-muted-foreground/50" aria-hidden="true">
-          {today.journalDoneToday ? '✓' : '›'}
-        </span>
-      </button>
 
       {valuePrompt && (
         <ClaimValueDialog
@@ -922,14 +900,6 @@ export function HomeClient() {
         </motion.div>
       )}
 
-      <AnimatePresence>
-        {journalOpen && (
-          <JournalModal
-            onClose={() => setJournalOpen(false)}
-            onSaved={() => setToday((prev) => prev ? { ...prev, journalDoneToday: true } : prev)}
-          />
-        )}
-      </AnimatePresence>
     </div>
   );
 }

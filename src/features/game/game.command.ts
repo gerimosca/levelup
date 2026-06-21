@@ -169,26 +169,6 @@ export async function saveActiveHabits(
     .eq('user_id', userId);
 }
 
-export async function upsertJournalEntry(
-  userId: string,
-  dayDate: string,
-  mood: string | null,
-  felt: string,
-  learned: string,
-): Promise<void> {
-  const supabase = await createClientServer();
-  await supabase.from('journal_entries').upsert(
-    {
-      user_id: userId,
-      day_date: dayDate,
-      mood,
-      felt_text: felt,
-      learned_text: learned,
-    },
-    { onConflict: 'user_id,day_date' },
-  );
-}
-
 /** Marca la cinemática de victoria de una temporada como vista (por cuenta). */
 export async function markVictorySeen(
   userId: string,

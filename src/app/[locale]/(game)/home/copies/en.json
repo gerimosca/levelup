@@ -7,11 +7,9 @@
   "offlineTitle": "You're offline",
   "offlineBody": "Log back in when you have a signal and your streak will still be here.",
   "offlineRetry": "Try again",
-  "journalCta": "Tonight's journal",
-  "journalCtaDone": "Journal written ✓",
   "dayComplete": {
     "title": "Day complete!",
-    "body": "All missions claimed. Write in your journal to earn bonus XP."
+    "body": "All missions claimed. Great work today!"
   },
   "shields": "{count} 🛡️",
   "expedition": {
@@ -46,16 +44,5 @@
     "crafted": "{name} crafted!",
     "alreadyOwned": "You already own this item.",
     "insufficient": "Not enough materials."
-  },
-  "journal": {
-    "moodLabel": "How did today go?",
-    "moods": { "1": "Hard", "2": "Rough", "3": "OK", "4": "Good", "5": "Great!" },
-    "feltLabel": "What stood out?",
-    "feltPlaceholder": "Something that happened, something you felt...",
-    "learnedLabel": "What do you want to carry forward?",
-    "learnedPlaceholder": "Even something small counts.",
-    "save": "Save · +{xp} XP",
-    "skip": "Skip for tonight",
-    "saved": "+{xp} XP — journal saved!"
   }
 }

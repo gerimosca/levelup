@@ -8,8 +8,6 @@ import {
   handleLogRelapse,
   handleGetProfile,
   handleGetStats,
-  handleGetJournal,
-  handleSaveJournal,
   handleExportData,
   handleDeleteData,
   handleGetEconomy,
@@ -32,13 +30,10 @@ import type {
   ClaimHabitInput,
   ClaimResult,
   EconomySettings,
-  JournalEntry,
   ProfileView,
   RelapseResult,
   SaveActiveHabitsInput,
   SaveEconomyInput,
-  SaveJournalInput,
-  SaveJournalResult,
   StatsView,
   TodayState,
 } from './types';
@@ -102,20 +97,6 @@ export async function getStatsAction(
   const user = await getUser();
   if (!user) return { stats: null };
   return { stats: await handleGetStats(user.id, dayDate) };
-}
-
-export async function getJournalAction(): Promise<{ entries: JournalEntry[] }> {
-  const user = await getUser();
-  if (!user) return { entries: [] };
-  return { entries: await handleGetJournal(user.id) };
-}
-
-export async function saveJournalAction(
-  input: SaveJournalInput,
-): Promise<SaveJournalResult> {
-  const user = await getUser();
-  if (!user) return { success: false, error: 'Not authenticated', xpAwarded: 0 };
-  return handleSaveJournal(user.id, input);
 }
 
 export async function exportDataAction(): Promise<{ data: Record<string, unknown[]> | null }> {

@@ -9,8 +9,6 @@ export {
   logRelapseAction,
   getProfileAction,
   getStatsAction,
-  getJournalAction,
-  saveJournalAction,
   exportDataAction,
   deleteDataAction,
   getEconomyAction,
@@ -30,7 +28,6 @@ export { StatsClient } from './components/stats-client';
 export { SettingsClient } from './components/settings-client';
 export { EncyclopediaClient } from './components/encyclopedia-client';
 export { MotionProvider } from './components/motion-provider';
-export { JournalModal } from './components/journal-modal';
 export { PwaInstallBanner } from './components/pwa-install';
 export { PwaRegister } from './components/pwa-register';
 export { OfflineBanner } from './components/offline-banner';

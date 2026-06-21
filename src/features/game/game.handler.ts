@@ -54,7 +54,6 @@ import {
 import {
   claimHabitSchema,
   saveActiveHabitsSchema,
-  saveJournalSchema,
   MC_BONUS_KEY,
   RELAPSE_KEY,
   type AvatarConfig,
@@ -65,14 +64,11 @@ import {
   type ClaimResult,
   type EconomySettings,
   type EquippedSlots,
-  type JournalEntry,
   type MissionView,
   type ProfileView,
   type RelapseResult,
   type SaveActiveHabitsInput,
   type SaveEconomyInput,
-  type SaveJournalInput,
-  type SaveJournalResult,
   type StatsView,
   type TodayState,
 } from './types';
@@ -87,7 +83,6 @@ import {
   getUnlockedAchievementKeys,
   getAchievementStats,
   getAttributesMap,
-  getJournalEntries,
   getAllGameData,
   getEquipmentRows,
   getRecentHabitLogs,
@@ -97,7 +92,6 @@ import {
   getCampStructures,
   getDiscoveries,
   hasRelapseOn,
-  hasJournalToday,
   type PlayerRow,
 } from './game.query';
 import {
@@ -111,7 +105,6 @@ import {
   updatePet,
   unlockAchievements,
   saveActiveHabits,
-  upsertJournalEntry,
   saveEconomySettings,
   markVictorySeen,
   clearEquippedSlot,
@@ -126,8 +119,6 @@ import {
   advanceToNextSeason,
 } from './game.command';
 import { isWeekendISO, daysBetweenISO, addDaysISO } from './lib';
-
-const JOURNAL_KEY = '__journal_bonus__';
 
 const VALID_HABITS = new Set(HABIT_LIST.map((h) => h.key));
 const ATTR_ORDER: AttributeType[] = [
@@ -188,7 +179,7 @@ export async function handleGetTodayState(
   const activeHabits = resolveActiveHabits(player, season);
 
   const [
-    claimedArr, streakRow, enemyRow, seasonProg, petRow, relapsedToday, hadRelapseYesterday, journalDoneToday,
+    claimedArr, streakRow, enemyRow, seasonProg, petRow, relapsedToday, hadRelapseYesterday,
     equipped, expRow, inventory, campStructures, attrMapToday,
   ] = await Promise.all([
     getClaimedHabitKeys(userId, dayDate),
@@ -198,7 +189,6 @@ export async function handleGetTodayState(
     getPetRow(userId),
     hasRelapseOn(userId, dayDate),
     hasRelapseOn(userId, addDaysISO(dayDate, -1)),
-    hasJournalToday(userId, dayDate),
     buildEquippedSlots(userId),
     getExpedition(userId),
     getInventory(userId),
@@ -282,7 +272,6 @@ export async function handleGetTodayState(
       canBuildNext: nextStruct ? canAfford(nextStruct.cost, inventory) : false,
     },
     avatarConfig: (player.avatar_config as AvatarConfig | null) ?? {},
-    journalDoneToday,
     dominantAttr: (() => {
       const dom = dominantAttribute(attrMapToday);
       if (!dom) return null;
@@ -666,41 +655,6 @@ export async function handleSaveEconomy(
   await ensureGameRows(userId, FIRST_SEASON);
   await saveEconomySettings(userId, parsed.data.beerPrice, parsed.data.beersPerDay);
   return { success: true };
-}
-
-/** Lista de entradas del diario (timeline). */
-export async function handleGetJournal(userId: string): Promise<JournalEntry[]> {
-  const rows = await getJournalEntries(userId);
-  return rows.map((r) => ({
-    dayDate: r.day_date,
-    mood: r.mood,
-    felt: r.felt_text ?? '',
-    learned: r.learned_text ?? '',
-  }));
-}
-
-/** Guarda el diario del día. La primera vez al día otorga un bonus de XP. */
-export async function handleSaveJournal(
-  userId: string,
-  input: SaveJournalInput,
-): Promise<SaveJournalResult> {
-  const parsed = saveJournalSchema.safeParse(input);
-  if (!parsed.success) {
-    return { success: false, error: parsed.error.issues[0]?.message, xpAwarded: 0 };
-  }
-  const { dayDate, mood, felt, learned } = parsed.data;
-  await ensureGameRows(userId, FIRST_SEASON);
-  await upsertJournalEntry(userId, dayDate, mood ?? null, felt, learned);
-
-  let xpAwarded = 0;
-  const firstToday = await insertHabitLog(userId, JOURNAL_KEY, dayDate, 1, JOURNAL_XP_BONUS);
-  if (firstToday) {
-    const player = (await getPlayerRow(userId)) ?? DEFAULT_PLAYER;
-    const xpTotal = player.xp_total + JOURNAL_XP_BONUS;
-    await updatePlayerXp(userId, xpTotal, levelFromTotalXp(xpTotal).level);
-    xpAwarded = JOURNAL_XP_BONUS;
-  }
-  return { success: true, xpAwarded };
 }
 
 /** Exporta todos los datos del usuario (control de datos). */
