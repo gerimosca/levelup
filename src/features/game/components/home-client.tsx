@@ -127,6 +127,8 @@ export function HomeClient() {
     setVictoryPending(false);
     setClaimingVictory(false);
     if (advance.success && advance.nextSeasonKey) {
+      audio.play('seasonEnd');
+      haptics.trigger('success');
       setNextSeasonKey(advance.nextSeasonKey);
     }
     load();
@@ -186,7 +188,7 @@ export function HomeClient() {
     if (isMainMission) setHitKey((k) => k + 1);
 
     if (!res.success) {
-      toast.error(res.error ?? 'Error');
+      toast.error(res.error ?? tg('ui.genericError'));
       return;
     }
     hydrate({ xpTotal: res.player.xpTotal, streak: res.player.streak });
@@ -240,6 +242,8 @@ export function HomeClient() {
       haptics.trigger('success');
       setExpResult(res);
       load();
+    } else if (!res.success) {
+      toast.error(tg('ui.genericError'));
     }
   };
 
@@ -261,6 +265,8 @@ export function HomeClient() {
       const chapter = chapterForStructure(key);
       if (chapter) setStoryChapter(chapter.key);
       load();
+    } else {
+      toast.error(tg('ui.genericError'));
     }
   };
 
@@ -682,7 +688,7 @@ export function HomeClient() {
             </h2>
             {achievementQueue.length > 1 && (
               <p className="mt-1 text-xs text-muted-foreground">
-                +{achievementQueue.length - 1} more
+                {tg('ui.achievementMore', { count: achievementQueue.length - 1 })}
               </p>
             )}
             <button
@@ -728,7 +734,7 @@ export function HomeClient() {
             enemyKey={def.enemy.key}
             tagline={tg(`seasonTagline.${def.key}`)}
             durationDays={def.durationDays}
-            badge={tg('ui.newSeason.badge')}
+            badge={tg('ui.newSeason.challenge', { days: def.durationDays, enemy: tg(`enemy.${def.enemy.key}.name`) })}
             cta={tg('ui.newSeason.cta')}
             onClose={() => setNextSeasonKey(null)}
           />

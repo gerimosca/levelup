@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Copy, Check, Flame, LogOut, Plus, Hash } from 'lucide-react';
 import { toast } from 'sonner';
 import { SEASONS_BY_KEY } from '@/game-core';
+import { audio, haptics } from '@/shared/game';
 import {
   getChallengeAction,
   createChallengeAction,
@@ -74,7 +75,7 @@ function MemberCard({
           )}
         </div>
         <p className="text-xs text-muted-foreground">
-          {seasonName} · {tc('day', { n: member.daysCompleted })} · Lv {member.level}
+          {seasonName} · {tc('day', { n: member.daysCompleted })} · {tc('level', { n: member.level })}
         </p>
       </div>
 
@@ -114,6 +115,8 @@ function NoChallenge({
     const res = await createChallengeAction(value);
     setBusy(false);
     if (!res.success) { toast.error(tc(`error.${res.error ?? 'generic'}`)); return; }
+    audio.play('levelUp');
+    haptics.trigger('success');
     toast.success(tc('created'));
     onCreated();
   };
@@ -124,6 +127,8 @@ function NoChallenge({
     const res = await joinChallengeAction(value);
     setBusy(false);
     if (!res.success) { toast.error(tc(`error.${res.error ?? 'generic'}`)); return; }
+    audio.play('chest');
+    haptics.trigger('success');
     toast.success(tc('joined'));
     onJoined();
   };
@@ -254,15 +259,20 @@ function ChallengeCard({
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast(challenge.inviteCode);
+      toast(tc('copyFallback', { code: challenge.inviteCode }));
     }
   };
 
   const handleLeave = async () => {
     if (!confirmLeave) { setConfirmLeave(true); return; }
     setLeaving(true);
-    await leaveChallengeAction(challenge.id);
+    const res = await leaveChallengeAction(challenge.id);
     setLeaving(false);
+    if (!res.success) {
+      toast.error(tc('error.generic'));
+      return;
+    }
+    toast(tc('leftChallenge'));
     onLeft();
   };
 

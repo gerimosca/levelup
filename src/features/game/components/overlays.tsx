@@ -244,7 +244,7 @@ export function SeasonStartOverlay({
   enemyName,
   enemyKey,
   tagline,
-  durationDays,
+  badge,
   cta,
   onClose,
 }: {
@@ -253,8 +253,8 @@ export function SeasonStartOverlay({
   enemyKey: string;
   tagline: string;
   durationDays: number;
-  cta: string;
   badge: string;
+  cta: string;
   onClose: () => void;
 }) {
   return (
@@ -297,7 +297,7 @@ export function SeasonStartOverlay({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          {durationDays} days · Face {enemyName}
+          {badge}
         </motion.p>
 
         <motion.h2

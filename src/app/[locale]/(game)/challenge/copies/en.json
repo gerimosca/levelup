@@ -18,6 +18,9 @@
   "memberCount": "{n} members",
   "loggedToday": "logged today",
   "confirmLeave": "Leave?",
+  "leftChallenge": "You left the challenge.",
+  "level": "Lv {n}",
+  "copyFallback": "Code: {code}",
   "error": {
     "not_authenticated": "You're not logged in.",
     "name_required": "Give your challenge a name.",

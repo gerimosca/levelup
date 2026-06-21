@@ -194,19 +194,44 @@ async function countCompletedSeasons(userId: string): Promise<number> {
   return count ?? 0;
 }
 
+async function countPerfectWeeks(userId: string): Promise<number> {
+  const supabase = await createClientServer();
+  const { data } = await supabase
+    .from('habit_logs')
+    .select('day_date')
+    .eq('user_id', userId);
+  if (!data || data.length === 0) return 0;
+
+  const dates = [...new Set(data.map((r) => r.day_date))].sort();
+  const weekMap = new Map<string, number>();
+  for (const date of dates) {
+    const d = new Date(`${date}T12:00:00`);
+    const dow = d.getDay(); // 0=Sun
+    const diff = dow === 0 ? -6 : 1 - dow; // shift to Monday
+    const monday = new Date(d);
+    monday.setDate(d.getDate() + diff);
+    const key = monday.toISOString().split('T')[0];
+    weekMap.set(key, (weekMap.get(key) ?? 0) + 1);
+  }
+  let count = 0;
+  for (const v of weekMap.values()) if (v === 7) count++;
+  return count;
+}
+
 /** Snapshot agregado para evaluar logros (algunas métricas son aproximadas). */
 export async function getAchievementStats(
   userId: string,
   level: number,
   longestStreak: number,
 ): Promise<AchievementStats> {
-  const [trainings, alcoholFreeDays, reads, steps, seasonsCompleted] =
+  const [trainings, alcoholFreeDays, reads, steps, seasonsCompleted, perfectWeeks] =
     await Promise.all([
       countHabitLogs(userId, 'train'),
       countHabitLogs(userId, 'no_alcohol'),
       countHabitLogs(userId, 'read'),
       sumHabitValue(userId, 'steps'),
       countCompletedSeasons(userId),
+      countPerfectWeeks(userId),
     ]);
 
   return {
@@ -217,7 +242,7 @@ export async function getAchievementStats(
     kmWalked: steps / STEPS_PER_KM,
     longestStreak,
     seasonsCompleted,
-    perfectWeeks: 0, // TODO: calcular semanas perfectas
+    perfectWeeks,
   };
 }
 

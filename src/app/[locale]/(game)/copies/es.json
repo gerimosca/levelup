@@ -365,7 +365,9 @@
       "cta": "Seguir adelante"
     },
     "achievementUnlockedBadge": "Logro desbloqueado",
+    "achievementMore": "+{count} más",
     "achievementCta": "¡Genial!",
+    "genericError": "Algo salió mal. Inténtalo de nuevo.",
     "victory": {
       "conquered": "{days} días conquistados",
       "peakStreak": "Mejor racha · {streak} días",
@@ -376,7 +378,7 @@
     },
     "newSeason": {
       "badge": "Nueva temporada",
-      "challenge": "{days} días · Nuevo enemigo · Nuevo desafío",
+      "challenge": "{days} días · Enfrenta a {enemy}",
       "cta": "A por ello"
     }
   }

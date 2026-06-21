@@ -4,9 +4,10 @@ import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
+import { toast } from 'sonner';
 import { Settings, Check, Zap, Lock, BarChart3 } from 'lucide-react';
 import { RARITY, attributeRank, dominantAttribute, type RarityKey } from '@/game-core';
-import { usePlayerStore } from '@/shared/game';
+import { usePlayerStore, audio, haptics } from '@/shared/game';
 import { getProfileAction, equipItemAction, updateAvatarConfigAction } from '../game.actions';
 import { CharacterStage } from './character-stage';
 import { AttributeBar } from './attribute-bar';
@@ -63,7 +64,13 @@ export function MeClient() {
 
   const equip = async (key: string) => {
     const res = await equipItemAction(key);
-    if (res.success) reload();
+    if (res.success) {
+      audio.play('claim');
+      haptics.trigger('success');
+      reload();
+    } else {
+      toast.error(tg('ui.genericError'));
+    }
   };
 
   const [heroNameInput, setHeroNameInput] = useState('');
@@ -76,12 +83,14 @@ export function MeClient() {
   const pickSkin = async (skinKey: SkinKey) => {
     const next: AvatarConfig = { ...avatarConfig, skinKey };
     setAvatarConfig(next);
+    haptics.trigger('light');
     await updateAvatarConfigAction(next);
   };
 
   const pickHair = async (hairKey: HairKey) => {
     const next: AvatarConfig = { ...avatarConfig, hairKey };
     setAvatarConfig(next);
+    haptics.trigger('light');
     await updateAvatarConfigAction(next);
   };
 
@@ -90,6 +99,8 @@ export function MeClient() {
     const next: AvatarConfig = { ...avatarConfig, heroName };
     setAvatarConfig(next);
     setNameEditing(false);
+    haptics.trigger('success');
+    toast.success(tm('nameSaved'));
     await updateAvatarConfigAction(next);
   };
 

@@ -365,7 +365,9 @@
       "cta": "Keep it up"
     },
     "achievementUnlockedBadge": "Achievement unlocked",
+    "achievementMore": "+{count} more",
     "achievementCta": "Awesome!",
+    "genericError": "Something went wrong. Try again.",
     "victory": {
       "conquered": "{days} days conquered",
       "peakStreak": "Best streak · {streak} days",
@@ -376,7 +378,7 @@
     },
     "newSeason": {
       "badge": "New season",
-      "challenge": "{days} days · New enemy · New challenge",
+      "challenge": "{days} days · Face {enemy}",
       "cta": "Let's go"
     }
   }

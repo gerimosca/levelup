@@ -96,32 +96,7 @@
   "seasonUnlock": "Se desbloquea al terminar {prev}",
   "seasonDays": "{days} días",
   "start": "INICIO",
-  "chestTitle": "¡Tesoro!",
   "chestNew": "¡Nuevo equipo desbloqueado! Equípalo en tu héroe en la pestaña Héroe.",
   "chestOwned": "Ya tenías este objeto.",
-  "chestClose": "Reclamar",
-  "nextSeason": "Temporada 2 · STRENGTH se desbloquea pronto.",
-  "victory": {
-    "title": "¡VICTORIA!",
-    "subtitle": "Completaste la temporada. Te espera un nuevo capítulo.",
-    "cta": "Reclama tu gloria",
-    "ctaAdvance": "Comenzar la siguiente temporada →"
-  },
-  "seasonStart": {
-    "s2-strength": {
-      "title": "Comienza STRENGTH",
-      "subtitle": "30 días para forjar la versión de ti que no se rinde. Entrena cada día. Vence a la Inercia.",
-      "cta": "¡Vamos!"
-    },
-    "s3-cut": {
-      "title": "Comienza CUT",
-      "subtitle": "30 días de alimentación limpia, cero alcohol, movimiento cada día. Silencia El Antojo.",
-      "cta": "Estoy listo"
-    },
-    "s4-discipline": {
-      "title": "Comienza DISCIPLINE",
-      "subtitle": "60 días. Todos los hábitos. El Vacío espera. Esta es la prueba final.",
-      "cta": "Enfrentar el Vacío"
-    }
-  }
+  "chestClose": "Reclamar"
 }

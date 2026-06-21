@@ -15,6 +15,7 @@
   "kmWalked": "Distancia caminada",
   "reads": "Sesiones de lectura",
   "level": "Nivel",
+  "seasonsCompleted": "Temporadas ganadas",
   "xpChartTitle": "XP por semana",
   "xpChartThisWeek": "esta semana",
   "xpChartWeeksAgo": "hace {n}s",

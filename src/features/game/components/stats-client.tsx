@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { Wine, Coins, Flame, Star, Dumbbell, Footprints, BookOpen, Trophy } from 'lucide-react';
+import { Wine, Coins, Flame, Star, Dumbbell, Footprints, BookOpen, Trophy, Swords } from 'lucide-react';
 import { getStatsAction } from '../game.actions';
 import { CountUp } from './count-up';
 import type { StatsView } from '../types';
@@ -475,6 +475,7 @@ export function StatsClient() {
         <StatCard icon={<Footprints className={ic} />} value={<><CountUp value={stats.kmWalked} decimals={1} /> km</>} label={ts('kmWalked')} />
         <StatCard icon={<BookOpen className={ic} />} value={<CountUp value={stats.reads} />} label={ts('reads')} />
         <StatCard icon={<Trophy className={ic} />} value={<CountUp value={stats.level} />} label={ts('level')} />
+        <StatCard icon={<Swords className={ic} />} value={<CountUp value={stats.seasonsCompleted} />} label={ts('seasonsCompleted')} />
       </div>
 
       {/* Hábitos más cumplidos */}

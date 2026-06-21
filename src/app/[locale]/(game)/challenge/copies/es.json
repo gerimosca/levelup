@@ -18,6 +18,9 @@
   "memberCount": "{n} miembros",
   "loggedToday": "completaron hoy",
   "confirmLeave": "¿Salir?",
+  "leftChallenge": "Saliste del reto.",
+  "level": "Nv {n}",
+  "copyFallback": "Código: {code}",
   "error": {
     "not_authenticated": "No has iniciado sesión.",
     "name_required": "Ponle nombre al reto.",

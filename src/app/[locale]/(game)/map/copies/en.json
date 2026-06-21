@@ -96,32 +96,7 @@
   "seasonUnlock": "Unlocks after {prev}",
   "seasonDays": "{days} days",
   "start": "START",
-  "chestTitle": "Treasure!",
   "chestNew": "New gear unlocked! Equip it on your hero in the Hero tab.",
   "chestOwned": "You already owned this one.",
-  "chestClose": "Claim",
-  "nextSeason": "Season 2 · STRENGTH unlocks soon.",
-  "victory": {
-    "title": "VICTORY!",
-    "subtitle": "You completed the season. A new chapter awaits.",
-    "cta": "Claim your glory",
-    "ctaAdvance": "Begin next season →"
-  },
-  "seasonStart": {
-    "s2-strength": {
-      "title": "STRENGTH begins",
-      "subtitle": "30 days to forge the version of you that doesn't quit. Train every day. Face Inertia.",
-      "cta": "Let's go"
-    },
-    "s3-cut": {
-      "title": "CUT begins",
-      "subtitle": "30 days of clean eating, zero alcohol, movement every day. Silence The Craving.",
-      "cta": "I'm ready"
-    },
-    "s4-discipline": {
-      "title": "DISCIPLINE begins",
-      "subtitle": "60 days. Every habit. The Void awaits. This is the final test.",
-      "cta": "Face the void"
-    }
-  }
+  "chestClose": "Claim"
 }

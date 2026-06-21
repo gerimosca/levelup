@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Shield } from 'lucide-react';
-import { nextPetStageInfo, PET_ACTIVITY_EMOJI } from '@/game-core';
+import { nextPetStageInfo, PET_ACTIVITY_EMOJI, petActivityForHour } from '@/game-core';
 import { getTodayStateAction } from '../game.actions';
 import { PetStage } from './pet-stage';
 import type { TodayState } from '../types';
@@ -31,13 +31,14 @@ export function PetClient() {
   }
 
   const info = nextPetStageInfo(pet.careDays);
+  const activity = pet.activity ?? petActivityForHour(new Date().getHours(), pet.mood);
 
   return (
     <div className="space-y-6 text-center">
       <h1 className="text-2xl font-bold tracking-tight">{tp('title')}</h1>
 
       <div className="flex items-center justify-center rounded-3xl border border-border bg-card py-10">
-        <PetStage stage={pet.stage} mood={pet.mood} size={120} activity={pet.activity} />
+        <PetStage stage={pet.stage} mood={pet.mood} size={120} activity={activity} />
       </div>
 
       <div>
@@ -45,13 +46,13 @@ export function PetClient() {
         <p className="text-sm text-muted-foreground">{tg(`petMood.${pet.mood}`)}</p>
       </div>
 
-      {pet.activity && (
+      {activity && (
         <div className="mx-auto flex w-fit items-center gap-2 rounded-full border border-border bg-card px-4 py-2">
-          <span aria-hidden="true">{PET_ACTIVITY_EMOJI[pet.activity]}</span>
+          <span aria-hidden="true">{PET_ACTIVITY_EMOJI[activity]}</span>
           <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             {tp('activityNow')}
           </span>
-          <span className="text-sm">{tp(`activity.${pet.activity}`)}</span>
+          <span className="text-sm">{tp(`activity.${activity}`)}</span>
         </div>
       )}
 

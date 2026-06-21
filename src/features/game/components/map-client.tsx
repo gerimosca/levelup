@@ -534,7 +534,7 @@ export function MapClient() {
             enemyKey={def.enemy.key}
             tagline={tg(`seasonTagline.${def.key}`)}
             durationDays={def.durationDays}
-            badge={tg('ui.newSeason.badge')}
+            badge={tg('ui.newSeason.challenge', { days: def.durationDays, enemy: tg(`enemy.${def.enemy.key}.name`) })}
             cta={tg('ui.newSeason.cta')}
             onClose={() => {
               setShowSeasonStart(false);
