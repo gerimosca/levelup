@@ -13,6 +13,7 @@ import {
   DISCOVERIES_BY_KEY,
   SEASONS_BY_KEY,
   RARITY,
+  TITLES_BY_KEY,
   chapterForStructure,
   petActivityForHour,
   type HabitKey,
@@ -238,6 +239,16 @@ export function HomeClient() {
       haptics.trigger('success');
       setAchievementQueue((q) => [...q, ...res.newAchievements]);
     }
+    if (res.newTitles && res.newTitles.length > 0) {
+      haptics.trigger('success');
+      toast.success(`👑 ${tg(`titles.${res.newTitles[0]}`)}`);
+    }
+    if (res.streakMultiplier > 1) {
+      toast(`🔥 ×${res.streakMultiplier.toFixed(1)} ${tg('ui.streakBonus')}`, { duration: 2000 });
+    }
+    if (res.attrBonusXp > 0) {
+      toast(`⚡ +${res.attrBonusXp} XP ${tg('ui.attrBonus')}`, { duration: 2000 });
+    }
     // Refresca el mundo (expedición lanzada, materiales ganados, campamento).
     load();
   };
@@ -343,6 +354,12 @@ export function HomeClient() {
   const heroAuraColor = domAttr && domRank >= 3 ? ATTR_COLOR[domAttr.key] : undefined;
   const heroAuraStrength: 'subtle' | 'medium' | 'strong' =
     domRank >= 7 ? 'strong' : domRank >= 5 ? 'medium' : 'subtle';
+  const activeTitle = today.avatarConfig?.activeTitle;
+  const heroTitle = activeTitle && TITLES_BY_KEY[activeTitle]
+    ? tg(`titles.${activeTitle}`)
+    : domAttr && domRank >= 3
+      ? `${tg(`attrTitle.bearer`)} ${tg(`attributes.${domAttr.key}`)}`
+      : undefined;
 
   return (
     <div className="space-y-6">
@@ -397,6 +414,7 @@ export function HomeClient() {
               attackKey={attackKey}
               auraColor={heroAuraColor}
               auraStrength={heroAuraStrength}
+              titleText={heroTitle}
             />
             <Link href={`/${locale}/pet`} aria-label={tg(`petStage.${today.pet.stage}`)} className="pb-2">
               <PetStage stage={today.pet.stage} mood={today.pet.mood} size={56} activity={petActivity} />

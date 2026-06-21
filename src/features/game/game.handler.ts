@@ -14,7 +14,9 @@ import {
   attributeRankProgress,
   dominantAttribute,
   applyCleanDay,
+  applyHabitDamage,
   applyRelapse,
+  evaluateTitles,
   eventMultiplierForHabit,
   eventEnemyMultiplier,
   selectDailyEvent,
@@ -42,7 +44,6 @@ import {
   CAMP_STRUCTURES_BY_KEY,
   DEFAULT_BEER_PRICE,
   DEFAULT_BEERS_PER_DAY,
-  JOURNAL_XP_BONUS,
   CRAFTABLE_BY_KEY,
   type AttributeType,
   type DailyEventContext,
@@ -357,6 +358,8 @@ export async function handleGetProfile(userId: string): Promise<ProfileView> {
   );
   const power = levelInfo.level * 10 + totalAttr + equippedBonus;
 
+  const earnedTitles = evaluateTitles(achievementStats);
+
   return {
     level: levelInfo.level,
     tier: tierForLevel(levelInfo.level),
@@ -368,6 +371,7 @@ export async function handleGetProfile(userId: string): Promise<ProfileView> {
     }),
     achievements,
     achievementStats,
+    earnedTitles,
     equipment: EQUIPMENT.map((e) => ({
       key: e.key,
       slot: e.slot,
@@ -380,6 +384,17 @@ export async function handleGetProfile(userId: string): Promise<ProfileView> {
     equipped,
     avatarConfig: (player.avatar_config as AvatarConfig | null) ?? {},
   };
+}
+
+/** Equipa un título de héroe (o lo desequipa si es el activo). */
+export async function handleSetActiveTitle(
+  userId: string,
+  titleKey: string | null,
+): Promise<{ success: boolean; error?: string }> {
+  const player = await getPlayerRow(userId);
+  const current = ((player?.avatar_config as AvatarConfig | null) ?? {});
+  await updateAvatarConfig(userId, { ...current, activeTitle: titleKey ?? undefined });
+  return { success: true };
 }
 
 /** Guarda la configuración visual del avatar (tono de piel + color de pelo). */
@@ -731,10 +746,21 @@ export async function handleClaimHabit(
   const event = selectDailyEvent(`${userId}:${dayDate}`, ctx);
   const habit = getHabit(habitKey);
   const baseXp = calculateHabitXp(habit, value);
-  const xpAwarded = applyMultipliers(baseXp, {
+  const smult = streakMultiplier(streakRow.current);
+
+  // Bonus de atributo: el rango del atributo relevante da un % extra de XP
+  const attrMap = await getAttributesMap(userId);
+  const attrPoints = attrMap[habit.attribute] ?? 0;
+  const attrRank = attributeRank(attrPoints); // 0-based rank integer
+  const attrBonusMultiplier = 1 + attrRank * 0.08; // rank 1 = +8%, rank 2 = +16%, rank 3 = +24%...
+
+  const baseXpWithMults = Math.round(applyMultipliers(baseXp, {
     event: eventMultiplierForHabit(event, habitKey),
-    streak: streakMultiplier(streakRow.current),
-  });
+    streak: smult,
+  }));
+  const xpAwarded = Math.round(baseXpWithMults * attrBonusMultiplier);
+  const attrBonusXp = xpAwarded - baseXpWithMults;
+
   const missions = generateDailyMissions(season, activeHabits, `${userId}:${dayDate}`);
   const missionComplete =
     allMissionsComplete(missions, new Set([...claimed, habitKey])) &&
@@ -764,12 +790,17 @@ export async function handleClaimHabit(
   // Cada hábito cumplido da materiales para construir el campamento (no XP).
   await addMaterials(userId, { wood: MATERIAL_PER_HABIT });
 
-  // Enemigo (día limpio)
+  // Enemigo — todos los hábitos dañan al Saboteador
   let enemyState = enemyNow;
+  const enemyMultiplier = eventEnemyMultiplier(event);
   if (habitKey === 'no_alcohol') {
-    enemyState = applyCleanDay(enemyState, season.enemy, eventEnemyMultiplier(event));
-    await updateEnemyHp(userId, season.key, enemyState.hpCurrent);
+    enemyState = applyCleanDay(enemyState, season.enemy, enemyMultiplier);
+  } else {
+    const baseDamage = Math.round(habit.enemyDamage * enemyMultiplier);
+    enemyState = applyHabitDamage(enemyState, baseDamage);
   }
+  const enemyDamageDealt = enemyNow.hpCurrent - enemyState.hpCurrent;
+  await updateEnemyHp(userId, season.key, enemyState.hpCurrent);
 
   // Misión principal → racha + temporada + mascota (primera vez hoy)
   let streakNow = streakRow.current;
@@ -824,15 +855,24 @@ export async function handleClaimHabit(
     }
   }
 
-  // Logros
+  // Logros + Títulos
   let newAchievements: string[] = [];
+  let newTitles: string[] = [];
   try {
     const stats = await getAchievementStats(userId, levelAfter.level, longest);
     const unlocked = new Set(await getUnlockedAchievementKeys(userId));
     newAchievements = evaluateAchievements(stats, unlocked);
     await unlockAchievements(userId, newAchievements);
+
+    // Títulos — evaluar contra stats actualizados
+    const prevTitleKeys = evaluateTitles(
+      await getAchievementStats(userId, levelBefore.level, streakRow.longest),
+    );
+    const currTitleKeys = evaluateTitles(stats);
+    const prevSet = new Set(prevTitleKeys);
+    newTitles = currTitleKeys.filter((t) => !prevSet.has(t));
   } catch {
-    /* logros no son críticos para el claim */
+    /* logros/títulos no son críticos para el claim */
   }
 
   const STREAK_MILESTONES = [7, 21, 30, 50, 100, 365];
@@ -851,6 +891,10 @@ export async function handleClaimHabit(
     tierChanged: levelAfter.tier !== levelBefore.tier,
     streakSaved,
     streakMilestone,
+    streakMultiplier: smult,
+    attrBonusXp,
+    enemyDamageDealt,
+    newTitles,
     enemy: enemyState,
     newAchievements,
     player: { level: levelAfter.level, xpTotal, streak: streakNow },
@@ -901,6 +945,10 @@ function emptyResult(success: boolean, error?: string): ClaimResult {
     levelAfter: 1,
     leveledUp: false,
     tierChanged: false,
+    streakMultiplier: 1,
+    attrBonusXp: 0,
+    enemyDamageDealt: 0,
+    newTitles: [],
     enemy: { hpCurrent: 0, hpMax: 0 },
     newAchievements: [],
     player: { level: 1, xpTotal: 0, streak: 0 },

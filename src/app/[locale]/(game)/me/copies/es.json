@@ -54,6 +54,8 @@
     "level": "Niveles",
     "season": "Temporadas"
   },
+  "titlesTitle": "Títulos",
+  "titlesHint": "Toca un título para equiparlo — aparecerá bajo el nombre de tu héroe.",
   "share": {
     "button": "Compartir mi progreso",
     "streak": "Racha de {days} días 🔥",

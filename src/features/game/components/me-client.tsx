@@ -6,9 +6,9 @@ import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { Settings, Check, Zap, Lock, BarChart3 } from 'lucide-react';
-import { RARITY, attributeRank, dominantAttribute, ACHIEVEMENTS_BY_KEY, type RarityKey } from '@/game-core';
+import { RARITY, attributeRank, dominantAttribute, ACHIEVEMENTS_BY_KEY, TITLES_BY_KEY, type RarityKey } from '@/game-core';
 import { usePlayerStore, audio, haptics } from '@/shared/game';
-import { getProfileAction, equipItemAction, updateAvatarConfigAction } from '../game.actions';
+import { getProfileAction, equipItemAction, updateAvatarConfigAction, setActiveTitleAction } from '../game.actions';
 import { CharacterStage } from './character-stage';
 import { AttributeBar } from './attribute-bar';
 import { ShareProgress } from './share-progress';
@@ -102,6 +102,15 @@ export function MeClient() {
     haptics.trigger('success');
     toast.success(tm('nameSaved'));
     await updateAvatarConfigAction(next);
+  };
+
+  const pickTitle = async (titleKey: string) => {
+    const isActive = avatarConfig.activeTitle === titleKey;
+    const next: AvatarConfig = { ...avatarConfig, activeTitle: isActive ? undefined : titleKey };
+    setAvatarConfig(next);
+    haptics.trigger('light');
+    await setActiveTitleAction(isActive ? null : titleKey);
+    reload();
   };
 
   if (!profile) {
@@ -464,6 +473,42 @@ export function MeClient() {
           );
         })}
       </section>
+
+      {/* ── Títulos de héroe ─────────────────────────────────────── */}
+      {profile.earnedTitles.length > 0 && (
+        <section className="space-y-3">
+          <h2 className="flex items-center gap-2 text-base font-bold">
+            <span aria-hidden="true">👑</span>
+            {tm('titlesTitle')}
+          </h2>
+          <p className="text-sm text-muted-foreground">{tm('titlesHint')}</p>
+          <div className="flex flex-wrap gap-2">
+            {profile.earnedTitles.map((key) => {
+              const def = TITLES_BY_KEY[key];
+              if (!def) return null;
+              const isActive = avatarConfig.activeTitle === key;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => pickTitle(key)}
+                  className="rounded-full border px-3 py-1.5 text-sm font-semibold transition-all active:scale-95"
+                  style={{
+                    borderColor: isActive ? 'hsl(var(--primary))' : 'hsl(var(--border))',
+                    backgroundColor: isActive ? 'hsl(var(--primary) / 0.12)' : 'hsl(var(--card))',
+                    color: isActive ? 'hsl(var(--primary))' : 'hsl(var(--foreground))',
+                    boxShadow: isActive ? '0 0 10px hsl(var(--primary) / 0.4)' : undefined,
+                  }}
+                  aria-pressed={isActive}
+                >
+                  {tg(`titles.${key}`)}
+                  {isActive && <span className="ml-1 text-xs">✓</span>}
+                </button>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <ShareProgress
         streak={streak}

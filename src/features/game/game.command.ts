@@ -323,7 +323,7 @@ export async function unlockAchievements(
 
 export async function updateAvatarConfig(
   userId: string,
-  config: { skinKey?: string; hairKey?: string },
+  config: { skinKey?: string; hairKey?: string; heroName?: string; activeTitle?: string },
 ): Promise<void> {
   const supabase = await createClientServer();
   await supabase

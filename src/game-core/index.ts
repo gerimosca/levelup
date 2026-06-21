@@ -100,10 +100,15 @@ export {
 export {
   createEnemy,
   applyCleanDay,
+  applyHabitDamage,
   applyRelapse,
   enemyHpPct,
   isEnemyDefeated,
 } from './enemy/enemy';
+
+// Títulos de héroe
+export { TITLES, TITLES_BY_KEY, evaluateTitles } from './data/titles';
+export type { TitleDef } from './data/titles';
 
 // Mascota
 export {

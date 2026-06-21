@@ -77,6 +77,8 @@ export interface AvatarConfig {
   hairKey?: HairKey;
   /** Nombre del héroe (max 20 chars). Si no tiene, se omite. */
   heroName?: string;
+  /** Título activo del héroe. */
+  activeTitle?: string;
 }
 
 // ── Clave sintética para el bonus de "Mission Complete" (idempotencia en habit_logs). ──
@@ -190,6 +192,8 @@ export interface ProfileView {
   attributes: AttributeView[];
   achievements: string[];
   achievementStats: import('@/game-core').AchievementStats;
+  /** Títulos desbloqueados por el jugador. */
+  earnedTitles: string[];
   equipment: EquipmentView[];
   equipped: EquippedSlots;
   avatarConfig: AvatarConfig;
@@ -292,6 +296,14 @@ export interface ClaimResult {
   streakSaved?: boolean;
   /** Si la racha cruzó un hito (7, 21, 30, 50, 100, 365), contiene ese número. */
   streakMilestone?: number;
+  /** Multiplicador de racha aplicado (e.g. 1.5 = 50% extra). */
+  streakMultiplier: number;
+  /** XP de bonus por atributo (atributo relevante en rango alto). */
+  attrBonusXp: number;
+  /** Daño infligido al enemigo en este claim. */
+  enemyDamageDealt: number;
+  /** Nuevos títulos desbloqueados en este claim. */
+  newTitles: string[];
   enemy: { hpCurrent: number; hpMax: number };
   newAchievements: string[];
   player: { level: number; xpTotal: number; streak: number };

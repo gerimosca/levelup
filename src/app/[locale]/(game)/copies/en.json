@@ -368,6 +368,8 @@
     "achievementMore": "+{count} more",
     "achievementCta": "Awesome!",
     "genericError": "Something went wrong. Try again.",
+    "streakBonus": "streak bonus",
+    "attrBonus": "attribute bonus",
     "victory": {
       "conquered": "{days} days conquered",
       "peakStreak": "Best streak · {streak} days",
@@ -381,5 +383,22 @@
       "challenge": "{days} days · Face {enemy}",
       "cta": "Let's go"
     }
+  },
+  "titles": {
+    "persistent": "Persistent",
+    "relentless": "Relentless",
+    "iron_will": "Iron Will",
+    "unbreakable": "Unbreakable",
+    "centurion": "Centurion",
+    "legend": "Legend",
+    "clean": "Clean",
+    "sober_mind": "Sober Mind",
+    "free": "Free",
+    "warrior": "Warrior",
+    "veteran": "Veteran",
+    "hero": "Hero",
+    "scholar": "Scholar",
+    "conqueror": "Conqueror",
+    "ascendant": "Ascendant"
   }
 }

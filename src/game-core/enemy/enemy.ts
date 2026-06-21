@@ -9,6 +9,11 @@ export function createEnemy(config: EnemyConfig): EnemyState {
   return { hpCurrent: config.hpMax, hpMax: config.hpMax };
 }
 
+/** Aplica daño de cualquier hábito (distinto de no_alcohol) al enemigo. */
+export function applyHabitDamage(state: EnemyState, damage: number): EnemyState {
+  return { ...state, hpCurrent: Math.max(0, state.hpCurrent - damage) };
+}
+
 /** Aplica el daño de un día limpio (con multiplicador de evento opcional). */
 export function applyCleanDay(
   state: EnemyState,

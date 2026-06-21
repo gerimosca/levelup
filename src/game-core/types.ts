@@ -50,6 +50,8 @@ export interface HabitDef {
   type: 'boolean' | 'graded';
   /** Configuración para hábitos graduales. */
   graded?: GradedConfig;
+  /** Daño base al enemigo por reclamar este hábito (0 = no daña). */
+  enemyDamage: number;
 }
 
 /** Tier visual del personaje según nivel (ver §5 del game design). */

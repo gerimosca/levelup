@@ -368,6 +368,8 @@
     "achievementMore": "+{count} más",
     "achievementCta": "¡Genial!",
     "genericError": "Algo salió mal. Inténtalo de nuevo.",
+    "streakBonus": "bonus de racha",
+    "attrBonus": "bonus de atributo",
     "victory": {
       "conquered": "{days} días conquistados",
       "peakStreak": "Mejor racha · {streak} días",
@@ -381,5 +383,22 @@
       "challenge": "{days} días · Enfrenta a {enemy}",
       "cta": "A por ello"
     }
+  },
+  "titles": {
+    "persistent": "Persistente",
+    "relentless": "Incansable",
+    "iron_will": "Voluntad de Hierro",
+    "unbreakable": "Inquebrantable",
+    "centurion": "Centurión",
+    "legend": "Leyenda",
+    "clean": "Limpio",
+    "sober_mind": "Mente Sobria",
+    "free": "Libre",
+    "warrior": "Guerrero",
+    "veteran": "Veterano",
+    "hero": "Héroe",
+    "scholar": "Estudioso",
+    "conqueror": "Conquistador",
+    "ascendant": "Ascendiente"
   }
 }

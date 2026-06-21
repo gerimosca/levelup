@@ -54,6 +54,8 @@
     "level": "Levels",
     "season": "Seasons"
   },
+  "titlesTitle": "Titles",
+  "titlesHint": "Tap a title to equip it — it'll appear under your hero's name.",
   "share": {
     "button": "Share my progress",
     "streak": "{days}-day streak 🔥",

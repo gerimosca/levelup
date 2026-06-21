@@ -13,54 +13,59 @@ export const HABITS: Record<HabitKey, HabitDef> = {
     baseXp: 150, // el más valioso: objetivo emocional central
     attribute: 'vitality',
     type: 'boolean',
+    enemyDamage: 100, // daño principal al Saboteador
   },
   train: {
     key: 'train',
     baseXp: 120,
     attribute: 'strength',
     type: 'boolean',
+    enemyDamage: 50,
   },
   sleep: {
     key: 'sleep',
     baseXp: 80,
     attribute: 'energy',
     type: 'graded',
-    // 0 XP por debajo de 5h; escala lineal 5h→7h; full a partir de 7h.
     graded: { min: 5, target: 7, step: 0.5 },
+    enemyDamage: 35,
   },
   steps: {
     key: 'steps',
     baseXp: 70,
     attribute: 'resistance',
     type: 'graded',
-    // 7 XP por cada 1.000 pasos hasta 10.000; bonus +20 si superas 15.000.
     graded: { target: 10000, step: 1000, bonus: { threshold: 15000, xp: 20 } },
+    enemyDamage: 30,
   },
   eat_well: {
     key: 'eat_well',
     baseXp: 60,
     attribute: 'vitality',
     type: 'boolean',
+    enemyDamage: 25,
   },
   read: {
     key: 'read',
     baseXp: 50,
     attribute: 'discipline',
     type: 'boolean',
+    enemyDamage: 20,
   },
   water: {
     key: 'water',
     baseXp: 40,
     attribute: 'vitality',
     type: 'graded',
-    // 10 XP por cada 0,5 L hasta 2 L.
     graded: { target: 2, step: 0.5 },
+    enemyDamage: 15,
   },
   meditate: {
     key: 'meditate',
     baseXp: 30,
     attribute: 'discipline',
     type: 'boolean',
+    enemyDamage: 10,
   },
 };
 

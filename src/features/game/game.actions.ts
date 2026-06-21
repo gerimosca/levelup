@@ -19,6 +19,7 @@ import {
   handleBuildStructure,
   handleGetEncyclopedia,
   handleUpdateAvatarConfig,
+  handleSetActiveTitle,
   handleAdvanceSeason,
   handleCraftItem,
 } from './game.handler';
@@ -60,6 +61,10 @@ export async function claimHabitAction(input: ClaimHabitInput): Promise<ClaimRes
       levelAfter: 1,
       leveledUp: false,
       tierChanged: false,
+      streakMultiplier: 1,
+      attrBonusXp: 0,
+      enemyDamageDealt: 0,
+      newTitles: [],
       enemy: { hpCurrent: 0, hpMax: 0 },
       newAchievements: [],
       player: { level: 1, xpTotal: 0, streak: 0 },
@@ -173,6 +178,14 @@ export async function updateAvatarConfigAction(
   const user = await getUser();
   if (!user) return { success: false };
   return handleUpdateAvatarConfig(user.id, config);
+}
+
+export async function setActiveTitleAction(
+  titleKey: string | null,
+): Promise<{ success: boolean }> {
+  const user = await getUser();
+  if (!user) return { success: false };
+  return handleSetActiveTitle(user.id, titleKey);
 }
 
 export async function advanceSeasonAction(): Promise<{
