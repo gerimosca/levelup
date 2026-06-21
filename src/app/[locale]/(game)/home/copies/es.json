@@ -22,7 +22,8 @@
   "build": {
     "cost": "Coste",
     "action": "Construir",
-    "maxed": "Tu campamento está al máximo… de momento"
+    "maxed": "Tu campamento está al máximo… de momento",
+    "howToEarn": "Cumple hábitos para ganar 🪵 madera"
   },
   "newVillager": "¡Llegó un nuevo habitante: {name}!",
   "chapterReveal": {

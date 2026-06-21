@@ -22,7 +22,8 @@
   "build": {
     "cost": "Cost",
     "action": "Build",
-    "maxed": "Your camp is at its peak — for now"
+    "maxed": "Your camp is at its peak — for now",
+    "howToEarn": "Complete habits to earn 🪵 wood"
   },
   "newVillager": "A new villager arrived: {name}!",
   "chapterReveal": {

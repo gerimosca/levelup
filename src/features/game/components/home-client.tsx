@@ -551,9 +551,19 @@ export function HomeClient() {
             <p className="text-xs text-muted-foreground">
               {th('build.cost')}:{' '}
               {Object.entries(today.camp.next.cost)
-                .map(([k, v]) => `${k === 'wood' ? '🪵' : '🪨'} ${v}`)
+                .map(([k, v]) => {
+                  const has = k === 'wood' ? (today.materials.wood ?? 0) : (today.materials.stone ?? 0);
+                  const emoji = k === 'wood' ? '🪵' : '🪨';
+                  const enough = has >= (v ?? 0);
+                  return `${emoji} ${has}/${v}${enough ? ' ✓' : ''}`;
+                })
                 .join('   ')}
             </p>
+            {!today.camp.canBuildNext && (
+              <p className="mt-0.5 text-[11px] text-muted-foreground">
+                {th('build.howToEarn')}
+              </p>
+            )}
           </div>
           <button
             type="button"
