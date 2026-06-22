@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Convierte tus hábitos en una aventura RPG.',
     start_url: '/home',
     scope: '/',
-    display: 'standalone',
+    display: 'browser',
     orientation: 'portrait',
     background_color: '#0E1116',
     theme_color: '#0E1116',

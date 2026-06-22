@@ -12,6 +12,7 @@ import {
   CAMP_STRUCTURES_BY_KEY,
   DISCOVERIES_BY_KEY,
   SEASONS_BY_KEY,
+  SEASONS,
   RARITY,
   TITLES_BY_KEY,
   chapterForStructure,
@@ -90,6 +91,8 @@ export function HomeClient() {
   const [attackKey, setAttackKey] = useState(0);
   const [hitKey, setHitKey] = useState(0);
   const [relapseKey, setRelapseKey] = useState(0);
+  const [levelUpKey, setLevelUpKey] = useState(0);
+  const [defeatedKey, setDefeatedKey] = useState(0);
   const [expResult, setExpResult] = useState<ClaimExpeditionResult | null>(null);
   const [storyChapter, setStoryChapter] = useState<string | null>(null);
   const [busyWorld, setBusyWorld] = useState(false);
@@ -191,12 +194,12 @@ export function HomeClient() {
     floatKey.current += 1;
     setFloating({ key: floatKey.current, amount: mission.xp });
     setCelebrate((c) => c + 1);
-    const isMainMission = mission.habit === today.missions.main.habit;
-    if (isMainMission) setAttackKey((k) => k + 1);
+    setAttackKey((k) => k + 1);
+    const enemyWasAlive = (today?.enemy.hpCurrent ?? 0) > 0;
 
     const res: ClaimResult = await claimHabitAction({ habitKey: mission.habit, value, dayDate });
     setClaiming(null);
-    if (isMainMission) setHitKey((k) => k + 1);
+    setHitKey((k) => k + 1);
 
     if (!res.success) {
       toast.error(res.error ?? tg('ui.genericError'));
@@ -216,9 +219,14 @@ export function HomeClient() {
         : prev,
     );
 
+    if (enemyWasAlive && res.enemy.hpCurrent <= 0) {
+      setDefeatedKey((k) => k + 1);
+    }
+
     if (res.leveledUp) {
       audio.play('levelUp');
       haptics.trigger('success');
+      setLevelUpKey((k) => k + 1);
       setLevelUpTo(res.levelAfter);
     }
     if (res.missionComplete) {
@@ -415,6 +423,7 @@ export function HomeClient() {
                 avatarConfig={today.avatarConfig}
                 celebrateKey={celebrate}
                 attackKey={attackKey}
+                levelUpKey={levelUpKey}
                 auraColor={heroAuraColor}
                 auraStrength={heroAuraStrength}
                 titleText={heroTitle}
@@ -664,6 +673,7 @@ export function HomeClient() {
           defeatedLabel={tg('ui.enemyDefeated')}
           hitKey={hitKey}
           relapseKey={relapseKey}
+          defeatedKey={defeatedKey}
         />
         {today.relapsedToday ? (
           <p className="text-center text-xs text-muted-foreground">{tg('relapse.logged')}</p>
@@ -767,7 +777,10 @@ export function HomeClient() {
       )}
 
       {victoryPending && (() => {
-        const nextDef = nextSeasonKey ? SEASONS_BY_KEY[nextSeasonKey] : null;
+        // Calcula la siguiente temporada desde el roadmap directamente —
+        // nextSeasonKey todavía es null cuando este overlay se abre (se setea al cerrarlo).
+        const currentOrder = activeSeason?.order ?? 0;
+        const nextDef = SEASONS.find((s) => s.order === currentOrder + 1) ?? null;
         const nextName = nextDef ? tg(nextDef.nameKey) : null;
         return (
           <SeasonVictoryOverlay

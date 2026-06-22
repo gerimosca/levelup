@@ -11,7 +11,7 @@ import {
   SEASONS,
 } from '../data/seasons';
 import { CHEST_LOOT } from '../data/equipment';
-import { createEnemy, applyCleanDay, applyRelapse, isEnemyDefeated } from '../enemy/enemy';
+import { createEnemy, applyDayCompleted, applySetback, isEnemyDefeated } from '../enemy/enemy';
 import { zoneForDay, advanceSeasonDay, createSeasonProgress } from '../season/season';
 import { generateDailyMissions } from '../missions/missions';
 
@@ -24,37 +24,37 @@ describe('S2 · Inercia (3000 HP, 30 días)', () => {
     expect(createEnemy(cfg).hpCurrent).toBe(3000);
   });
 
-  it('30 días limpios lo derrotan exactamente', () => {
+  it('30 días completando el hábito principal lo derrotan exactamente', () => {
     let e = createEnemy(cfg);
-    for (let i = 0; i < 30; i++) e = applyCleanDay(e, cfg);
+    for (let i = 0; i < 30; i++) e = applyDayCompleted(e, cfg);
     expect(isEnemyDefeated(e)).toBe(true);
     expect(e.hpCurrent).toBe(0);
   });
 
-  it('una recaída le devuelve 300 HP (cap a hpMax)', () => {
+  it('un fallo le devuelve fuerza (+200, cap a hpMax)', () => {
     let e = createEnemy(cfg);
-    e = applyCleanDay(e, cfg); // 3000 - 100 = 2900
-    e = applyRelapse(e, cfg);  // 2900 + 300 = 3200 → cap 3000
+    e = applyDayCompleted(e, cfg); // 3000 - 100 = 2900
+    e = applySetback(e, cfg);      // 2900 + 200 = 3100 → cap 3000
     expect(e.hpCurrent).toBe(3000);
   });
 });
 
-describe('S3 · El Ansia (3000 HP, 30 días)', () => {
+describe('S3 · El Antojo (3000 HP, 30 días)', () => {
   const cfg = SEASON_3_CUT.enemy;
 
   it('arranca a 3000 HP', () => {
     expect(createEnemy(cfg).hpCurrent).toBe(3000);
   });
 
-  it('30 días limpios lo derrotan exactamente', () => {
+  it('30 días completando el hábito principal lo derrotan exactamente', () => {
     let e = createEnemy(cfg);
-    for (let i = 0; i < 30; i++) e = applyCleanDay(e, cfg);
+    for (let i = 0; i < 30; i++) e = applyDayCompleted(e, cfg);
     expect(isEnemyDefeated(e)).toBe(true);
   });
 
-  it('mainHabit es eat_well, anchor es no_alcohol', () => {
+  it('mainHabit es eat_well, anchor es water', () => {
     expect(SEASON_3_CUT.mainHabit).toBe('eat_well');
-    expect(SEASON_3_CUT.anchorHabits).toContain('no_alcohol');
+    expect(SEASON_3_CUT.anchorHabits).toContain('water');
   });
 });
 
@@ -65,9 +65,9 @@ describe('S4 · El Vacío (6000 HP, 60 días)', () => {
     expect(createEnemy(cfg).hpCurrent).toBe(6000);
   });
 
-  it('60 días limpios lo derrotan exactamente', () => {
+  it('60 días completando el hábito principal lo derrotan exactamente', () => {
     let e = createEnemy(cfg);
-    for (let i = 0; i < 60; i++) e = applyCleanDay(e, cfg);
+    for (let i = 0; i < 60; i++) e = applyDayCompleted(e, cfg);
     expect(isEnemyDefeated(e)).toBe(true);
     expect(e.hpCurrent).toBe(0);
   });
@@ -180,10 +180,10 @@ describe('misiones según temporada activa', () => {
     expect(m.secondary.some((s) => s.habit === 'eat_well')).toBe(true);
   });
 
-  it('S3: principal = eat_well, anchor = no_alcohol siempre presente', () => {
+  it('S3: principal = eat_well, anchor = water siempre presente', () => {
     const m = generateDailyMissions(SEASON_3_CUT, [...all8], 'seed');
     expect(m.main.habit).toBe('eat_well');
-    expect(m.secondary.some((s) => s.habit === 'no_alcohol')).toBe(true);
+    expect(m.secondary.some((s) => s.habit === 'water')).toBe(true);
   });
 
   it('S4: principal = meditate, anchor = read siempre presente', () => {

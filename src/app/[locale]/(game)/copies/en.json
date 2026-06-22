@@ -95,13 +95,13 @@
     "s4": { "name": "DISCIPLINE" }
   },
   "seasonTagline": {
-    "s1-reset": "21 days to reset: stay alcohol-free, train, sleep, hydrate, walk.",
+    "s1-reset": "21 days to reset. Train, sleep, move. Defeat the one enemy everyone has.",
     "s2-strength": "30 days to forge strength. Train. Eat well. Face Inertia.",
-    "s3-cut": "30 days to cut. Eat clean, stay dry, move every day. Silence The Craving.",
+    "s3-cut": "30 days to cut. Eat clean, hydrate, move every day. Silence The Craving.",
     "s4-discipline": "60 days. All habits. No mercy. Face The Void and win."
   },
   "enemy": {
-    "saboteur": { "name": "The Saboteur" },
+    "laziness": { "name": "Laziness" },
     "inertia": { "name": "Inertia" },
     "craving": { "name": "The Craving" },
     "void": { "name": "The Void" }
@@ -114,18 +114,24 @@
     "steps": { "name": "Walk 10,000 steps", "tagline": "Move every day" },
     "eat_well": { "name": "Eat well", "tagline": "Feed the machine" },
     "read": { "name": "Read", "tagline": "Train the mind" },
-    "meditate": { "name": "Meditate", "tagline": "Find your focus" }
+    "meditate": { "name": "Meditate", "tagline": "Find your focus" },
+    "no_smoking": { "name": "No smoking", "tagline": "Break the chain" },
+    "no_social_media": { "name": "No social media", "tagline": "Reclaim your attention" },
+    "no_junk_food": { "name": "No junk food", "tagline": "Clean fuel only" }
   },
   "events": {
     "rematch_day": { "name": "Rematch day", "desc": "Double damage to the enemy. Make it count" },
-    "weekend_temptation": { "name": "Weekend temptation", "desc": "Staying alcohol-free gives x3 XP" },
+    "weekend_temptation": { "name": "Weekend temptation", "desc": "Staying alcohol-free gives x3 XP — hold the line" },
     "momentum": { "name": "On a roll", "desc": "Your streak is real — all XP x1.5 today" },
     "rainy_day": { "name": "Rainy day", "desc": "Training gives x2 XP" },
     "open_road": { "name": "Open road", "desc": "Steps give x1.5 XP" },
     "day_of_clarity": { "name": "Day of clarity", "desc": "Reading gives x2 XP" },
     "restful_night": { "name": "Restful night", "desc": "Sleep gives x2 XP" },
     "golden_day": { "name": "Golden day", "desc": "All XP x1.5 — a rare day" },
-    "steady_day": { "name": "Steady day", "desc": "A regular day. Regular days build heroes too" }
+    "steady_day": { "name": "Steady day", "desc": "A regular day. Regular days build heroes too" },
+    "last_cigarette": { "name": "Last cigarette", "desc": "Staying smoke-free gives x2 XP — one more day stronger" },
+    "digital_detox": { "name": "Digital detox", "desc": "No social media gives x2 XP — your focus is a superpower today" },
+    "clean_plate": { "name": "Clean plate", "desc": "No junk food gives x1.5 XP — fuel the machine right" }
   },
   "structures": {
     "tent": "Tent",
@@ -283,47 +289,53 @@
   "onboarding": {
     "step1": {
       "title": "A new hero rises",
-      "subtitle": "Daily habits become your power. Stick to them, and your enemy grows weaker.",
+      "subtitle": "You've just arrived in a new land. Build your camp, complete real habits, and level up your life — one day at a time.",
       "pillar": {
-        "habits": "Daily habits",
+        "habits": "Real habits",
         "xp": "Earn XP",
         "hero": "Level up"
       },
-      "cta": "Choose my path"
+      "worldHint": "Complete your mission → hero goes on expedition → return to discover rewards",
+      "cta": "Let's go"
     },
     "step2": {
-      "title": "What do you want to conquer?",
+      "title": "Choose your battles",
       "hint": "{count} more to pick",
       "hintDone": "{count} selected — good",
-      "cta": "These are my habits"
+      "mainTag": "Main mission",
+      "cta": "These are my battles"
     },
     "step3": {
-      "title": "Ready, hero",
-      "subtitle": "Here's your plan for Day 1.",
+      "title": "Your enemy is waiting",
+      "subtitle": "21 days to defeat it. One training session at a time.",
+      "enemyTitle": "Season 1 enemy",
+      "enemyDesc": "Every day you train, you deal damage. Every day you skip, it recovers strength.",
       "mainLabel": "Main mission",
       "mainHint": "Deals damage to the enemy · highest XP",
       "secondaryLabel": "Secondary missions",
-      "enemyHint": "Complete every habit today for a bonus. Every miss makes the enemy stronger.",
+      "enemyHint": "Complete all your missions today for a bonus.",
       "cta": "One last thing"
     },
     "step4": {
       "title": "Make it yours",
-      "subtitle": "Pick your look. Your hero, your style.",
+      "subtitle": "Name your hero and pick your look.",
+      "nameLabel": "Hero name",
+      "namePlaceholder": "What's your hero's name?",
       "skinLabel": "Skin tone",
       "hairLabel": "Hair color",
       "cta": "Almost there"
     },
     "step5": {
       "title": "Don't break the chain",
-      "subtitle": "A daily nudge at 8 PM keeps your streak alive. You can change the time in settings.",
+      "subtitle": "A daily nudge at 8 PM keeps your streak alive. You can change this in settings.",
       "cta": "Enable reminders",
       "skip": "Skip for now"
     }
   },
   "relapse": {
-    "prompt": "Had a relapse today?",
-    "done": "The Saboteur recovered some strength. Tomorrow is your rematch.",
-    "logged": "Relapse logged. Tomorrow is your rematch."
+    "prompt": "Had a setback today?",
+    "done": "Logged. The enemy recovers some strength — tomorrow is your rematch.",
+    "logged": "Setback logged. Tomorrow is your rematch."
   },
   "claimValue": {
     "cancel": "Cancel",

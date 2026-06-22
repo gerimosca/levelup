@@ -327,22 +327,24 @@ export function StatsClient() {
     <div className="space-y-4">
       <h1 className="text-2xl font-bold tracking-tight">{ts('title')}</h1>
 
-      {/* Días sin alcohol + dinero ahorrado */}
-      <section
-        className="rounded-3xl border border-accent/40 p-6 text-center"
-        style={{ background: 'radial-gradient(120% 90% at 50% 0%, rgba(255,210,74,0.16), transparent 70%), hsl(var(--card))' }}
-      >
-        <Wine className="mx-auto h-6 w-6 text-accent" aria-hidden="true" />
-        <p className="mt-1 text-5xl font-extrabold tabular-nums text-accent">
-          <CountUp value={stats.daysAlcoholFree} />
-        </p>
-        <p className="text-sm text-muted-foreground">{ts('daysAlcoholFree')}</p>
-        <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-card px-3 py-1.5 text-sm font-bold">
-          <Coins className="h-4 w-4 text-accent" aria-hidden="true" />
-          <CountUp value={stats.moneySaved} /> €
-          <span className="font-normal text-muted-foreground">{ts('moneySaved')}</span>
-        </div>
-      </section>
+      {/* Días sin alcohol + dinero ahorrado — solo si el usuario trackea alcohol */}
+      {stats.daysAlcoholFree > 0 && (
+        <section
+          className="rounded-3xl border border-accent/40 p-6 text-center"
+          style={{ background: 'radial-gradient(120% 90% at 50% 0%, rgba(255,210,74,0.16), transparent 70%), hsl(var(--card))' }}
+        >
+          <Wine className="mx-auto h-6 w-6 text-accent" aria-hidden="true" />
+          <p className="mt-1 text-5xl font-extrabold tabular-nums text-accent">
+            <CountUp value={stats.daysAlcoholFree} />
+          </p>
+          <p className="text-sm text-muted-foreground">{ts('daysAlcoholFree')}</p>
+          <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-card px-3 py-1.5 text-sm font-bold">
+            <Coins className="h-4 w-4 text-accent" aria-hidden="true" />
+            <CountUp value={stats.moneySaved} /> €
+            <span className="font-normal text-muted-foreground">{ts('moneySaved')}</span>
+          </div>
+        </section>
+      )}
 
       {/* Racha con anillo + semana + hitos */}
       <section className="space-y-5 rounded-2xl border border-border bg-card p-5">

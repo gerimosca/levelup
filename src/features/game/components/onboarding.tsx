@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Swords } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { HABIT_LIST, type HabitKey } from '@/game-core';
+import { HABIT_LIST, SEASON_1_RESET, type HabitKey } from '@/game-core';
 import { saveActiveHabitsAction, updateAvatarConfigAction } from '../game.actions';
 import { subscribePushAction } from '../push.actions';
 import { CharacterStage } from './character-stage';
@@ -13,6 +13,7 @@ import type { AvatarConfig, SkinKey, HairKey } from '../types';
 import type { SerializedPushSubscription } from '../push.types';
 
 const MIN_HABITS = 3;
+const S1_ENEMY = SEASON_1_RESET.enemy;
 
 const HABIT_EMOJI: Record<string, string> = {
   no_alcohol: '🌿',
@@ -23,6 +24,9 @@ const HABIT_EMOJI: Record<string, string> = {
   read: '📖',
   water: '💧',
   meditate: '🧘',
+  no_smoking: '🚭',
+  no_social_media: '📵',
+  no_junk_food: '🥦',
 };
 
 const ATTR_COLOR: Record<string, string> = {
@@ -69,11 +73,14 @@ function pushSupported(): boolean {
 export function Onboarding({ onDone }: { onDone: () => void }) {
   const tg = useTranslations('game');
   const [step, setStep] = useState<1 | 2 | 3 | 4 | 5>(1);
-  const [selected, setSelected] = useState<Set<HabitKey>>(new Set());
+  // train pre-selected — it's the S1 mainHabit and the universal battle against laziness
+  const [selected, setSelected] = useState<Set<HabitKey>>(new Set(['train']));
   const [avatarConfig, setAvatarConfig] = useState<AvatarConfig>({});
+  const [heroName, setHeroName] = useState('');
   const [celebrateKey, setCelebrateKey] = useState(0);
   const [saving, setSaving] = useState(false);
   const [notifBusy, setNotifBusy] = useState(false);
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   // Hero celebrates when first shown
   useEffect(() => {
@@ -102,9 +109,13 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
   const submit = async () => {
     if (selected.size < MIN_HABITS || saving) return;
     setSaving(true);
+    const config: AvatarConfig = {
+      ...avatarConfig,
+      ...(heroName.trim() ? { heroName: heroName.trim().slice(0, 20) } : {}),
+    };
     await Promise.all([
       saveActiveHabitsAction({ habits: [...selected] }),
-      updateAvatarConfigAction(avatarConfig),
+      updateAvatarConfigAction(config),
     ]);
     setSaving(false);
     // Go to notification opt-in if supported, else finish
@@ -202,6 +213,10 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
               ))}
             </div>
 
+            <p className="rounded-xl bg-muted/60 px-4 py-2.5 text-center text-xs text-muted-foreground">
+              {tg('onboarding.step1.worldHint')}
+            </p>
+
             <button
               type="button"
               onClick={() => setStep(2)}
@@ -226,23 +241,22 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
             </div>
 
             {(() => {
-              const canPreview = selected.size >= MIN_HABITS;
-              const mainKey = canPreview
-                ? HABIT_LIST.filter((h) => selected.has(h.key)).sort((a, b) => b.baseXp - a.baseXp)[0]?.key
-                : null;
+              const mainKey = HABIT_LIST.filter((h) => selected.has(h.key))
+                .sort((a, b) => b.baseXp - a.baseXp)[0]?.key ?? null;
               return (
                 <div className="grid grid-cols-2 gap-3">
-                  {HABIT_LIST.map((h) => {
+                  {HABIT_LIST.map((h, i) => {
                     const on = selected.has(h.key);
                     const isMain = on && h.key === mainKey;
                     const color = ATTR_COLOR[h.attribute] ?? 'hsl(var(--primary))';
+                    const isLastOdd = i === HABIT_LIST.length - 1 && HABIT_LIST.length % 2 !== 0;
                     return (
                       <button
                         key={h.key}
                         type="button"
                         onClick={() => toggle(h.key)}
                         aria-pressed={on}
-                        className="relative rounded-2xl border-2 bg-card p-4 text-left transition-all active:scale-95"
+                        className={`relative rounded-2xl border-2 bg-card p-4 text-left transition-all active:scale-95${isLastOdd ? ' col-span-2' : ''}`}
                         style={{
                           borderColor: isMain ? 'hsl(var(--accent))' : on ? color : 'hsl(var(--border))',
                           backgroundColor: isMain ? 'hsl(var(--accent) / 0.1)' : on ? `${color}18` : undefined,
@@ -250,7 +264,7 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
                       >
                         {isMain && (
                           <span className="absolute right-2 top-2 rounded-full bg-accent px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-accent-foreground">
-                            {tg('ui.mainBadge')}
+                            {tg('onboarding.step2.mainTag')}
                           </span>
                         )}
                         <div className="mb-1.5 text-2xl" aria-hidden="true">
@@ -297,7 +311,7 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
           </motion.div>
         )}
 
-        {/* ── Step 3: Mission preview ──────────────────────── */}
+        {/* ── Step 3: Enemy reveal + Mission preview ──────────── */}
         {step === 3 && (
           <motion.div key="s3" {...SLIDE} className="space-y-5">
             <div className="text-center">
@@ -305,6 +319,35 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
               <p className="mt-1 text-sm text-muted-foreground">
                 {tg('onboarding.step3.subtitle')}
               </p>
+            </div>
+
+            {/* Enemy card */}
+            <div className="rounded-2xl border border-destructive/40 bg-destructive/8 p-4">
+              <div className="mb-3 flex items-center gap-2">
+                <Swords className="h-4 w-4 text-destructive" aria-hidden="true" />
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-destructive/80">
+                  {tg('onboarding.step3.enemyTitle')}
+                </p>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-lg font-bold">{tg(`enemy.${S1_ENEMY.key}.name`)}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    {tg('onboarding.step3.enemyDesc')}
+                  </p>
+                </div>
+                <div className="shrink-0 text-3xl" aria-hidden="true">😤</div>
+              </div>
+              {/* HP bar */}
+              <div className="mt-3">
+                <div className="mb-1 flex justify-between text-[10px] text-muted-foreground">
+                  <span>{S1_ENEMY.hpMax} HP</span>
+                  <span>0 HP</span>
+                </div>
+                <div className="h-2 overflow-hidden rounded-full bg-muted">
+                  <div className="h-full w-full rounded-full bg-destructive/70" />
+                </div>
+              </div>
             </div>
 
             {mainMission && (
@@ -400,6 +443,25 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
             </div>
 
             <div className="rounded-2xl border border-border bg-card p-4 space-y-5">
+              {/* Hero name */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="hero-name"
+                  className="text-xs font-semibold text-muted-foreground"
+                >
+                  {tg('onboarding.step4.nameLabel')}
+                </label>
+                <input
+                  ref={nameInputRef}
+                  id="hero-name"
+                  type="text"
+                  value={heroName}
+                  onChange={(e) => setHeroName(e.target.value.slice(0, 20))}
+                  placeholder={tg('onboarding.step4.namePlaceholder')}
+                  maxLength={20}
+                  className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none ring-primary focus:ring-2"
+                />
+              </div>
               <div className="space-y-3">
                 <p className="text-xs font-semibold text-muted-foreground">
                   {tg('onboarding.step4.skinLabel')}

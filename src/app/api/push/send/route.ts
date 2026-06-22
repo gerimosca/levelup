@@ -4,8 +4,12 @@ import { createClient } from '@supabase/supabase-js';
 
 export const runtime = 'nodejs';
 
+const vapidSubject = process.env.VAPID_EMAIL?.startsWith('mailto:') || process.env.VAPID_EMAIL?.startsWith('https://')
+  ? process.env.VAPID_EMAIL!
+  : `mailto:${process.env.VAPID_EMAIL}`;
+
 webpush.setVapidDetails(
-  process.env.VAPID_EMAIL!,
+  vapidSubject,
   process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
   process.env.VAPID_PRIVATE_KEY!,
 );

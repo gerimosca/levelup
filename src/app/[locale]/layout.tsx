@@ -93,7 +93,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
               <ConsentModal />
 
               <Toaster
-                position="bottom-right"
+                position="top-center"
                 toastOptions={{
                   duration: 4000,
                   classNames: {

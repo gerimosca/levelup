@@ -132,8 +132,9 @@ export function SettingsClient() {
         </h2>
         <p className="text-xs text-muted-foreground">{tset('objectivesHint')}</p>
         <div className="grid grid-cols-2 gap-2">
-          {HABIT_LIST.map((h) => {
+          {HABIT_LIST.map((h, i) => {
             const on = selected.has(h.key);
+            const isLastOdd = i === HABIT_LIST.length - 1 && HABIT_LIST.length % 2 !== 0;
             return (
               <button
                 key={h.key}
@@ -142,7 +143,7 @@ export function SettingsClient() {
                 aria-pressed={on}
                 className={`min-h-[48px] rounded-xl border p-3 text-left text-sm font-medium ${
                   on ? 'border-primary bg-primary/15' : 'border-border bg-card text-muted-foreground'
-                }`}
+                } ${isLastOdd ? 'col-span-2' : ''}`}
               >
                 {tg(`habits.${h.key}.name`)}
               </button>
@@ -218,53 +219,55 @@ export function SettingsClient() {
         </div>
       </section>
 
-      {/* Dinero ahorrado */}
-      <section className="space-y-3">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          {tset('savings')}
-        </h2>
-        <p className="text-xs text-muted-foreground">{tset('savingsHint')}</p>
-        <div className="grid grid-cols-2 gap-3">
-          <label className="rounded-2xl border border-border bg-card p-3 text-sm">
-            <span className="mb-1 block text-xs text-muted-foreground">{tset('beerPrice')}</span>
-            <div className="flex items-center gap-1">
+      {/* Dinero ahorrado — solo si el usuario tiene no_alcohol activo */}
+      {selected.has('no_alcohol') && (
+        <section className="space-y-3">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            {tset('savings')}
+          </h2>
+          <p className="text-xs text-muted-foreground">{tset('savingsHint')}</p>
+          <div className="grid grid-cols-2 gap-3">
+            <label className="rounded-2xl border border-border bg-card p-3 text-sm">
+              <span className="mb-1 block text-xs text-muted-foreground">{tset('beerPrice')}</span>
+              <div className="flex items-center gap-1">
+                <input
+                  type="number"
+                  min={0}
+                  step={0.1}
+                  value={beerPrice}
+                  onChange={(e) => setBeerPrice(Math.max(0, Number(e.target.value)))}
+                  className="w-full bg-transparent text-lg font-bold focus:outline-none"
+                />
+                <span className="text-muted-foreground">€</span>
+              </div>
+            </label>
+            <label className="rounded-2xl border border-border bg-card p-3 text-sm">
+              <span className="mb-1 block text-xs text-muted-foreground">{tset('beersPerDay')}</span>
               <input
                 type="number"
                 min={0}
-                step={0.1}
-                value={beerPrice}
-                onChange={(e) => setBeerPrice(Math.max(0, Number(e.target.value)))}
+                step={1}
+                value={beersPerDay}
+                onChange={(e) => setBeersPerDay(Math.max(0, Number(e.target.value)))}
                 className="w-full bg-transparent text-lg font-bold focus:outline-none"
               />
-              <span className="text-muted-foreground">€</span>
-            </div>
-          </label>
-          <label className="rounded-2xl border border-border bg-card p-3 text-sm">
-            <span className="mb-1 block text-xs text-muted-foreground">{tset('beersPerDay')}</span>
-            <input
-              type="number"
-              min={0}
-              step={1}
-              value={beersPerDay}
-              onChange={(e) => setBeersPerDay(Math.max(0, Number(e.target.value)))}
-              className="w-full bg-transparent text-lg font-bold focus:outline-none"
-            />
-          </label>
-        </div>
-        <p className="text-center text-xs text-muted-foreground">
-          {tset('savingsPreview', {
-            amount: Math.round(beerPrice * beersPerDay * 100) / 100,
-          })}
-        </p>
-        <button
-          type="button"
-          onClick={saveEconomy}
-          disabled={busy}
-          className="w-full rounded-xl bg-primary py-3 font-semibold text-primary-foreground transition-transform active:scale-95 disabled:opacity-60"
-        >
-          {tset('saveSavings')}
-        </button>
-      </section>
+            </label>
+          </div>
+          <p className="text-center text-xs text-muted-foreground">
+            {tset('savingsPreview', {
+              amount: Math.round(beerPrice * beersPerDay * 100) / 100,
+            })}
+          </p>
+          <button
+            type="button"
+            onClick={saveEconomy}
+            disabled={busy}
+            className="w-full rounded-xl bg-primary py-3 font-semibold text-primary-foreground transition-transform active:scale-95 disabled:opacity-60"
+          >
+            {tset('saveSavings')}
+          </button>
+        </section>
+      )}
 
       {/* Notificaciones */}
       <NotificationSettings />

@@ -3,18 +3,18 @@ import { HABITS, HABIT_LIST } from '../data/habits';
 import { calculateHabitXp, applyMultipliers, calculateReward } from '../xp/calculateXp';
 
 describe('XP de hábitos boolean', () => {
-  it('entrenar da 120 si se hace, 0 si no', () => {
-    expect(calculateHabitXp(HABITS.train, true)).toBe(120);
+  it('entrenar da 150 si se hace, 0 si no', () => {
+    expect(calculateHabitXp(HABITS.train, true)).toBe(150);
     expect(calculateHabitXp(HABITS.train, false)).toBe(0);
   });
 
-  it('no beber alcohol da 150 (el más valioso)', () => {
-    expect(calculateHabitXp(HABITS.no_alcohol, true)).toBe(150);
+  it('no beber alcohol da 120', () => {
+    expect(calculateHabitXp(HABITS.no_alcohol, true)).toBe(120);
   });
 
-  it('el máximo diario base de todos los hábitos es 600', () => {
+  it('el máximo diario base de todos los hábitos es 820', () => {
     const max = HABIT_LIST.reduce((sum, h) => sum + h.baseXp, 0);
-    expect(max).toBe(600);
+    expect(max).toBe(820);
   });
 });
 
@@ -56,6 +56,6 @@ describe('multiplicadores', () => {
   });
 
   it('calculateReward encadena base + multiplicadores', () => {
-    expect(calculateReward(HABITS.train, true, { event: 2, streak: 1.15 })).toBe(276);
+    expect(calculateReward(HABITS.train, true, { event: 2, streak: 1.15 })).toBe(345);
   });
 });

@@ -169,6 +169,20 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    /* Previene scroll horizontal por animaciones o elementos que sobresalen */
+    overflow-x: hidden;
+  }
+
+  /* Elimina el highlight azul al tocar en iOS/Android */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Taps más rápidos (sin delay 300ms de doble-tap-zoom) */
+  button,
+  a,
+  [role='button'] {
+    touch-action: manipulation;
   }
 
   /* Glass-ready background gradient (subtle, for when glass is enabled) */

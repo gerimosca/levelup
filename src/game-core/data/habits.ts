@@ -3,6 +3,10 @@
  *
  * BALANCE: estos números definen la economía del juego. Cambiarlos NO requiere
  * tocar lógica (Open/Closed). Ver docs/design/02-game-design.md §2 y §4.
+ *
+ * Filosofía: mejorar el estilo de vida en general. Entrenar encabeza el ranking
+ * como la batalla universal contra la pereza. No beber alcohol es igualmente
+ * importante pero no es el único eje del juego.
  */
 
 import type { HabitDef, HabitKey } from '../types';
@@ -10,17 +14,17 @@ import type { HabitDef, HabitKey } from '../types';
 export const HABITS: Record<HabitKey, HabitDef> = {
   no_alcohol: {
     key: 'no_alcohol',
-    baseXp: 150, // el más valioso: objetivo emocional central
+    baseXp: 120, // poderoso, pero no el único hábito central
     attribute: 'vitality',
     type: 'boolean',
-    enemyDamage: 100, // daño principal al Saboteador
+    enemyDamage: 80,
   },
   train: {
     key: 'train',
-    baseXp: 120,
+    baseXp: 150, // el más valioso: la batalla universal contra la pereza
     attribute: 'strength',
     type: 'boolean',
-    enemyDamage: 50,
+    enemyDamage: 100, // daño principal — es el mainHabit de S1 y S2
   },
   sleep: {
     key: 'sleep',
@@ -66,6 +70,27 @@ export const HABITS: Record<HabitKey, HabitDef> = {
     attribute: 'discipline',
     type: 'boolean',
     enemyDamage: 10,
+  },
+  no_smoking: {
+    key: 'no_smoking',
+    baseXp: 110, // gran batalla — comparable al alcohol
+    attribute: 'vitality',
+    type: 'boolean',
+    enemyDamage: 70,
+  },
+  no_social_media: {
+    key: 'no_social_media',
+    baseXp: 65, // batalla moderna de atención y foco
+    attribute: 'discipline',
+    type: 'boolean',
+    enemyDamage: 30,
+  },
+  no_junk_food: {
+    key: 'no_junk_food',
+    baseXp: 45, // refuerza eat_well — nada de procesados
+    attribute: 'vitality',
+    type: 'boolean',
+    enemyDamage: 18,
   },
 };
 

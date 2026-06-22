@@ -5,12 +5,12 @@
 
 ## 1. Personaje — "más animado, el SVG no basta"
 - ✅ **Celebración al reclamar**: el héroe salta/reacciona al cumplir una misión.
-- 🔜 **Customización** (tono de piel / pelo) guardada en la cuenta → "el personaje soy yo".
-- 🔜 **Animación de ataque** al subir de nivel / derrotar al Saboteador.
+- ✅ **Customización** (tono de piel / pelo) guardada en la cuenta → "el personaje soy yo".
+- ✅ **Animación de ataque** al subir de nivel / derrotar al Saboteador. Level-up surge: salto alto + 16 partículas + anillo dorado expansivo. Killing blow: retrato del enemigo colapsa (shake + scale-down + fade) cuando HP llega a 0.
 - 🧭 **Salto de calidad real**: un SVG por código tiene techo. Para que el personaje se sienta "de juego" (animaciones fluidas, poses, partículas) lo correcto es **Rive** (animación vectorial con runtime web + React Native, encaja con el plan de app móvil) o **sprites/arte ilustrado**. Eso es **trabajo de arte/assets** (editor Rive o ilustración), no de código. Recomendación: cuando queramos el acabado pro, autoramos un personaje Rive y lo enchufamos (la lógica/equipo ya está lista para recibirlo).
 
-## 2. Misiones de hoy — rotación 🔜
-- Algunas misiones **fijas diarias** (p.ej. no alcohol, entrenar) + el **resto rota por día** (un pool, se eligen N distintas cada día de forma sembrada por fecha) para no repetir siempre lo mismo. Cambio en `core/missions` (generación diaria con pool + selección determinista por día).
+## 2. Misiones de hoy — rotación ✅
+- Implementado: 1 principal (foco temporada) + anclas (siempre) + 2 rotativas del pool, seeded por `userId:date`. La UI separa anclas de rotativas con label "🔄 Selección del día". Tests en `game-core/__tests__/season-missions.test.ts`.
 
 ## 3. Diario nocturno — ❌ ELIMINAR
 - ✅ Eliminado de la UI (no se ve viable). (La tabla `journal_entries` queda inerte en BD.)
@@ -32,9 +32,8 @@
   - La mascota como **medidor emocional** que abre el diario/insights (pero quitamos diario).
   - Recomendación: vincular su crecimiento a rachas y darle un rol visible (te acompaña en mapa/home reaccionando), sin tocar la economía de XP.
 
-## 7. Stats / "Tu progreso" — gráfico, no texto ✅ (v1)
-- ✅ Rediseñado: héroe grande (días sin alcohol + dinero) con **contadores animados** (CountUp), **anillo de racha** con objetivo (siguiente hito) + mejor racha, **gráfica de constancia** de 14 días (barras de hábitos/día), y tarjetas con contadores. Datos de actividad reales desde `habit_logs` (`StatsView.activity`).
-- 🔜 (futuro) más profundidad: tendencias mes vs mes, gráfica de XP en el tiempo, radar de atributos.
+## 7. Stats / "Tu progreso" — gráfico, no texto ✅
+- ✅ Rediseñado con CountUp, anillo de racha, 7-day dots, heatmap 8 semanas, DailyXpChart (14 días), XpWeekChart (8 semanas), AttributeRadar (pentágono SVG), stat cards, habitRanking con barras, dayOfWeek chart. Todo wired a DB real (`habit_logs`).
 
 ## 8. Héroe / endgame — "¿qué pasa cuando tengo todo el equipo?" 🧭
 - Falta **progresión post-equipo**. Opciones: subir de rareza el mismo objeto (mejoras), prestigio/temporadas nuevas con loot nuevo, skins, niveles de maestría por atributo, logros legendarios. Decisión de diseño de meta-progresión.
@@ -46,7 +45,7 @@
 ---
 
 ### Resumen de prioridad
-1. **Personaje** (en curso): celebración ✅ → customización 🔜 → ataque 🔜 → Rive 🧭.
-2. **Misiones rotativas** 🔜.
-3. **Stats gráficos** 🔜.
-4. Decisiones de diseño: **mascota con impacto**, **endgame**, **eventos**, **mapa** (varios necesitan arte).
+1. **Personaje**: celebración ✅ → customización ✅ → skin/hair picker ✅ → nombre de héroe ✅ → Rive 🧭 (necesita assets).
+2. **Misiones rotativas** ✅ — main + ancla + 2 rotativas seeded por userId:date.
+3. **Stats gráficos** ✅ — heatmap, radar, XP charts, ranking, dayOfWeek.
+4. Decisiones de diseño pendientes: **endgame post-equipo**, **atributos con efectos**, **mapa con arte**, **eventos más significativos**.

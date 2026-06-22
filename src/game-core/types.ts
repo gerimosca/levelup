@@ -25,7 +25,10 @@ export type HabitKey =
   | 'steps'
   | 'eat_well'
   | 'read'
-  | 'meditate';
+  | 'meditate'
+  | 'no_smoking'
+  | 'no_social_media'
+  | 'no_junk_food';
 
 /** Configuración de un hábito gradual (XP parcial). */
 export interface GradedConfig {
@@ -89,16 +92,16 @@ export interface XpMultipliers {
 // Temporadas, enemigo y mapa (ver docs/design/02-game-design.md §7, §11, §12)
 // ===========================================================================
 
-/** Configuración del antagonista de una temporada (p.ej. el Saboteador). */
+/** Configuración del antagonista de una temporada. */
 export interface EnemyConfig {
-  key: string; // 'saboteur'
+  key: string;
   /** Clave de copy para el nombre narrativo. */
   nameKey: string;
   hpMax: number;
-  /** Daño por día cumpliendo el hábito objetivo (p.ej. día sin alcohol). */
-  cleanDayDamage: number;
-  /** Curación al recaer. */
-  relapseHeal: number;
+  /** Daño al enemigo por completar el hábito principal del día. */
+  habitDamage: number;
+  /** Curación del enemigo al registrar un fallo/recaída. */
+  missHeal: number;
 }
 
 /** Estado mutable del enemigo. */

@@ -18,8 +18,9 @@ const RING: Record<CharacterTier, { ring: string; glow: string }> = {
 
 const IDLE = { y: [0, -6, 0], transition: { duration: 3, repeat: Infinity, ease: 'easeInOut' as const } };
 
-// Ángulos (en grados) para las 8 partículas de celebración
+// Ángulos para partículas: 8 en celebrate, 16 en level-up
 const PARTICLE_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];
+const LEVEL_UP_ANGLES = Array.from({ length: 16 }, (_, i) => i * 22.5);
 
 interface Particle { id: number; angle: number; color: string }
 
@@ -34,6 +35,7 @@ export function CharacterStage({
   size = 'lg',
   celebrateKey = 0,
   attackKey = 0,
+  levelUpKey = 0,
   auraColor,
   auraStrength = 'subtle',
   titleText,
@@ -46,6 +48,7 @@ export function CharacterStage({
   size?: 'lg' | 'xl' | 'hero';
   celebrateKey?: number;
   attackKey?: number;
+  levelUpKey?: number;
   auraColor?: string;
   auraStrength?: 'subtle' | 'medium' | 'strong';
   titleText?: string;
@@ -56,6 +59,7 @@ export function CharacterStage({
   const [expression, setExpression] = useState<AvatarExpression>('idle');
   const [particles, setParticles] = useState<Particle[]>([]);
   const [showSlash, setShowSlash] = useState(false);
+  const [showLevelRing, setShowLevelRing] = useState(false);
   const exprTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -120,6 +124,41 @@ export function CharacterStage({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attackKey]);
 
+  // Level-up surge: burst dramático de partículas + salto alto + anillo de destello
+  useEffect(() => {
+    if (!levelUpKey) return;
+    let active = true;
+
+    const colors = ['#FFD24A', '#FFF', '#BCB1FF', '#9DBBFF', '#76E2A6', '#FF8C8C', '#FFD24A', '#FFF'];
+    const newParticles: Particle[] = LEVEL_UP_ANGLES.map((angle) => ({
+      id: ++pid,
+      angle,
+      color: colors[Math.floor(angle / 22.5) % colors.length],
+    }));
+    setParticles(newParticles);
+    setTimeout(() => setParticles([]), 1200);
+
+    setShowLevelRing(true);
+    setTimeout(() => setShowLevelRing(false), 700);
+
+    if (exprTimer.current) clearTimeout(exprTimer.current);
+    setExpression('happy');
+    exprTimer.current = setTimeout(() => setExpression('idle'), 1400);
+
+    (async () => {
+      await controls.start({
+        y: [0, -56, -18, 0],
+        scale: [1, 1.38, 1.2, 1],
+        rotate: [0, -12, 10, -5, 0],
+        transition: { duration: 0.82, ease: 'easeOut' },
+      });
+      if (active) controls.start(IDLE);
+    })();
+
+    return () => { active = false; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [levelUpKey]);
+
   const auraAlpha = { subtle: '50', medium: '80', strong: 'B0' }[auraStrength];
   const boxShadow = auraColor
     ? `0 0 44px ${auraColor}${auraAlpha}, 0 12px 44px ${v.glow}`
@@ -130,6 +169,21 @@ export function CharacterStage({
   return (
     <div className="flex flex-col items-center">
       <div className="relative">
+        {/* Destello de anillo al subir de nivel */}
+        <AnimatePresence>
+          {showLevelRing && (
+            <motion.div
+              key="level-ring"
+              className="pointer-events-none absolute rounded-full"
+              style={{ inset: '-8px', border: '3px solid #FFD24A' }}
+              initial={{ opacity: 1, scale: 0.85 }}
+              animate={{ opacity: 0, scale: 1.4 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.65, ease: 'easeOut' }}
+            />
+          )}
+        </AnimatePresence>
+
         {/* Anillo de aura fuerte */}
         {auraColor && auraStrength === 'strong' && (
           <motion.div

@@ -1,6 +1,7 @@
 /**
- * Temporada 3 · CUT — 30 días. Come limpio, cero alcohol, mantén el movimiento.
- * Antagonista: El Antojo. Ver docs/design/02-game-design.md §11.
+ * Temporada 3 · CUT — 30 días. Come limpio, hidrátate, mantén el movimiento.
+ * Antagonista: El Antojo. El impulso de rendirse ante el placer fácil.
+ * Ver docs/design/02-game-design.md §11.
  */
 import type { SeasonDef } from '../../types';
 
@@ -10,15 +11,15 @@ export const SEASON_3_CUT: SeasonDef = {
   nameKey: 'season.s3.name',
   durationDays: 30,
   mainHabit: 'eat_well',
-  anchorHabits: ['no_alcohol'],
+  anchorHabits: ['water'], // hidratarse es el ancla universal de una "cut"
 
-  habits: ['eat_well', 'no_alcohol', 'water', 'steps', 'train', 'sleep', 'meditate'],
+  habits: ['eat_well', 'water', 'no_alcohol', 'steps', 'train', 'sleep', 'meditate'],
   enemy: {
     key: 'craving',
     nameKey: 'enemy.craving.name',
     hpMax: 3000,
-    cleanDayDamage: 100,
-    relapseHeal: 200,
+    habitDamage: 100,
+    missHeal: 200,
   },
   // 7 zonas a lo largo de 30 días (≈ 1 zona cada ~4-5 días).
   zones: [

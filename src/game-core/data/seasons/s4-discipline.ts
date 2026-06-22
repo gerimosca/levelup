@@ -17,8 +17,8 @@ export const SEASON_4_DISCIPLINE: SeasonDef = {
     key: 'void',
     nameKey: 'enemy.void.name',
     hpMax: 6000,
-    cleanDayDamage: 100,
-    relapseHeal: 300,
+    habitDamage: 100,
+    missHeal: 300,
   },
   // 8 zonas a lo largo de 60 días (≈ 1 zona cada ~7-8 días).
   zones: [

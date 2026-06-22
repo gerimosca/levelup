@@ -28,7 +28,6 @@ export { StatsClient } from './components/stats-client';
 export { SettingsClient } from './components/settings-client';
 export { EncyclopediaClient } from './components/encyclopedia-client';
 export { MotionProvider } from './components/motion-provider';
-export { PwaInstallBanner } from './components/pwa-install';
 export { PwaRegister } from './components/pwa-register';
 export { OfflineBanner } from './components/offline-banner';
 export { CraftForge } from './components/craft-forge';

@@ -48,7 +48,7 @@ export function HeroAvatar({
   const skin = skinColor ?? c.skin;
   const hair = hairColor ?? c.hair;
 
-  const hex = c.skin.replace('#', '');
+  const hex = skin.replace('#', '');
   const skinShadow = `#${Math.max(0, parseInt(hex.slice(0,2),16)-38).toString(16).padStart(2,'0')}${Math.max(0,parseInt(hex.slice(2,4),16)-30).toString(16).padStart(2,'0')}${Math.max(0,parseInt(hex.slice(4,6),16)-20).toString(16).padStart(2,'0')}`;
 
   const eq = equipped ?? {};

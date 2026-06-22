@@ -17,8 +17,8 @@ export const SEASON_2_STRENGTH: SeasonDef = {
     key: 'inertia',
     nameKey: 'enemy.inertia.name',
     hpMax: 3000,
-    cleanDayDamage: 100, // 30 días × 100 = 3000 = derrota
-    relapseHeal: 200,
+    habitDamage: 100, // 30 días entrenando = 3000 = derrota
+    missHeal: 200,
   },
   // 7 zonas a lo largo de 30 días (≈ 1 zona cada ~4-5 días).
   zones: [

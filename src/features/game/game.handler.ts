@@ -13,9 +13,9 @@ import {
   attributeRank,
   attributeRankProgress,
   dominantAttribute,
-  applyCleanDay,
+  applyDayCompleted,
   applyHabitDamage,
-  applyRelapse,
+  applySetback,
   evaluateTitles,
   eventMultiplierForHabit,
   eventEnemyMultiplier,
@@ -318,7 +318,7 @@ export async function handleLogRelapse(
   }
 
   await insertHabitLog(userId, RELAPSE_KEY, dayDate, 1, 0);
-  enemy = applyRelapse(enemy, season.enemy);
+  enemy = applySetback(enemy, season.enemy);
   await updateEnemyHp(userId, season.key, enemy.hpCurrent);
   return { success: true, enemy };
 }
@@ -790,11 +790,11 @@ export async function handleClaimHabit(
   // Cada hábito cumplido da materiales para construir el campamento (no XP).
   await addMaterials(userId, { wood: MATERIAL_PER_HABIT });
 
-  // Enemigo — todos los hábitos dañan al Saboteador
+  // Enemigo — el hábito principal inflige el daño mayor; el resto daño secundario
   let enemyState = enemyNow;
   const enemyMultiplier = eventEnemyMultiplier(event);
-  if (habitKey === 'no_alcohol') {
-    enemyState = applyCleanDay(enemyState, season.enemy, enemyMultiplier);
+  if (habitKey === season.mainHabit) {
+    enemyState = applyDayCompleted(enemyState, season.enemy, enemyMultiplier);
   } else {
     const baseDamage = Math.round(habit.enemyDamage * enemyMultiplier);
     enemyState = applyHabitDamage(enemyState, baseDamage);

@@ -95,6 +95,9 @@ const HABIT_KEYS = [
   'eat_well',
   'read',
   'meditate',
+  'no_smoking',
+  'no_social_media',
+  'no_junk_food',
 ] as const;
 
 /** Input del onboarding: el usuario elige al menos 3 objetivos. */

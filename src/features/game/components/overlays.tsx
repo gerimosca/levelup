@@ -1,8 +1,23 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Sparkles, Trophy } from 'lucide-react';
+
+const ENEMY_EMOJI: Record<string, string> = {
+  laziness: '🛋️',
+  inertia:  '🧱',
+  craving:  '🍕',
+  void:     '🌑',
+  saboteur: '😈',
+};
+
+const ENEMY_BG: Record<string, string> = {
+  laziness: 'rgba(123,108,240,0.22)',
+  inertia:  'rgba(66,121,238,0.22)',
+  craving:  'rgba(224,82,82,0.22)',
+  void:     'rgba(20,20,40,0.55)',
+  saboteur: 'rgba(192,57,43,0.22)',
+};
 
 function Overlay({
   children,
@@ -149,14 +164,8 @@ export function SeasonVictoryOverlay({
           animate={{ scale: [0, 1.15, 0.95, 1], rotate: 0 }}
           transition={{ duration: 0.7, ease: 'backOut' }}
         >
-          <div className="relative h-full w-full overflow-hidden rounded-2xl border-2 border-accent/20">
-            <Image
-              src={`/enemies/${enemyKey}.png`}
-              alt={enemyName}
-              fill
-              className="object-cover object-top grayscale"
-              sizes="128px"
-            />
+          <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border-2 border-accent/20 bg-muted/40 text-7xl grayscale">
+            {ENEMY_EMOJI[enemyKey] ?? '👾'}
             {/* Overlay oscuro de derrota */}
             <div className="absolute inset-0 bg-background/60" />
             {/* Skull */}
@@ -274,21 +283,18 @@ export function SeasonStartOverlay({
       >
         {/* Retrato del enemigo — amenazante, a pleno color */}
         <motion.div
-          className="relative mx-auto mb-5 h-36 w-36 overflow-hidden rounded-2xl border-2 border-destructive/50"
-          style={{ boxShadow: '0 0 40px rgba(255,45,45,0.35)' }}
+          className="relative mx-auto mb-5 flex h-36 w-36 select-none items-center justify-center overflow-hidden rounded-2xl border-2 border-destructive/50 text-8xl"
+          style={{
+            backgroundColor: ENEMY_BG[enemyKey] ?? 'rgba(192,57,43,0.18)',
+            boxShadow: '0 0 40px rgba(255,45,45,0.35)',
+          }}
           initial={{ scale: 0, rotate: 10 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ type: 'spring', stiffness: 280, damping: 18, delay: 0.1 }}
         >
-          <Image
-            src={`/enemies/${enemyKey}.png`}
-            alt={enemyName}
-            fill
-            className="object-cover object-top"
-            sizes="144px"
-          />
+          {ENEMY_EMOJI[enemyKey] ?? '👾'}
           {/* Vignette inferior */}
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-card/80 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-card/80 to-transparent" />
         </motion.div>
 
         <motion.p

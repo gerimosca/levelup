@@ -96,12 +96,12 @@ export {
   ATTRIBUTE_RANK_SIZE,
 } from './attributes/attributes';
 
-// Enemigo (el Saboteador)
+// Enemigo (antagonista de temporada)
 export {
   createEnemy,
-  applyCleanDay,
+  applyDayCompleted,
   applyHabitDamage,
-  applyRelapse,
+  applySetback,
   enemyHpPct,
   isEnemyDefeated,
 } from './enemy/enemy';

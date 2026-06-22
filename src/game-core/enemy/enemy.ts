@@ -1,7 +1,8 @@
 /**
- * enemy — El Saboteador (el alcohol como antagonista). Ver docs/design/02-game-design.md §7.
+ * enemy — El antagonista de cada temporada. Ver docs/design/02-game-design.md §7.
  *
- * Día cumpliendo el hábito objetivo → daño. Recaída → curación (nunca game over).
+ * Completar el hábito principal del día → daño al enemigo. Fallo/recaída → curación.
+ * Nunca hay game over: el enemigo no puede matar al héroe.
  */
 import type { EnemyConfig, EnemyState } from '../types';
 
@@ -9,26 +10,26 @@ export function createEnemy(config: EnemyConfig): EnemyState {
   return { hpCurrent: config.hpMax, hpMax: config.hpMax };
 }
 
-/** Aplica daño de cualquier hábito (distinto de no_alcohol) al enemigo. */
+/** Aplica daño de hábitos secundarios al enemigo. */
 export function applyHabitDamage(state: EnemyState, damage: number): EnemyState {
   return { ...state, hpCurrent: Math.max(0, state.hpCurrent - damage) };
 }
 
-/** Aplica el daño de un día limpio (con multiplicador de evento opcional). */
-export function applyCleanDay(
+/** Daño al enemigo por completar el hábito principal (con multiplicador de evento opcional). */
+export function applyDayCompleted(
   state: EnemyState,
   config: EnemyConfig,
   multiplier = 1,
 ): EnemyState {
-  const damage = Math.round(config.cleanDayDamage * multiplier);
+  const damage = Math.round(config.habitDamage * multiplier);
   return { ...state, hpCurrent: Math.max(0, state.hpCurrent - damage) };
 }
 
-/** Una recaída devuelve fuerza al enemigo (sin pasar de hpMax). */
-export function applyRelapse(state: EnemyState, config: EnemyConfig): EnemyState {
+/** Un fallo/recaída devuelve fuerza al enemigo (sin pasar de hpMax). */
+export function applySetback(state: EnemyState, config: EnemyConfig): EnemyState {
   return {
     ...state,
-    hpCurrent: Math.min(state.hpMax, state.hpCurrent + config.relapseHeal),
+    hpCurrent: Math.min(state.hpMax, state.hpCurrent + config.missHeal),
   };
 }
 

@@ -57,6 +57,24 @@ export const EVENTS: EventDef[] = [
     target: { kind: 'habit', habit: 'sleep' },
     weight: 6,
   },
+  {
+    key: 'last_cigarette',
+    multiplier: 2,
+    target: { kind: 'habit', habit: 'no_smoking' },
+    weight: 9,
+  },
+  {
+    key: 'digital_detox',
+    multiplier: 2,
+    target: { kind: 'habit', habit: 'no_social_media' },
+    weight: 8,
+  },
+  {
+    key: 'clean_plate',
+    multiplier: 1.5,
+    target: { kind: 'habit', habit: 'no_junk_food' },
+    weight: 8,
+  },
 
   // --- Eventos globales ---
   {

@@ -96,8 +96,8 @@ describe('generación de misiones diarias', () => {
 
 describe('atributos', () => {
   it('puntos por acción = floor(XP_base / 10)', () => {
-    expect(attributePointsForHabit(HABITS.train)).toBe(12);
-    expect(attributePointsForHabit(HABITS.no_alcohol)).toBe(15);
+    expect(attributePointsForHabit(HABITS.train)).toBe(15);
+    expect(attributePointsForHabit(HABITS.no_alcohol)).toBe(12);
   });
 
   it('rango sube cada 100 puntos, empezando en I (1)', () => {
