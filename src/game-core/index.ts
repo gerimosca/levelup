@@ -92,6 +92,7 @@ export {
   attributePointsForHabit,
   attributeRank,
   attributeRankProgress,
+  attributeRankBonus,
   dominantAttribute,
   ATTRIBUTE_RANK_SIZE,
 } from './attributes/attributes';

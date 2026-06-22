@@ -6,7 +6,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { Settings, Check, Zap, Lock, BarChart3 } from 'lucide-react';
-import { RARITY, attributeRank, dominantAttribute, ACHIEVEMENTS_BY_KEY, TITLES_BY_KEY, MASTERY_MILESTONES, type RarityKey } from '@/game-core';
+import { RARITY, attributeRank, attributeRankBonus, dominantAttribute, ACHIEVEMENTS_BY_KEY, TITLES_BY_KEY, MASTERY_MILESTONES, type RarityKey } from '@/game-core';
 import { usePlayerStore, audio, haptics } from '@/shared/game';
 import { getProfileAction, equipItemAction, updateAvatarConfigAction, setActiveTitleAction } from '../game.actions';
 import { CharacterStage } from './character-stage';
@@ -403,12 +403,19 @@ export function MeClient() {
                     <span className="font-semibold text-sm">{tg(`attributes.${a.type}`)}</span>
                     <p className="text-xs text-muted-foreground mt-0.5">{tm(`attrHint.${a.type}`)}</p>
                   </div>
-                  <span
-                    className="text-xs font-bold px-2 py-0.5 rounded-full"
-                    style={{ background: `${color}22`, color }}
-                  >
-                    {tm('rank', { rank: a.rank })}
-                  </span>
+                  <div className="text-right">
+                    <span
+                      className="text-xs font-bold px-2 py-0.5 rounded-full"
+                      style={{ background: `${color}22`, color }}
+                    >
+                      {tm('rank', { rank: a.rank })}
+                    </span>
+                    {a.rank > 1 && (
+                      <p className="text-xs mt-0.5 font-medium" style={{ color }}>
+                        +{Math.round((attributeRankBonus(a.rank) - 1) * 100)}% {tm('rankBonusLabel')}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
                 {/* Barra de progreso al siguiente rango */}

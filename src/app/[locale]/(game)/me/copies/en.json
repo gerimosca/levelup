@@ -5,6 +5,7 @@
   "attributesTitle": "Attributes",
   "attributesHint": "Each attribute grows from the habits you keep — that's why some are higher than others.",
   "rank": "Rank {rank}",
+  "rankBonusLabel": "XP & DMG",
   "attrHint": {
     "vitality": "Grows by staying alcohol-free, hydrating and eating well",
     "strength": "Grows by training",

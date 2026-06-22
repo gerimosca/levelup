@@ -22,6 +22,14 @@ export function attributeRankProgress(points: number): number {
   return (Math.max(0, points) % ATTRIBUTE_RANK_SIZE) / ATTRIBUTE_RANK_SIZE;
 }
 
+/**
+ * Multiplicador pasivo de XP y daño que otorga el rango de un atributo.
+ * Rank 1 = ×1.0 (sin bonus). Cada rango adicional suma +8%.
+ */
+export function attributeRankBonus(rank: number): number {
+  return 1 + Math.max(0, rank - 1) * 0.08;
+}
+
 /** Atributo dominante: el que tiene más puntos acumulados. Null si el mapa está vacío. */
 export function dominantAttribute(
   attrMap: Record<string, number>,

@@ -5,6 +5,7 @@
   "attributesTitle": "Atributos",
   "attributesHint": "Cada atributo sube con los hábitos que cumples: por eso unos están más altos que otros.",
   "rank": "Rango {rank}",
+  "rankBonusLabel": "XP y DMG",
   "attrHint": {
     "vitality": "Sube al no beber, hidratarte y comer bien",
     "strength": "Sube entrenando",

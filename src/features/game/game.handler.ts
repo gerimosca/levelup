@@ -12,6 +12,7 @@ import {
   attributePointsForHabit,
   attributeRank,
   attributeRankProgress,
+  attributeRankBonus,
   dominantAttribute,
   applyDayCompleted,
   applyHabitDamage,
@@ -749,11 +750,11 @@ export async function handleClaimHabit(
   const baseXp = calculateHabitXp(habit, value);
   const smult = streakMultiplier(streakRow.current);
 
-  // Bonus de atributo: el rango del atributo relevante da un % extra de XP
+  // Bonus de atributo: rank 1 = sin bonus, rank 2+ da +8% por rango extra (XP y daño)
   const attrMap = await getAttributesMap(userId);
   const attrPoints = attrMap[habit.attribute] ?? 0;
-  const attrRank = attributeRank(attrPoints); // 0-based rank integer
-  const attrBonusMultiplier = 1 + attrRank * 0.08; // rank 1 = +8%, rank 2 = +16%, rank 3 = +24%...
+  const attrRank = attributeRank(attrPoints);
+  const attrBonusMultiplier = attributeRankBonus(attrRank);
 
   const baseXpWithMults = Math.round(applyMultipliers(baseXp, {
     event: eventMultiplierForHabit(event, habitKey),
@@ -792,12 +793,13 @@ export async function handleClaimHabit(
   await addMaterials(userId, { wood: MATERIAL_PER_HABIT });
 
   // Enemigo — el hábito principal inflige el daño mayor; el resto daño secundario
+  // El bonus de rango de atributo también amplifica el daño (mismo multiplicador que XP).
   let enemyState = enemyNow;
   const enemyMultiplier = eventEnemyMultiplier(event);
   if (habitKey === season.mainHabit) {
-    enemyState = applyDayCompleted(enemyState, season.enemy, enemyMultiplier);
+    enemyState = applyDayCompleted(enemyState, season.enemy, enemyMultiplier * attrBonusMultiplier);
   } else {
-    const baseDamage = Math.round(habit.enemyDamage * enemyMultiplier);
+    const baseDamage = Math.round(habit.enemyDamage * enemyMultiplier * attrBonusMultiplier);
     enemyState = applyHabitDamage(enemyState, baseDamage);
   }
   const enemyDamageDealt = enemyNow.hpCurrent - enemyState.hpCurrent;

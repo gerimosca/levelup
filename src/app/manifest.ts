@@ -7,12 +7,24 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Convierte tus hábitos en una aventura RPG.',
     start_url: '/home',
     scope: '/',
-    display: 'browser',
+    display: 'standalone',
     orientation: 'portrait',
     background_color: '#0E1116',
     theme_color: '#0E1116',
     categories: ['health', 'fitness', 'lifestyle', 'games'],
     icons: [
+      {
+        src: '/icon-192',
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-192',
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'maskable',
+      },
       {
         src: '/icon',
         sizes: '512x512',

@@ -1,9 +1,9 @@
 import { ImageResponse } from 'next/og';
 
-export const size = { width: 180, height: 180 };
+export const size = { width: 192, height: 192 };
 export const contentType = 'image/png';
 
-export default function AppleIcon() {
+export default function Icon192() {
   return new ImageResponse(
     (
       <div
@@ -19,16 +19,16 @@ export default function AppleIcon() {
         <div
           style={{
             background: 'linear-gradient(145deg, #4834D4 0%, #2D1B8E 50%, #1A0F5C 100%)',
-            width: 136,
-            height: 136,
+            width: 148,
+            height: 148,
             borderRadius: '36%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 0 20px rgba(108,92,231,0.5)',
+            boxShadow: '0 0 24px rgba(108,92,231,0.5)',
           }}
         >
-          <svg width="72" height="80" viewBox="0 0 200 220" fill="none">
+          <svg width="76" height="84" viewBox="0 0 200 220" fill="none">
             <polygon points="100,8 88,160 100,178 112,160" fill="white" />
             <line x1="100" y1="16" x2="100" y2="158" stroke="rgba(180,160,255,0.5)" strokeWidth="4" />
             <rect x="58" y="162" width="84" height="14" rx="7" fill="#C4A9FF" />
@@ -38,6 +38,6 @@ export default function AppleIcon() {
         </div>
       </div>
     ),
-    { width: 180, height: 180 },
+    { width: 192, height: 192 },
   );
 }
