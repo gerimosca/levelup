@@ -41,21 +41,21 @@ export const EVENTS: EventDef[] = [
   },
   {
     key: 'open_road',
-    multiplier: 1.5,
+    multiplier: 2,
     target: { kind: 'habit', habit: 'steps' },
-    weight: 8,
+    weight: 9,
   },
   {
     key: 'day_of_clarity',
     multiplier: 2,
     target: { kind: 'habit', habit: 'read' },
-    weight: 6,
+    weight: 8,
   },
   {
     key: 'restful_night',
     multiplier: 2,
     target: { kind: 'habit', habit: 'sleep' },
-    weight: 6,
+    weight: 8,
   },
   {
     key: 'last_cigarette',
@@ -71,15 +71,33 @@ export const EVENTS: EventDef[] = [
   },
   {
     key: 'clean_plate',
-    multiplier: 1.5,
+    multiplier: 2,
     target: { kind: 'habit', habit: 'no_junk_food' },
+    weight: 8,
+  },
+  {
+    key: 'hydration_surge',
+    multiplier: 2,
+    target: { kind: 'habit', habit: 'water' },
+    weight: 8,
+  },
+  {
+    key: 'fuel_up',
+    multiplier: 2,
+    target: { kind: 'habit', habit: 'eat_well' },
+    weight: 9,
+  },
+  {
+    key: 'deep_focus',
+    multiplier: 2,
+    target: { kind: 'habit', habit: 'meditate' },
     weight: 8,
   },
 
   // --- Eventos globales ---
   {
     key: 'golden_day',
-    multiplier: 1.5,
+    multiplier: 2,
     target: { kind: 'all' },
     weight: 3, // raro
   },
@@ -87,6 +105,6 @@ export const EVENTS: EventDef[] = [
     key: 'steady_day',
     multiplier: 1, // sin bonus — banner nunca se muestra (multiplier > 1 en UI)
     target: { kind: 'all' },
-    weight: 6,
+    weight: 2, // fallback mínimo
   },
 ];

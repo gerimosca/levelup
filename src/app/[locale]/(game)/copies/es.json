@@ -131,7 +131,10 @@
     "steady_day": { "name": "Día constante", "desc": "Un día corriente. Los días corrientes también forjan héroes" },
     "last_cigarette": { "name": "Último cigarrillo", "desc": "Sin tabaco da XP x2 — un día más, más fuerte" },
     "digital_detox": { "name": "Detox digital", "desc": "Sin redes sociales da XP x2 — tu foco es un superpoder hoy" },
-    "clean_plate": { "name": "Plato limpio", "desc": "Sin comida basura da XP x1.5 — alimenta bien la máquina" }
+    "clean_plate": { "name": "Plato limpio", "desc": "Sin comida basura da XP x2 — alimenta bien la máquina" },
+    "hydration_surge": { "name": "Oleada de hidratación", "desc": "Beber 2L da XP x2 — cada célula está al máximo hoy" },
+    "fuel_up": { "name": "Recarga de combustible", "desc": "Comer bien da XP x2 — lo que le das, en eso se convierte" },
+    "deep_focus": { "name": "Foco profundo", "desc": "Meditar da XP x2 — la quietud es la fortaleza más rara" }
   },
   "structures": {
     "tent": "Tienda",

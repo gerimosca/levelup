@@ -131,7 +131,10 @@
     "steady_day": { "name": "Steady day", "desc": "A regular day. Regular days build heroes too" },
     "last_cigarette": { "name": "Last cigarette", "desc": "Staying smoke-free gives x2 XP — one more day stronger" },
     "digital_detox": { "name": "Digital detox", "desc": "No social media gives x2 XP — your focus is a superpower today" },
-    "clean_plate": { "name": "Clean plate", "desc": "No junk food gives x1.5 XP — fuel the machine right" }
+    "clean_plate": { "name": "Clean plate", "desc": "No junk food gives x2 XP — fuel the machine right" },
+    "hydration_surge": { "name": "Hydration surge", "desc": "Drinking 2L gives x2 XP — every cell is firing today" },
+    "fuel_up": { "name": "Fuel up", "desc": "Eating well gives x2 XP — what you feed it, it becomes" },
+    "deep_focus": { "name": "Deep focus", "desc": "Meditating gives x2 XP — stillness is the rarest strength" }
   },
   "structures": {
     "tent": "Tent",
