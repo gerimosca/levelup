@@ -242,6 +242,8 @@
     "level_25": { "name": "Level 25", "hint": "Reach level {target}" },
     "level_50": { "name": "Level 50", "hint": "Reach level {target}" },
     "season_1_done": { "name": "RESET complete", "hint": "Complete your first season" },
+    "season_2_done": { "name": "STRENGTH complete", "hint": "{current}/{target} seasons won" },
+    "season_3_done": { "name": "CUT complete", "hint": "{current}/{target} seasons won" },
     "all_seasons": { "name": "All seasons complete", "hint": "{current}/{target} seasons won" },
     "perfect_week": { "name": "Perfect week", "hint": "Complete all habits every day for a full week" }
   },

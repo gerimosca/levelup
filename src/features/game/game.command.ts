@@ -335,9 +335,12 @@ export async function updateAvatarConfig(
 /** Mueve al jugador a la siguiente temporada y crea sus filas (idempotente). */
 export async function advanceToNextSeason(userId: string, nextSeason: SeasonDef): Promise<void> {
   const supabase = await createClientServer();
+  // Resetear active_habits: la nueva temporada tiene diferente hábito principal
+  // (S1→train, S2→train, S3→eat_well, S4→meditate). Sin reset, generateDailyMissions
+  // caería al fallback activeHabits[0] si el jugador no eligió el hábito principal nuevo.
   await supabase
     .from('player_state')
-    .update({ current_season_key: nextSeason.key })
+    .update({ current_season_key: nextSeason.key, active_habits: [] })
     .eq('user_id', userId);
   await supabase
     .from('enemy_state')

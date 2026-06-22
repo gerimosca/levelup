@@ -120,6 +120,18 @@ export const ACHIEVEMENTS: AchievementDef[] = [
     progress: (s) => ({ current: Math.min(s.seasonsCompleted, 1), target: 1 }),
   },
   {
+    key: 'season_2_done',
+    hintKey: 'achievements.season_2_done.hint',
+    check: (s) => s.seasonsCompleted >= 2,
+    progress: (s) => ({ current: Math.min(s.seasonsCompleted, 2), target: 2 }),
+  },
+  {
+    key: 'season_3_done',
+    hintKey: 'achievements.season_3_done.hint',
+    check: (s) => s.seasonsCompleted >= 3,
+    progress: (s) => ({ current: Math.min(s.seasonsCompleted, 3), target: 3 }),
+  },
+  {
     key: 'all_seasons',
     hintKey: 'achievements.all_seasons.hint',
     check: (s) => s.seasonsCompleted >= 4,

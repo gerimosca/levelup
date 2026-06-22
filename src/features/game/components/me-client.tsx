@@ -21,7 +21,7 @@ const ACHIEVEMENT_GROUPS = [
   { key: 'clean',  emoji: '🧊', keys: ['clean_7', 'clean_30', 'clean_100'] },
   { key: 'volume', emoji: '💪', keys: ['trainings_100', 'km_50', 'reads_100'] },
   { key: 'level',  emoji: '⚡', keys: ['level_5', 'level_10', 'level_25', 'level_50'] },
-  { key: 'season', emoji: '🏆', keys: ['season_1_done', 'all_seasons'] },
+  { key: 'season', emoji: '🏆', keys: ['season_1_done', 'season_2_done', 'season_3_done', 'all_seasons'] },
 ] as const;
 
 const TOTAL_ACHIEVEMENTS = ACHIEVEMENT_GROUPS.reduce((n, g) => n + g.keys.length, 0);
