@@ -85,6 +85,7 @@ describe('logros', () => {
     longestStreak: 0,
     seasonsCompleted: 0,
     perfectWeeks: 0,
+    attributeRanks: {},
   };
 
   it('desbloquea los que cumplen y no estaban ya desbloqueados', () => {

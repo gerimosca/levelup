@@ -411,6 +411,19 @@
     "hero": "Héroe",
     "scholar": "Estudioso",
     "conqueror": "Conquistador",
-    "ascendant": "Ascendiente"
+    "ascendant": "Ascendiente",
+    "vitality_master": "Maestro de la Vida",
+    "strength_master": "Maestro de la Fuerza",
+    "discipline_master": "Maestro de la Disciplina",
+    "energy_master": "Maestro de la Energía",
+    "resistance_master": "Maestro de la Resistencia"
+  },
+  "mastery": {
+    "effect": {
+      "auraAwaken": "El aura despierta en tu héroe",
+      "auraMedium": "El aura se intensifica",
+      "auraStrong": "El aura irradia poder",
+      "master": "Título de maestro desbloqueado"
+    }
   }
 }

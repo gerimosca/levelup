@@ -32,6 +32,12 @@ export const TITLES: TitleDef[] = [
   { key: 'scholar',      nameKey: 'titles.scholar',      check: (s) => s.reads >= 100 },
   { key: 'conqueror',    nameKey: 'titles.conqueror',    check: (s) => s.seasonsCompleted >= 2 },
   { key: 'ascendant',    nameKey: 'titles.ascendant',    check: (s) => s.seasonsCompleted >= 4 },
+  // ── Maestría de atributos (rank 10) ────────────────────────────────────────
+  { key: 'vitality_master',   nameKey: 'titles.vitality_master',   check: (s) => (s.attributeRanks?.vitality   ?? 0) >= 10 },
+  { key: 'strength_master',   nameKey: 'titles.strength_master',   check: (s) => (s.attributeRanks?.strength   ?? 0) >= 10 },
+  { key: 'discipline_master', nameKey: 'titles.discipline_master', check: (s) => (s.attributeRanks?.discipline ?? 0) >= 10 },
+  { key: 'energy_master',     nameKey: 'titles.energy_master',     check: (s) => (s.attributeRanks?.energy     ?? 0) >= 10 },
+  { key: 'resistance_master', nameKey: 'titles.resistance_master', check: (s) => (s.attributeRanks?.resistance ?? 0) >= 10 },
 ];
 
 export const TITLES_BY_KEY: Record<string, TitleDef> = Object.fromEntries(

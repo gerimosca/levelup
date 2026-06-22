@@ -411,6 +411,19 @@
     "hero": "Hero",
     "scholar": "Scholar",
     "conqueror": "Conqueror",
-    "ascendant": "Ascendant"
+    "ascendant": "Ascendant",
+    "vitality_master": "Master of Life",
+    "strength_master": "Master of Strength",
+    "discipline_master": "Master of Discipline",
+    "energy_master": "Master of Energy",
+    "resistance_master": "Master of Resistance"
+  },
+  "mastery": {
+    "effect": {
+      "auraAwaken": "Aura appears around your hero",
+      "auraMedium": "Aura intensifies",
+      "auraStrong": "Aura radiates power",
+      "master": "Master title unlocked"
+    }
   }
 }

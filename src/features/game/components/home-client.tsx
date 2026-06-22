@@ -251,6 +251,14 @@ export function HomeClient() {
       haptics.trigger('success');
       toast.success(`👑 ${tg(`titles.${res.newTitles[0]}`)}`);
     }
+    if (res.newMasteryMilestones && res.newMasteryMilestones.length > 0) {
+      for (const m of res.newMasteryMilestones) {
+        haptics.trigger('success');
+        const attrLabel = tg(`attributes.${m.attrKey}`);
+        const effectLabel = tg(`mastery.effect.${m.rank === 10 ? 'master' : m.rank === 7 ? 'auraStrong' : m.rank === 5 ? 'auraMedium' : 'auraAwaken'}`);
+        toast.success(`✨ ${attrLabel} · Rank ${m.rank}`, { description: effectLabel, duration: 4000 });
+      }
+    }
     if (res.streakMultiplier > 1) {
       toast(`🔥 ×${res.streakMultiplier.toFixed(1)} ${tg('ui.streakBonus')}`, { duration: 2000 });
     }

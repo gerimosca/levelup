@@ -339,6 +339,7 @@ export async function handleGetProfile(userId: string): Promise<ProfileView> {
     userId,
     levelInfo.level,
     streakForProfile?.longest ?? 0,
+    attrMap,
   );
   const unlocked = new Set(achievements);
   const equippedByItem = new Map(equipmentRows.map((r) => [r.item_key, r.equipped_slot]));
@@ -555,7 +556,7 @@ export async function handleGetStats(
   ]);
 
   const levelInfo = levelFromTotalXp(player.xp_total);
-  const achievementStats = await getAchievementStats(userId, levelInfo.level, streak?.longest ?? 0);
+  const achievementStats = await getAchievementStats(userId, levelInfo.level, streak?.longest ?? 0, attributesMap);
 
   const beerPrice = player.beer_price ?? DEFAULT_BEER_PRICE;
   const beersPerDay = player.beers_per_day ?? DEFAULT_BEERS_PER_DAY;
@@ -855,18 +856,31 @@ export async function handleClaimHabit(
     }
   }
 
+  // Hitos de maestría de atributo (detectados antes de persistir, sin DB extra)
+  const oldAttrPoints = attrMap[habit.attribute] ?? 0;
+  const newAttrPoints = oldAttrPoints + attributePointsForHabit(habit);
+  const oldRank = attributeRank(oldAttrPoints);
+  const newRank = attributeRank(newAttrPoints);
+  const MASTERY_RANKS = [3, 5, 7, 10] as const;
+  const newMasteryMilestones = MASTERY_RANKS
+    .filter((mr) => oldRank < mr && newRank >= mr)
+    .map((rank) => ({ attrKey: habit.attribute, rank }));
+
+  // attrMap actualizado (para stats de logros/títulos sin otra consulta a DB)
+  const updatedAttrMap = { ...attrMap, [habit.attribute]: newAttrPoints };
+
   // Logros + Títulos
   let newAchievements: string[] = [];
   let newTitles: string[] = [];
   try {
-    const stats = await getAchievementStats(userId, levelAfter.level, longest);
+    const stats = await getAchievementStats(userId, levelAfter.level, longest, updatedAttrMap);
     const unlocked = new Set(await getUnlockedAchievementKeys(userId));
     newAchievements = evaluateAchievements(stats, unlocked);
     await unlockAchievements(userId, newAchievements);
 
     // Títulos — evaluar contra stats actualizados
     const prevTitleKeys = evaluateTitles(
-      await getAchievementStats(userId, levelBefore.level, streakRow.longest),
+      await getAchievementStats(userId, levelBefore.level, streakRow.longest, attrMap),
     );
     const currTitleKeys = evaluateTitles(stats);
     const prevSet = new Set(prevTitleKeys);
@@ -895,6 +909,7 @@ export async function handleClaimHabit(
     attrBonusXp,
     enemyDamageDealt,
     newTitles,
+    newMasteryMilestones,
     enemy: enemyState,
     newAchievements,
     player: { level: levelAfter.level, xpTotal, streak: streakNow },
@@ -949,6 +964,7 @@ function emptyResult(success: boolean, error?: string): ClaimResult {
     attrBonusXp: 0,
     enemyDamageDealt: 0,
     newTitles: [],
+    newMasteryMilestones: [],
     enemy: { hpCurrent: 0, hpMax: 0 },
     newAchievements: [],
     player: { level: 1, xpTotal: 0, streak: 0 },

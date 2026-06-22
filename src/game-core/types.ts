@@ -210,6 +210,8 @@ export interface AchievementStats {
   longestStreak: number;
   seasonsCompleted: number;
   perfectWeeks: number;
+  /** Rango actual de cada atributo (para desbloquear títulos de maestro). */
+  attributeRanks: Record<string, number>;
 }
 
 export interface AchievementDef {

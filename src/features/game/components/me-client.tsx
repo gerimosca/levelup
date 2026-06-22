@@ -6,7 +6,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { Settings, Check, Zap, Lock, BarChart3 } from 'lucide-react';
-import { RARITY, attributeRank, dominantAttribute, ACHIEVEMENTS_BY_KEY, TITLES_BY_KEY, type RarityKey } from '@/game-core';
+import { RARITY, attributeRank, dominantAttribute, ACHIEVEMENTS_BY_KEY, TITLES_BY_KEY, MASTERY_MILESTONES, type RarityKey } from '@/game-core';
 import { usePlayerStore, audio, haptics } from '@/shared/game';
 import { getProfileAction, equipItemAction, updateAvatarConfigAction, setActiveTitleAction } from '../game.actions';
 import { CharacterStage } from './character-stage';
@@ -381,23 +381,90 @@ export function MeClient() {
         )}
       </section>
 
-      {/* Atributos */}
+      {/* Atributos — panel de maestría */}
       <section className="space-y-3">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
           {tm('attributesTitle')}
         </h2>
         <p className="text-xs text-muted-foreground">{tm('attributesHint')}</p>
-        <div className="space-y-4 rounded-2xl border border-border bg-card p-4">
-          {profile.attributes.map((a) => (
-            <AttributeBar
-              key={a.type}
-              name={tg(`attributes.${a.type}`)}
-              rankLabel={tm('rank', { rank: a.rank })}
-              progress={a.progress}
-              color={ATTR_COLOR[a.type] ?? '#6C5CE7'}
-              hint={tm(`attrHint.${a.type}`)}
-            />
-          ))}
+        <div className="space-y-3">
+          {profile.attributes.map((a) => {
+            const color = ATTR_COLOR[a.type] ?? '#6C5CE7';
+            const nextMilestone = MASTERY_MILESTONES.find((m) => m.rank > a.rank);
+            const progressPct = Math.round(a.progress * 100);
+            return (
+              <div
+                key={a.type}
+                className="rounded-2xl border border-border bg-card p-4 space-y-3"
+              >
+                {/* Cabecera */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="font-semibold text-sm">{tg(`attributes.${a.type}`)}</span>
+                    <p className="text-xs text-muted-foreground mt-0.5">{tm(`attrHint.${a.type}`)}</p>
+                  </div>
+                  <span
+                    className="text-xs font-bold px-2 py-0.5 rounded-full"
+                    style={{ background: `${color}22`, color }}
+                  >
+                    {tm('rank', { rank: a.rank })}
+                  </span>
+                </div>
+
+                {/* Barra de progreso al siguiente rango */}
+                <div className="space-y-1">
+                  <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
+                    <div
+                      className="h-full rounded-full transition-all duration-500"
+                      style={{ width: `${progressPct}%`, background: color }}
+                    />
+                  </div>
+                  {nextMilestone && (
+                    <p className="text-xs text-muted-foreground text-right">
+                      {progressPct}% → {tm('rank', { rank: nextMilestone.rank })}
+                    </p>
+                  )}
+                </div>
+
+                {/* Hitos de maestría */}
+                <div className="space-y-1.5 pt-1 border-t border-border">
+                  {MASTERY_MILESTONES.map((m) => {
+                    const unlocked = a.rank >= m.rank;
+                    const isNext = !unlocked && m === nextMilestone;
+                    return (
+                      <div
+                        key={m.rank}
+                        className={`flex items-center gap-2 text-xs rounded-lg px-2 py-1.5 transition-colors ${
+                          unlocked
+                            ? 'text-foreground'
+                            : isNext
+                            ? 'text-muted-foreground bg-muted/40'
+                            : 'text-muted-foreground/50'
+                        }`}
+                      >
+                        <span className={`text-sm leading-none ${!unlocked && !isNext ? 'opacity-30' : ''}`}>
+                          {m.icon}
+                        </span>
+                        <span className="font-medium tabular-nums w-14 shrink-0">
+                          {tm('rank', { rank: m.rank })}
+                        </span>
+                        <span className="flex-1">{tg(`mastery.effect.${m.effectKey}`)}</span>
+                        {unlocked && (
+                          <span style={{ color }} className="font-bold text-xs shrink-0">✓</span>
+                        )}
+                        {isNext && (
+                          <span className="text-muted-foreground text-xs shrink-0">→</span>
+                        )}
+                        {!unlocked && !isNext && (
+                          <span className="text-muted-foreground/30 text-xs shrink-0">🔒</span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 

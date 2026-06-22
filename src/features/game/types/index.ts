@@ -307,6 +307,8 @@ export interface ClaimResult {
   enemyDamageDealt: number;
   /** Nuevos títulos desbloqueados en este claim. */
   newTitles: string[];
+  /** Hitos de maestría de atributo cruzados en este claim. */
+  newMasteryMilestones: { attrKey: string; rank: number }[];
   enemy: { hpCurrent: number; hpMax: number };
   newAchievements: string[];
   player: { level: number; xpTotal: number; streak: number };

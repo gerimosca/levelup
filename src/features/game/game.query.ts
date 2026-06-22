@@ -1,5 +1,6 @@
 import { createClientServer } from '@/shared/database/supabase';
 import type { AchievementStats } from '@/game-core';
+import { attributeRank } from '@/game-core';
 import { MC_BONUS_KEY } from './types';
 
 /** Pasos por kilómetro (aprox) para estimar km caminados. */
@@ -223,6 +224,7 @@ export async function getAchievementStats(
   userId: string,
   level: number,
   longestStreak: number,
+  attrMap: Record<string, number> = {},
 ): Promise<AchievementStats> {
   const [trainings, alcoholFreeDays, reads, steps, seasonsCompleted, perfectWeeks] =
     await Promise.all([
@@ -243,6 +245,9 @@ export async function getAchievementStats(
     longestStreak,
     seasonsCompleted,
     perfectWeeks,
+    attributeRanks: Object.fromEntries(
+      Object.entries(attrMap).map(([k, pts]) => [k, attributeRank(pts)]),
+    ),
   };
 }
 

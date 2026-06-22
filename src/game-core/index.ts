@@ -110,6 +110,10 @@ export {
 export { TITLES, TITLES_BY_KEY, evaluateTitles } from './data/titles';
 export type { TitleDef } from './data/titles';
 
+// Maestría de atributos
+export { MASTERY_MILESTONES, ATTR_MASTER_TITLE } from './data/mastery';
+export type { MasteryMilestone } from './data/mastery';
+
 // Mascota
 export {
   petStageForCareDays,

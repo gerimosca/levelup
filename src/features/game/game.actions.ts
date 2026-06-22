@@ -65,6 +65,7 @@ export async function claimHabitAction(input: ClaimHabitInput): Promise<ClaimRes
       attrBonusXp: 0,
       enemyDamageDealt: 0,
       newTitles: [],
+      newMasteryMilestones: [],
       enemy: { hpCurrent: 0, hpMax: 0 },
       newAchievements: [],
       player: { level: 1, xpTotal: 0, streak: 0 },
