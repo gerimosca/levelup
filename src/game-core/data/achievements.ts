@@ -68,6 +68,12 @@ export const ACHIEVEMENTS: AchievementDef[] = [
     check: (s) => s.alcoholFreeDays >= 100,
     progress: (s) => ({ current: Math.min(s.alcoholFreeDays, 100), target: 100 }),
   },
+  {
+    key: 'clean_365',
+    hintKey: 'achievements.clean_365.hint',
+    check: (s) => s.alcoholFreeDays >= 365,
+    progress: (s) => ({ current: Math.min(s.alcoholFreeDays, 365), target: 365 }),
+  },
   // Volumen
   {
     key: 'trainings_100',
@@ -76,10 +82,22 @@ export const ACHIEVEMENTS: AchievementDef[] = [
     progress: (s) => ({ current: Math.min(s.trainings, 100), target: 100 }),
   },
   {
+    key: 'trainings_200',
+    hintKey: 'achievements.trainings_200.hint',
+    check: (s) => s.trainings >= 200,
+    progress: (s) => ({ current: Math.min(s.trainings, 200), target: 200 }),
+  },
+  {
     key: 'km_50',
     hintKey: 'achievements.km_50.hint',
     check: (s) => s.kmWalked >= 50,
     progress: (s) => ({ current: Math.min(Math.floor(s.kmWalked), 50), target: 50 }),
+  },
+  {
+    key: 'km_200',
+    hintKey: 'achievements.km_200.hint',
+    check: (s) => s.kmWalked >= 200,
+    progress: (s) => ({ current: Math.min(Math.floor(s.kmWalked), 200), target: 200 }),
   },
   {
     key: 'reads_100',
@@ -111,6 +129,18 @@ export const ACHIEVEMENTS: AchievementDef[] = [
     hintKey: 'achievements.level_50.hint',
     check: (s) => s.level >= 50,
     progress: (s) => ({ current: Math.min(s.level, 50), target: 50 }),
+  },
+  {
+    key: 'level_75',
+    hintKey: 'achievements.level_75.hint',
+    check: (s) => s.level >= 75,
+    progress: (s) => ({ current: Math.min(s.level, 75), target: 75 }),
+  },
+  {
+    key: 'level_100',
+    hintKey: 'achievements.level_100.hint',
+    check: (s) => s.level >= 100,
+    progress: (s) => ({ current: Math.min(s.level, 100), target: 100 }),
   },
   // Temporadas
   {

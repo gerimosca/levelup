@@ -13,6 +13,10 @@ export const ACHIEVEMENT_EQUIPMENT: EquipmentDef[] = [
   { key: 'constancy_medal', slot: 'chest', rarity: 'legendary', source: 'achievement', unlockKey: 'equipment.constancy_medal.unlock', unlockedBy: 'streak_100' },
   { key: 'reborn_cape', slot: 'back', rarity: 'epic', source: 'achievement', unlockKey: 'equipment.reborn_cape.unlock', unlockedBy: 'season_1_done' },
   { key: 'discipline_crown', slot: 'head', rarity: 'legendary', source: 'achievement', unlockKey: 'equipment.discipline_crown.unlock', unlockedBy: 'all_seasons' },
+  // Endgame mythic tier — gated on long-term milestones
+  { key: 'eternal_ring', slot: 'accessory', rarity: 'mythic', source: 'achievement', unlockKey: 'equipment.eternal_ring.unlock', unlockedBy: 'streak_365' },
+  { key: 'iron_will_plate', slot: 'chest', rarity: 'mythic', source: 'achievement', unlockKey: 'equipment.iron_will_plate.unlock', unlockedBy: 'trainings_200' },
+  { key: 'century_crown', slot: 'head', rarity: 'mythic', source: 'achievement', unlockKey: 'equipment.century_crown.unlock', unlockedBy: 'level_100' },
 ];
 
 /**

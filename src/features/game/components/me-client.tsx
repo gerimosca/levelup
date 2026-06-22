@@ -16,12 +16,12 @@ import type { AvatarConfig, EquipmentView, ProfileView, SkinKey, HairKey } from 
 import { SKIN_TONES, HAIR_COLORS } from '../types';
 
 const ACHIEVEMENT_GROUPS = [
-  { key: 'first',  emoji: '⭐', keys: ['first_training', 'first_clean_day', 'perfect_week'] },
-  { key: 'streak', emoji: '🔥', keys: ['streak_7', 'streak_21', 'streak_30', 'streak_50', 'streak_100', 'streak_365'] },
-  { key: 'clean',  emoji: '🧊', keys: ['clean_7', 'clean_30', 'clean_100'] },
-  { key: 'volume', emoji: '💪', keys: ['trainings_100', 'km_50', 'reads_100'] },
-  { key: 'level',  emoji: '⚡', keys: ['level_5', 'level_10', 'level_25', 'level_50'] },
-  { key: 'season', emoji: '🏆', keys: ['season_1_done', 'season_2_done', 'season_3_done', 'all_seasons'] },
+  { key: 'first',     emoji: '⭐', keys: ['first_training', 'first_clean_day', 'perfect_week'] },
+  { key: 'streak',    emoji: '🔥', keys: ['streak_7', 'streak_21', 'streak_30', 'streak_50', 'streak_100', 'streak_365'] },
+  { key: 'clean',     emoji: '🧊', keys: ['clean_7', 'clean_30', 'clean_100', 'clean_365'] },
+  { key: 'volume',    emoji: '💪', keys: ['trainings_100', 'trainings_200', 'km_50', 'km_200', 'reads_100'] },
+  { key: 'level',     emoji: '⚡', keys: ['level_5', 'level_10', 'level_25', 'level_50', 'level_75', 'level_100'] },
+  { key: 'season',    emoji: '🏆', keys: ['season_1_done', 'season_2_done', 'season_3_done', 'all_seasons'] },
 ] as const;
 
 const TOTAL_ACHIEVEMENTS = ACHIEVEMENT_GROUPS.reduce((n, g) => n + g.keys.length, 0);
