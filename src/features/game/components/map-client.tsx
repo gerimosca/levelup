@@ -24,6 +24,10 @@ function localDayDate(): string {
   return `${d.getFullYear()}-${m}-${day}`;
 }
 
+const ENEMY_IMAGE: Record<string, string> = {
+  laziness: 'saboteur', inertia: 'inertia', craving: 'craving', void: 'void',
+};
+
 const ZONE_EMOJI: Record<string, string> = {
   // S1
   forest: '🌳', mountain: '⛰️', cave: '🕳️', volcano: '🌋',
@@ -358,14 +362,27 @@ export function MapClient() {
                 <stop offset="1" stopColor={ZONE_COLOR[b.key]} stopOpacity="0.04" />
               </linearGradient>
             ))}
+            <clipPath id="boss-portrait-clip">
+              <circle cx={nodes[bossDay - 1].x} cy={nodes[bossDay - 1].y} r={18} />
+            </clipPath>
           </defs>
 
           {/* bandas de bioma + ambientación */}
           {bands.map((b) => (
             <g key={b.key}>
               <rect x="0" y={b.y} width={VW} height={b.h} fill={`url(#band-${b.key})`} />
-              <text x="20" y={b.y + 28} fontSize="22" opacity="0.22">{SCENERY[b.key]}</text>
-              <text x={VW - 30} y={b.y + b.h - 16} fontSize="22" opacity="0.22">{SCENERY[b.key]}</text>
+              {/* Scenery corners */}
+              <text x="16" y={b.y + 28} fontSize="22" opacity="0.20">{SCENERY[b.key]}</text>
+              <text x={VW - 28} y={b.y + b.h - 16} fontSize="22" opacity="0.20">{SCENERY[b.key]}</text>
+              {/* Extra scattered scenery for depth */}
+              <text x={VW * 0.22} y={b.y + b.h * 0.45} fontSize="15" opacity="0.13">{SCENERY[b.key]}</text>
+              <text x={VW * 0.78} y={b.y + b.h * 0.28} fontSize="17" opacity="0.11">{SCENERY[b.key]}</text>
+              <text x={VW * 0.65} y={b.y + b.h * 0.72} fontSize="13" opacity="0.10">{SCENERY[b.key]}</text>
+              {/* Zone name watermark */}
+              <text x={VW / 2} y={b.y + b.h / 2} textAnchor="middle" fontSize="36" fontWeight="900"
+                fill={ZONE_COLOR[b.key]} opacity="0.04">
+                {ZONE_EMOJI[b.key]}
+              </text>
             </g>
           ))}
 
@@ -399,19 +416,43 @@ export function MapClient() {
                 </text>
               )}
 
+              {/* Pulse para nodo actual */}
               {n.status === 'current' && (
-                <motion.circle cx={n.x} cy={n.y} r={20} fill="none" stroke="#FFD24A" strokeWidth="2"
-                  animate={{ r: [18, 28, 18], opacity: [0.7, 0, 0.7] }} transition={{ duration: 1.6, repeat: Infinity }} />
+                <motion.circle cx={n.x} cy={n.y} r={20} fill="none" stroke="#FFD24A" strokeWidth="2.5"
+                  animate={{ r: [17, 30, 17], opacity: [0.8, 0, 0.8] }} transition={{ duration: 1.5, repeat: Infinity }} />
+              )}
+              {/* Glow rojo para el jefe */}
+              {n.isBoss && (
+                <motion.circle cx={n.x} cy={n.y} r={30} fill="none" stroke="#E74C6F" strokeWidth="2"
+                  animate={{ r: [26, 38, 26], opacity: [0.6, 0, 0.6] }} transition={{ duration: 2.2, repeat: Infinity }} />
               )}
               {selectedDay === n.day && (
-                <circle cx={n.x} cy={n.y} r={n.isBoss ? 26 : 20} fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.5" />
+                <circle cx={n.x} cy={n.y} r={n.isBoss ? 28 : 20} fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.5" />
               )}
 
               <circle cx={n.x} cy={n.y} r={n.isBoss ? 22 : 15} fill={nodeFill(n)} stroke="#23293a" strokeWidth="2.5"
                 opacity={n.status === 'locked' ? 0.85 : 1} />
 
               {n.isBoss ? (
-                <text x={n.x} y={n.y + 7} textAnchor="middle" fontSize="20">💀</text>
+                <>
+                  {/* Retrato del enemigo si está disponible */}
+                  <image
+                    href={`/enemies/${ENEMY_IMAGE[season.enemy.key] ?? season.enemy.key}.png`}
+                    x={n.x - 18}
+                    y={n.y - 18}
+                    width={36}
+                    height={36}
+                    clipPath="url(#boss-portrait-clip)"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                  {/* Overlay oscuro si está vivo (da sensación de amenaza) */}
+                  {n.status !== 'done' && (
+                    <circle cx={n.x} cy={n.y} r={18} fill="rgba(0,0,0,0.35)" />
+                  )}
+                  {n.status === 'done' && (
+                    <text x={n.x} y={n.y + 6} textAnchor="middle" fontSize="14">✓</text>
+                  )}
+                </>
               ) : (
                 <text x={n.x} y={n.y + 5} textAnchor="middle" fontSize="13" fontWeight="800" fill={textFill(n)}>{n.day}</text>
               )}
@@ -419,7 +460,7 @@ export function MapClient() {
 
               {/* marcador "estás aquí" */}
               {n.day === focusDay && !completed && !advance && (
-                <text x={n.x} y={n.y - 26} textAnchor="middle" fontSize="18">🚩</text>
+                <text x={n.x} y={n.y - 26} textAnchor="middle" fontSize="17">⚔️</text>
               )}
             </motion.g>
           ))}
@@ -428,13 +469,13 @@ export function MapClient() {
           {advance && (
             <motion.text
               textAnchor="middle"
-              fontSize="18"
+              fontSize="17"
               initial={{ x: advance.xs[0], y: advance.ys[0] }}
               animate={{ x: advance.xs, y: advance.ys }}
               transition={{ duration: Math.max(0.7, advance.xs.length * 0.45), ease: 'easeInOut' }}
               onAnimationComplete={() => setAdvance(null)}
             >
-              🚩
+              ⚔️
             </motion.text>
           )}
         </svg>
