@@ -12,7 +12,7 @@ export const SEASON_1_RESET: SeasonDef = {
   durationDays: 21,
   mainHabit: 'train',
   anchorHabits: ['sleep'], // dormir bien es el ancla universal; el resto rota
-  habits: ['train', 'sleep', 'no_alcohol', 'water', 'steps'],
+  habits: ['train', 'sleep', 'no_alcohol', 'water', 'steps', 'cold_shower', 'outdoor_time'],
   enemy: {
     key: 'laziness',
     nameKey: 'enemy.laziness.name', // "La Pereza"

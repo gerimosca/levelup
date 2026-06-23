@@ -7,10 +7,13 @@ import { getHabit } from '../data/habits';
 import { seededUnit } from '../lib/seeded-random';
 
 /** Bonus de XP al cerrar TODAS las misiones del día. */
-export const MISSION_COMPLETE_BONUS = 50;
+export const MISSION_COMPLETE_BONUS = 80;
 
 /** Cuántas secundarias ROTATIVAS se eligen cada día (además de las ancla). */
-export const ROTATING_MISSIONS_PER_DAY = 2;
+export const ROTATING_MISSIONS_PER_DAY = 4;
+
+/** Coste en 'wood' para hacer reroll de una misión secundaria. */
+export const MISSION_REROLL_COST = 2;
 
 /**
  * Genera las misiones del día:
@@ -59,6 +62,52 @@ export function generateDailyMissions(
   };
 
   return { main, secondary };
+}
+
+/**
+ * Aplica overrides de reroll sobre un set de misiones generado.
+ * `overrides` es un mapa { originalHabit: replacementHabit }.
+ * Si el original ya no está en las misiones (fue reemplazado antes), se ignora.
+ */
+export function applyMissionOverrides(
+  missions: DailyMissions,
+  overrides: Partial<Record<string, HabitKey>>,
+): DailyMissions {
+  if (Object.keys(overrides).length === 0) return missions;
+  const secondary = missions.secondary.map((m) => {
+    const replacement = overrides[m.habit];
+    if (!replacement) return m;
+    return { ...m, habit: replacement, xp: getHabit(replacement).baseXp };
+  });
+  return { ...missions, secondary };
+}
+
+/**
+ * Elige un hábito de reemplazo para `habitToReplace` desde la pool de activos
+ * que aún no están en misiones. Devuelve null si no hay alternativas.
+ * El resultado es determinista por `seed` para que sea consistente entre dispositivos.
+ */
+export function pickReplacementHabit(
+  missions: DailyMissions,
+  habitToReplace: HabitKey,
+  activeHabits: HabitKey[],
+  seed: string,
+): HabitKey | null {
+  const usedHabits = new Set<HabitKey>([
+    missions.main.habit,
+    ...missions.secondary.map((m) => m.habit),
+  ]);
+  // El habit a reemplazar queda libre para que no aparezca como opción
+  usedHabits.delete(habitToReplace);
+
+  const available = activeHabits.filter((h) => !usedHabits.has(h) && h !== habitToReplace);
+  if (available.length === 0) return null;
+
+  // Determinista por seed (mismo dispositivo, mismo resultado)
+  const sorted = [...available].sort(
+    (a, b) => seededUnit(`${seed}:reroll:${a}`) - seededUnit(`${seed}:reroll:${b}`),
+  );
+  return sorted[0] ?? null;
 }
 
 /**

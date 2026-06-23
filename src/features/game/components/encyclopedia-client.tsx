@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Lock } from 'lucide-react';
+import { Lock, X } from 'lucide-react';
 import {
   DISCOVERIES,
   DISCOVERY_CATEGORIES,
@@ -12,6 +12,7 @@ import {
   type RarityKey,
 } from '@/game-core';
 import { getEncyclopediaAction } from '../game.actions';
+import type { DiscoveryDef } from '@/game-core';
 
 type CategoryFilter = (typeof DISCOVERY_CATEGORIES)[number] | 'all';
 
@@ -21,6 +22,7 @@ export function EncyclopediaClient() {
   const [data, setData] = useState<{ found: Set<string>; built: Set<string> } | null>(null);
   const [tab, setTab] = useState<'story' | 'discoveries'>('story');
   const [catFilter, setCatFilter] = useState<CategoryFilter>('all');
+  const [selectedItem, setSelectedItem] = useState<DiscoveryDef | null>(null);
 
   useEffect(() => {
     getEncyclopediaAction().then(({ found, built }) =>
@@ -136,9 +138,12 @@ export function EncyclopediaClient() {
               const isFound = data.found.has(d.key);
               const r = RARITY[d.rarity as RarityKey];
               return (
-                <div
+                <button
                   key={d.key}
-                  className="rounded-2xl border-2 bg-card p-3 text-center"
+                  type="button"
+                  onClick={() => isFound ? setSelectedItem(d) : undefined}
+                  disabled={!isFound}
+                  className="rounded-2xl border-2 bg-card p-3 text-center transition-transform active:scale-95 disabled:cursor-default"
                   style={{
                     borderColor: isFound ? r.color : 'hsl(var(--border))',
                     opacity: isFound ? 1 : 0.55,
@@ -156,12 +161,60 @@ export function EncyclopediaClient() {
                       {tg(`rarity.${d.rarity}`)}
                     </span>
                   )}
-                </div>
+                </button>
               );
             })}
           </div>
         </div>
       )}
+
+      {/* Detail modal */}
+      {selectedItem && (() => {
+        const r = RARITY[selectedItem.rarity as RarityKey];
+        return (
+          <div
+            className="fixed inset-0 z-50 flex items-end justify-center"
+            onClick={() => setSelectedItem(null)}
+          >
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+            <div
+              className="relative z-10 w-full max-w-md rounded-t-3xl bg-card p-6 pb-10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setSelectedItem(null)}
+                aria-label={te('itemClose')}
+                className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-secondary text-muted-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              <div className="mb-4 text-center">
+                <div className="text-6xl">{selectedItem.emoji}</div>
+                <h2 className="mt-3 text-xl font-bold">
+                  {tg(`discoveries.${selectedItem.key}.name`)}
+                </h2>
+                <div className="mt-1 flex items-center justify-center gap-2">
+                  <span
+                    className="rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide"
+                    style={{ backgroundColor: `${r.color}22`, color: r.color }}
+                  >
+                    {tg(`rarity.${selectedItem.rarity}`)}
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    {tg(`discoveryCategory.${selectedItem.category}`)}
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {tg(`discoveries.${selectedItem.key}.desc`)}
+              </p>
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }

@@ -94,6 +94,37 @@ export const EVENTS: EventDef[] = [
     weight: 8,
   },
 
+  {
+    key: 'cold_rush',
+    multiplier: 2,
+    target: { kind: 'habit', habit: 'cold_shower' },
+    weight: 8,
+  },
+  {
+    key: 'night_off',
+    multiplier: 2,
+    target: { kind: 'habit', habit: 'no_screens_bed' },
+    weight: 8,
+  },
+  {
+    key: 'trail_run',
+    multiplier: 2,
+    target: { kind: 'habit', habit: 'outdoor_time' },
+    weight: 9,
+  },
+  {
+    key: 'fasting_day',
+    multiplier: 2,
+    target: { kind: 'habit', habit: 'fasting' },
+    weight: 8,
+  },
+  {
+    key: 'page_of_truth',
+    multiplier: 2,
+    target: { kind: 'habit', habit: 'journaling' },
+    weight: 8,
+  },
+
   // --- Eventos globales ---
   {
     key: 'golden_day',

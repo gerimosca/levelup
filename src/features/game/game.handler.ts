@@ -22,8 +22,11 @@ import {
   eventEnemyMultiplier,
   selectDailyEvent,
   generateDailyMissions,
+  applyMissionOverrides,
+  pickReplacementHabit,
   allMissionsComplete,
   MISSION_COMPLETE_BONUS,
+  MISSION_REROLL_COST,
   petStageForCareDays,
   petMood,
   maxShieldsForStage,
@@ -69,6 +72,7 @@ import {
   type MissionView,
   type ProfileView,
   type RelapseResult,
+  type RerollMissionResult,
   type SaveActiveHabitsInput,
   type SaveEconomyInput,
   type StatsView,
@@ -94,6 +98,7 @@ import {
   getCampStructures,
   getDiscoveries,
   hasRelapseOn,
+  getMissionOverrides,
   type PlayerRow,
 } from './game.query';
 import {
@@ -116,6 +121,7 @@ import {
   addMaterials,
   buildStructure,
   addDiscovery,
+  saveMissionOverride,
   deleteAllGameData,
   updateAvatarConfig,
   advanceToNextSeason,
@@ -182,7 +188,7 @@ export async function handleGetTodayState(
 
   const [
     claimedArr, streakRow, enemyRow, seasonProg, petRow, relapsedToday, hadRelapseYesterday,
-    equipped, expRow, inventory, campStructures, attrMapToday,
+    equipped, expRow, inventory, campStructures, attrMapToday, missionOverrides,
   ] = await Promise.all([
     getClaimedHabitKeys(userId, dayDate),
     getStreakRow(userId),
@@ -196,6 +202,7 @@ export async function handleGetTodayState(
     getInventory(userId),
     getCampStructures(userId),
     getAttributesMap(userId),
+    getMissionOverrides(userId, dayDate),
   ]);
   const claimed = new Set(claimedArr);
 
@@ -207,7 +214,8 @@ export async function handleGetTodayState(
   const ctx = buildEventContext(dayDate, hadRelapseYesterday, activeHabits, streakRow?.current ?? 0);
   const event = selectDailyEvent(`${userId}:${dayDate}`, ctx);
   const levelInfo = levelFromTotalXp(player.xp_total);
-  const missions = generateDailyMissions(season, activeHabits, `${userId}:${dayDate}`);
+  const baseMissions = generateDailyMissions(season, activeHabits, `${userId}:${dayDate}`);
+  const missions = applyMissionOverrides(baseMissions, missionOverrides as Partial<Record<string, HabitKey>>);
 
   const toView = (m: { habit: HabitKey; kind: 'main' | 'secondary'; xp: number }): MissionView => ({
     habit: m.habit,
@@ -970,5 +978,66 @@ function emptyResult(success: boolean, error?: string): ClaimResult {
     enemy: { hpCurrent: 0, hpMax: 0 },
     newAchievements: [],
     player: { level: 1, xpTotal: 0, streak: 0 },
+  };
+}
+
+/**
+ * Reemplaza una misión secundaria pagando MISSION_REROLL_COST en wood.
+ * Si ya se hizo reroll de ese hábito hoy, aplica el override almacenado
+ * sin volver a cobrar.
+ */
+export async function handleRerollMission(
+  userId: string,
+  dayDate: string,
+  habitToReplace: HabitKey,
+): Promise<RerollMissionResult> {
+  const [player, inventory, missionOverrides] = await Promise.all([
+    getPlayerRow(userId),
+    getInventory(userId),
+    getMissionOverrides(userId, dayDate),
+  ]);
+  if (!player) return { success: false, error: 'Player not found' };
+
+  // Si ya existe un override para este hábito hoy, no cobrar de nuevo
+  if (missionOverrides[habitToReplace]) {
+    return {
+      success: true,
+      replacementHabit: missionOverrides[habitToReplace],
+      woodRemaining: inventory['wood'] ?? 0,
+    };
+  }
+
+  const wood = inventory['wood'] ?? 0;
+  if (wood < MISSION_REROLL_COST) {
+    return { success: false, error: 'not_enough_wood' };
+  }
+
+  const season = getSeason(player.current_season_key) ?? FIRST_SEASON;
+  const activeHabits = resolveActiveHabits(player, season);
+  const baseMissions = generateDailyMissions(season, activeHabits, `${userId}:${dayDate}`);
+  const currentMissions = applyMissionOverrides(
+    baseMissions,
+    missionOverrides as Partial<Record<string, HabitKey>>,
+  );
+
+  const replacement = pickReplacementHabit(
+    currentMissions,
+    habitToReplace,
+    activeHabits,
+    `${userId}:${dayDate}`,
+  );
+  if (!replacement) {
+    return { success: false, error: 'no_alternatives' };
+  }
+
+  await Promise.all([
+    addMaterials(userId, { wood: -MISSION_REROLL_COST }),
+    saveMissionOverride(userId, dayDate, habitToReplace, replacement),
+  ]);
+
+  return {
+    success: true,
+    replacementHabit: replacement,
+    woodRemaining: Math.max(0, wood - MISSION_REROLL_COST),
   };
 }

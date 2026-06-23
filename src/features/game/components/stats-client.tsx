@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState, type ReactNode } from 'react';
-import { useTranslations } from 'next-intl';
-import { Wine, Coins, Flame, Star, Dumbbell, Footprints, BookOpen, Trophy, Swords } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { ArrowLeft, Wine, Coins, Flame, Star, Dumbbell, Footprints, BookOpen, Trophy, Swords } from 'lucide-react';
 import { getStatsAction } from '../game.actions';
 import { CountUp } from './count-up';
 import type { StatsView } from '../types';
@@ -48,7 +49,17 @@ function StreakRing({ current, next, progress }: { current: number; next: number
 
 // ─── Heatmap de actividad (8 semanas × 7 días) ────────────────────────────────
 
-function ActivityHeatmap({ activity }: { activity: { date: string; count: number }[] }) {
+function ActivityHeatmap({
+  activity,
+  locale,
+  labelLess,
+  labelMore,
+}: {
+  activity: { date: string; count: number }[];
+  locale: string;
+  labelLess: string;
+  labelMore: string;
+}) {
   const maxCount = Math.max(1, ...activity.map((a) => a.count));
   // Pad to a full 8×7 grid (56 cells); activity is oldest-first.
   const cells = Array.from({ length: 56 }, (_, i) => activity[i] ?? { date: '', count: 0 });
@@ -63,7 +74,11 @@ function ActivityHeatmap({ activity }: { activity: { date: string; count: number
 
   // Group by week (rows) for display: 8 rows × 7 cols.
   const weeks = Array.from({ length: 8 }, (_, w) => cells.slice(w * 7, w * 7 + 7));
-  const dayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+  // Compute Mon–Sun narrow labels from locale (Jan 1 2024 was a Monday)
+  const dayLabels = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(2024, 0, 1 + i);
+    return d.toLocaleDateString(locale, { weekday: 'narrow' });
+  });
 
   return (
     <div>
@@ -90,7 +105,7 @@ function ActivityHeatmap({ activity }: { activity: { date: string; count: number
       </div>
       {/* Legend */}
       <div className="mt-2 flex items-center gap-1.5 text-[10px] text-muted-foreground">
-        <span>Less</span>
+        <span>{labelLess}</span>
         {[0, 0.33, 0.66, 1].map((t) => (
           <div
             key={t}
@@ -98,7 +113,7 @@ function ActivityHeatmap({ activity }: { activity: { date: string; count: number
             style={{ backgroundColor: colorFor(Math.ceil(t * maxCount)) }}
           />
         ))}
-        <span>More</span>
+        <span>{labelMore}</span>
       </div>
     </div>
   );
@@ -106,7 +121,7 @@ function ActivityHeatmap({ activity }: { activity: { date: string; count: number
 
 // ─── XP diario (14 días) ───────────────────────────────────────────────────────
 
-function DailyXpChart({ days }: { days: { date: string; xp: number }[] }) {
+function DailyXpChart({ days, locale }: { days: { date: string; xp: number }[]; locale: string }) {
   const maxXp = Math.max(1, ...days.map((d) => d.xp));
   return (
     <div className="flex h-14 items-end gap-0.5">
@@ -114,7 +129,7 @@ function DailyXpChart({ days }: { days: { date: string; xp: number }[] }) {
         const ratio = d.xp / maxXp;
         const isToday = i === days.length - 1;
         const date = new Date(`${d.date}T12:00:00`);
-        const label = date.toLocaleDateString('en', { weekday: 'narrow' });
+        const label = date.toLocaleDateString(locale, { weekday: 'narrow' });
         return (
           <div key={d.date} className="flex flex-1 flex-col items-center gap-0.5">
             <div
@@ -303,6 +318,8 @@ function StatCard({ icon, value, label }: { icon: ReactNode; value: ReactNode; l
 export function StatsClient() {
   const ts = useTranslations('stats');
   const tg = useTranslations('game');
+  const locale = useLocale();
+  const router = useRouter();
   const [stats, setStats] = useState<StatsView | null>(null);
 
   useEffect(() => {
@@ -325,7 +342,17 @@ export function StatsClient() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-bold tracking-tight">{ts('title')}</h1>
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={() => router.back()}
+          aria-label="Back"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition-colors active:bg-secondary"
+        >
+          <ArrowLeft className="h-4 w-4" />
+        </button>
+        <h1 className="text-2xl font-bold tracking-tight">{ts('title')}</h1>
+      </div>
 
       {/* Días sin alcohol + dinero ahorrado — solo si el usuario trackea alcohol */}
       {stats.daysAlcoholFree > 0 && (
@@ -379,7 +406,7 @@ export function StatsClient() {
               <div className="flex justify-between">
                 {last7.map((a, i) => {
                   const date = new Date(`${a.date}T12:00:00`);
-                  const dayLabel = date.toLocaleDateString('en', { weekday: 'narrow' });
+                  const dayLabel = date.toLocaleDateString(locale, { weekday: 'narrow' });
                   const isToday = i === last7.length - 1;
                   const active = a.count > 0;
                   return (
@@ -446,13 +473,18 @@ export function StatsClient() {
         <p className="mb-3 text-[11px] text-muted-foreground">
           {ts('activityCaption', { current: stats.monthHabits, prev: stats.prevMonthHabits })}
         </p>
-        <ActivityHeatmap activity={stats.activity} />
+        <ActivityHeatmap
+          activity={stats.activity}
+          locale={locale}
+          labelLess={ts('heatmapLess')}
+          labelMore={ts('heatmapMore')}
+        />
       </section>
 
       {/* XP diario — últimos 14 días */}
       <section className="rounded-2xl border border-border bg-card p-5">
         <h2 className="mb-3 text-sm font-semibold">{ts('xpDailyTitle')}</h2>
-        <DailyXpChart days={stats.xpByDay} />
+        <DailyXpChart days={stats.xpByDay} locale={locale} />
       </section>
 
       {/* XP por semana */}
@@ -525,7 +557,8 @@ export function StatsClient() {
               const maxCount = Math.max(1, ...stats.dayOfWeek.map((d) => d.count));
               const ratio = count / maxCount;
               const isMax = count === maxCount && count > 0;
-              const dayLabel = ['S', 'M', 'T', 'W', 'T', 'F', 'S'][day];
+              // day 0=Sun, Jan 7 2024 was a Sunday; +day shifts to correct weekday
+              const dayLabel = new Date(2024, 0, 7 + day).toLocaleDateString(locale, { weekday: 'narrow' });
               return (
                 <div key={day} className="flex flex-1 flex-col items-center gap-1">
                   <div className="w-full overflow-hidden rounded-t-sm" style={{ height: 48 }}>

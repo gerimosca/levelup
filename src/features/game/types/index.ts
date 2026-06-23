@@ -98,6 +98,11 @@ const HABIT_KEYS = [
   'no_smoking',
   'no_social_media',
   'no_junk_food',
+  'cold_shower',
+  'no_screens_bed',
+  'outdoor_time',
+  'fasting',
+  'journaling',
 ] as const;
 
 /** Input del onboarding: el usuario elige al menos 3 objetivos. */
@@ -312,4 +317,14 @@ export interface ClaimResult {
   enemy: { hpCurrent: number; hpMax: number };
   newAchievements: string[];
   player: { level: number; xpTotal: number; streak: number };
+}
+
+/** Resultado de hacer reroll de una misión secundaria. */
+export interface RerollMissionResult {
+  success: boolean;
+  error?: string;
+  /** Nueva clave de hábito asignada en su lugar. */
+  replacementHabit?: string;
+  /** Wood restante después del coste. */
+  woodRemaining?: number;
 }

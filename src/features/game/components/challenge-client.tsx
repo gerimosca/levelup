@@ -43,20 +43,32 @@ function MemberCard({
           : 'border-border bg-card'
       }`}
     >
-      {/* Avatar / initial */}
-      <div
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold"
-        style={{
-          background: member.loggedToday
-            ? 'hsl(var(--primary))'
-            : 'hsl(var(--secondary))',
-          color: member.loggedToday
-            ? 'hsl(var(--primary-foreground))'
-            : 'hsl(var(--muted-foreground))',
-        }}
-      >
-        {member.displayName[0].toUpperCase()}
-      </div>
+      {/* Avatar */}
+      {member.avatarUrl ? (
+        <img
+          src={member.avatarUrl}
+          alt=""
+          className="h-10 w-10 shrink-0 rounded-full object-cover"
+          style={{
+            outline: member.loggedToday ? '2px solid hsl(var(--primary))' : undefined,
+            outlineOffset: '2px',
+          }}
+        />
+      ) : (
+        <div
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold"
+          style={{
+            background: member.loggedToday
+              ? 'hsl(var(--primary))'
+              : 'hsl(var(--secondary))',
+            color: member.loggedToday
+              ? 'hsl(var(--primary-foreground))'
+              : 'hsl(var(--muted-foreground))',
+          }}
+        >
+          {member.displayName[0].toUpperCase()}
+        </div>
+      )}
 
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">

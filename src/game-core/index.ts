@@ -145,8 +145,11 @@ export {
 export {
   generateDailyMissions,
   allMissionsComplete,
+  applyMissionOverrides,
+  pickReplacementHabit,
   MISSION_COMPLETE_BONUS,
   ROTATING_MISSIONS_PER_DAY,
+  MISSION_REROLL_COST,
 } from './missions/missions';
 
 // Logros

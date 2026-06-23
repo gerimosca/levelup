@@ -8,40 +8,41 @@ describe('XP de hábitos boolean', () => {
     expect(calculateHabitXp(HABITS.train, false)).toBe(0);
   });
 
-  it('no beber alcohol da 120', () => {
-    expect(calculateHabitXp(HABITS.no_alcohol, true)).toBe(120);
+  it('no beber alcohol da 150 (igual que entrenar — eje central)', () => {
+    expect(calculateHabitXp(HABITS.no_alcohol, true)).toBe(150);
   });
 
-  it('el máximo diario base de todos los hábitos es 820', () => {
+  it('el máximo diario base (suma de todos los hábitos) coincide con HABIT_LIST', () => {
     const max = HABIT_LIST.reduce((sum, h) => sum + h.baseXp, 0);
-    expect(max).toBe(820);
+    // 16 hábitos: 150+150+130+110+100+90+85+85+82+80+78+75+75+72+72+70 = 1504
+    expect(max).toBe(1504);
   });
 });
 
 describe('XP de hábitos graduales (parcial)', () => {
-  it('agua: 10 XP por cada 0,5 L, máx 40 a los 2 L', () => {
+  it('agua: 18 XP por cada 0,5 L, máx 72 a los 2 L', () => {
     expect(calculateHabitXp(HABITS.water, 0)).toBe(0);
-    expect(calculateHabitXp(HABITS.water, 0.5)).toBe(10);
-    expect(calculateHabitXp(HABITS.water, 1)).toBe(20);
-    expect(calculateHabitXp(HABITS.water, 2)).toBe(40);
-    expect(calculateHabitXp(HABITS.water, 3)).toBe(40); // cap
+    expect(calculateHabitXp(HABITS.water, 0.5)).toBe(18);
+    expect(calculateHabitXp(HABITS.water, 1)).toBe(36);
+    expect(calculateHabitXp(HABITS.water, 2)).toBe(72);
+    expect(calculateHabitXp(HABITS.water, 3)).toBe(72); // cap
   });
 
-  it('pasos: 7 XP por cada 1.000, máx 70 a los 10.000', () => {
-    expect(calculateHabitXp(HABITS.steps, 7000)).toBe(49);
-    expect(calculateHabitXp(HABITS.steps, 10000)).toBe(70);
+  it('pasos: proporcional a 85 XP a los 10.000', () => {
+    expect(calculateHabitXp(HABITS.steps, 7000)).toBe(59);  // round(7/10 * 85) = 59 (float)
+    expect(calculateHabitXp(HABITS.steps, 10000)).toBe(85);
   });
 
   it('pasos: bonus +20 superando 15.000', () => {
-    expect(calculateHabitXp(HABITS.steps, 15000)).toBe(90);
+    expect(calculateHabitXp(HABITS.steps, 15000)).toBe(105); // 85 + 20
   });
 
-  it('sueño: 0 por debajo de 5h, full 80 a partir de 7h', () => {
+  it('sueño: 0 por debajo de 5h, full 100 a partir de 7h', () => {
     expect(calculateHabitXp(HABITS.sleep, 4)).toBe(0);
     expect(calculateHabitXp(HABITS.sleep, 5)).toBe(0);
-    expect(calculateHabitXp(HABITS.sleep, 6)).toBe(40);
-    expect(calculateHabitXp(HABITS.sleep, 7)).toBe(80);
-    expect(calculateHabitXp(HABITS.sleep, 9)).toBe(80); // cap
+    expect(calculateHabitXp(HABITS.sleep, 6)).toBe(50);   // 2/4 steps * 100
+    expect(calculateHabitXp(HABITS.sleep, 7)).toBe(100);
+    expect(calculateHabitXp(HABITS.sleep, 9)).toBe(100);  // cap
   });
 });
 

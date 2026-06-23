@@ -16,7 +16,7 @@ export type AttributeType =
   | 'energy' // Energía
   | 'resistance'; // Resistencia
 
-/** Hábitos soportados en el MVP. */
+/** Hábitos soportados. */
 export type HabitKey =
   | 'no_alcohol'
   | 'train'
@@ -28,7 +28,12 @@ export type HabitKey =
   | 'meditate'
   | 'no_smoking'
   | 'no_social_media'
-  | 'no_junk_food';
+  | 'no_junk_food'
+  | 'cold_shower'
+  | 'no_screens_bed'
+  | 'outdoor_time'
+  | 'fasting'
+  | 'journaling';
 
 /** Configuración de un hábito gradual (XP parcial). */
 export interface GradedConfig {

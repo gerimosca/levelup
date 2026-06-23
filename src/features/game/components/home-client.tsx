@@ -17,6 +17,7 @@ import {
   TITLES_BY_KEY,
   chapterForStructure,
   petActivityForHour,
+  MISSION_REROLL_COST,
   type HabitKey,
   type RarityKey,
 } from '@/game-core';
@@ -29,8 +30,9 @@ import {
   buildStructureAction,
   markVictorySeenAction,
   advanceSeasonAction,
+  rerollMissionAction,
 } from '../game.actions';
-import type { ClaimResult, ClaimExpeditionResult, MissionView, TodayState } from '../types';
+import type { ClaimResult, ClaimExpeditionResult, MissionView, RerollMissionResult, TodayState } from '../types';
 import { XpBar } from './xp-bar';
 import { MissionCard } from './mission-card';
 import { EnemyHealthBar } from './enemy-health-bar';
@@ -104,6 +106,7 @@ export function HomeClient() {
   const [victoryPending, setVictoryPending] = useState(false);
   const [nextSeasonKey, setNextSeasonKey] = useState<string | null>(null);
   const [claimingVictory, setClaimingVictory] = useState(false);
+  const [rerolling, setRerolling] = useState<HabitKey | null>(null);
 
   const level = usePlayerStore((s) => s.level);
   const streak = usePlayerStore((s) => s.streak);
@@ -322,6 +325,35 @@ export function HomeClient() {
     } else {
       void doClaim(mission, 1);
     }
+  };
+
+  const doReroll = async (mission: MissionView) => {
+    if (rerolling || mission.claimed) return;
+    setRerolling(mission.habit);
+    const res: RerollMissionResult = await rerollMissionAction(mission.habit, dayDate);
+    setRerolling(null);
+    if (!res.success) {
+      if (res.error === 'not_enough_wood') toast.error(th('rerollNoWood'));
+      else if (res.error === 'no_alternatives') toast.error(th('rerollNoAlts'));
+      return;
+    }
+    const replacement = res.replacementHabit as HabitKey;
+    haptics.trigger('light');
+    setToday((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        materials: { ...prev.materials, wood: res.woodRemaining ?? 0 },
+        missions: {
+          ...prev.missions,
+          secondary: prev.missions.secondary.map((m) =>
+            m.habit === mission.habit
+              ? { ...m, habit: replacement, xp: getHabit(replacement).baseXp, claimed: false }
+              : m,
+          ),
+        },
+      };
+    });
   };
 
   const logRelapse = async () => {
@@ -649,6 +681,11 @@ export function HomeClient() {
                 claimedLabel={tg('ui.claimed')}
                 claiming={claiming === m.habit}
                 onClaim={() => startClaim(m)}
+                rerollCost={MISSION_REROLL_COST}
+                rerolling={rerolling === m.habit}
+                canReroll={(today.materials['wood'] ?? 0) >= MISSION_REROLL_COST}
+                onReroll={() => doReroll(m)}
+                rerollLabel={th('rerollMission')}
               />
             ))}
           </>

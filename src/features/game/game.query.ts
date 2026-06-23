@@ -352,4 +352,22 @@ export async function getDiscoveries(userId: string): Promise<string[]> {
   return ((data as { discovery_key: string }[] | null) ?? []).map((r) => r.discovery_key);
 }
 
+/** Overrides de reroll del día: { originalHabit: replacementHabit } */
+export async function getMissionOverrides(
+  userId: string,
+  dayDate: string,
+): Promise<Record<string, string>> {
+  const supabase = await createClientServer();
+  const { data } = await supabase
+    .from('mission_overrides')
+    .select('original_habit, replacement_habit')
+    .eq('user_id', userId)
+    .eq('day_date', dayDate);
+  const map: Record<string, string> = {};
+  for (const r of (data as { original_habit: string; replacement_habit: string }[] | null) ?? []) {
+    map[r.original_habit] = r.replacement_habit;
+  }
+  return map;
+}
+
 export { MC_BONUS_KEY };

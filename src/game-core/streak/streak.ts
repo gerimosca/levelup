@@ -6,14 +6,18 @@
  * Ver docs/design/02-game-design.md §2.3.
  */
 
-/** Tramos del multiplicador de racha (días mínimos → multiplicador). */
+/**
+ * Tramos del multiplicador de racha.
+ * Bonus deliberadamente suave: la dificultad la pone la curva de niveles,
+ * no el multiplicador. 100 días = ×1.25 (+25%), nunca se duplica.
+ */
 const STREAK_TIERS: { minDays: number; multiplier: number }[] = [
   { minDays: 100, multiplier: 1.25 },
-  { minDays: 30, multiplier: 1.2 },
-  { minDays: 14, multiplier: 1.15 },
-  { minDays: 7, multiplier: 1.1 },
-  { minDays: 3, multiplier: 1.05 },
-  { minDays: 0, multiplier: 1.0 },
+  { minDays: 30,  multiplier: 1.2  },
+  { minDays: 14,  multiplier: 1.15 },
+  { minDays: 7,   multiplier: 1.1  },
+  { minDays: 3,   multiplier: 1.05 },
+  { minDays: 0,   multiplier: 1.0  },
 ];
 
 /** Multiplicador global de XP según los días de racha actuales. */

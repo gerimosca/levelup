@@ -1,6 +1,7 @@
 'use server';
 
 import { getUser } from '@/shared/auth';
+import type { HabitKey } from '@/game-core';
 import {
   handleClaimHabit,
   handleGetTodayState,
@@ -22,6 +23,7 @@ import {
   handleSetActiveTitle,
   handleAdvanceSeason,
   handleCraftItem,
+  handleRerollMission,
 } from './game.handler';
 import type {
   AvatarConfig,
@@ -33,6 +35,7 @@ import type {
   EconomySettings,
   ProfileView,
   RelapseResult,
+  RerollMissionResult,
   SaveActiveHabitsInput,
   SaveEconomyInput,
   StatsView,
@@ -212,4 +215,13 @@ export async function getOwnedCraftKeysAction(): Promise<string[]> {
   const { getEquipmentRows } = await import('./game.query');
   const rows = await getEquipmentRows(user.id);
   return rows.map((r) => r.item_key as string);
+}
+
+export async function rerollMissionAction(
+  habitKey: string,
+  dayDate: string,
+): Promise<RerollMissionResult> {
+  const user = await getUser();
+  if (!user) return { success: false, error: 'not_authenticated' };
+  return handleRerollMission(user.id, dayDate, habitKey as HabitKey);
 }

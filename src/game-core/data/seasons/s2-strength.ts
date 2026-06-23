@@ -12,7 +12,7 @@ export const SEASON_2_STRENGTH: SeasonDef = {
   mainHabit: 'train',
   anchorHabits: ['eat_well'], // comer bien es el ancla de Strength (fijo cada día; el resto rota)
 
-  habits: ['train', 'eat_well', 'no_alcohol', 'steps', 'sleep', 'water', 'read'],
+  habits: ['train', 'eat_well', 'no_alcohol', 'steps', 'sleep', 'water', 'read', 'cold_shower', 'fasting'],
   enemy: {
     key: 'inertia',
     nameKey: 'enemy.inertia.name',

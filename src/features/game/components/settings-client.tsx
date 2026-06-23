@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { toast } from 'sonner';
-import { Download, Trash2, Volume2, VolumeX, Sun, Moon, Monitor } from 'lucide-react';
+import { ArrowLeft, Download, Trash2, Volume2, VolumeX, Sun, Moon, Monitor, Languages } from 'lucide-react';
 import { HABIT_LIST, type HabitKey } from '@/game-core';
 import { audio } from '@/shared/game';
 import { NotificationSettings } from './notification-settings';
@@ -123,7 +123,17 @@ export function SettingsClient() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-2xl font-bold tracking-tight">{tset('title')}</h1>
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={() => router.back()}
+          aria-label="Back"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition-colors active:bg-secondary"
+        >
+          <ArrowLeft className="h-4 w-4" />
+        </button>
+        <h1 className="text-2xl font-bold tracking-tight">{tset('title')}</h1>
+      </div>
 
       {/* Objetivos */}
       <section className="space-y-3">
@@ -268,6 +278,39 @@ export function SettingsClient() {
           </button>
         </section>
       )}
+
+      {/* Idioma */}
+      <section className="space-y-3">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          {tset('language')}
+        </h2>
+        <div className="grid grid-cols-2 gap-2">
+          {([
+            { value: 'en', label: tset('langEn') },
+            { value: 'es', label: tset('langEs') },
+          ] as const).map(({ value, label }) => (
+            <button
+              key={value}
+              type="button"
+              onClick={() => {
+                const segments = window.location.pathname.split('/');
+                segments[1] = value;
+                router.push(segments.join('/'));
+              }}
+              aria-pressed={locale === value}
+              className="flex items-center justify-center gap-2 rounded-2xl border py-3 text-sm font-semibold transition-colors"
+              style={{
+                borderColor: locale === value ? 'hsl(var(--primary))' : 'hsl(var(--border))',
+                backgroundColor: locale === value ? 'hsl(var(--primary) / 0.12)' : undefined,
+                color: locale === value ? 'hsl(var(--primary))' : 'hsl(var(--muted-foreground))',
+              }}
+            >
+              <Languages className="h-4 w-4" aria-hidden="true" />
+              {label}
+            </button>
+          ))}
+        </div>
+      </section>
 
       {/* Notificaciones */}
       <NotificationSettings />

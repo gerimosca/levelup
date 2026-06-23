@@ -13,7 +13,7 @@ export const SEASON_3_CUT: SeasonDef = {
   mainHabit: 'eat_well',
   anchorHabits: ['water'], // hidratarse es el ancla universal de una "cut"
 
-  habits: ['eat_well', 'water', 'no_alcohol', 'steps', 'train', 'sleep', 'meditate'],
+  habits: ['eat_well', 'water', 'no_alcohol', 'steps', 'train', 'sleep', 'meditate', 'fasting', 'outdoor_time', 'no_screens_bed'],
   enemy: {
     key: 'craving',
     nameKey: 'enemy.craving.name',

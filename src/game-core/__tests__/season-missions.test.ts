@@ -69,12 +69,12 @@ describe('generación de misiones diarias', () => {
     'no_alcohol', 'train', 'sleep', 'water', 'steps', 'eat_well', 'read', 'meditate',
   ] as const;
 
-  it('con seed: principal + ancla fija + 2 rotativas', () => {
+  it('con seed: principal + ancla fija + 4 rotativas', () => {
     const m = generateDailyMissions(SEASON_1_RESET, [...active8], 'u:2026-06-19');
     expect(m.main.habit).toBe('train');
     const keys = m.secondary.map((s) => s.habit);
-    expect(keys).toContain('no_alcohol'); // ancla siempre presente
-    expect(m.secondary).toHaveLength(3); // ancla + 2 rotativas
+    expect(keys).toContain('sleep'); // ancla siempre presente
+    expect(m.secondary).toHaveLength(5); // ancla + 4 rotativas (pool de 6)
   });
 
   it('es determinista por seed (mismo día → mismo set)', () => {
@@ -97,7 +97,7 @@ describe('generación de misiones diarias', () => {
 describe('atributos', () => {
   it('puntos por acción = floor(XP_base / 10)', () => {
     expect(attributePointsForHabit(HABITS.train)).toBe(15);
-    expect(attributePointsForHabit(HABITS.no_alcohol)).toBe(12);
+    expect(attributePointsForHabit(HABITS.no_alcohol)).toBe(15); // rebalanceado a 150 XP
   });
 
   it('rango sube cada 100 puntos, empezando en I (1)', () => {

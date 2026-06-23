@@ -12,7 +12,7 @@ export const SEASON_4_DISCIPLINE: SeasonDef = {
   mainHabit: 'meditate',
   anchorHabits: ['read'],
 
-  habits: ['meditate', 'read', 'no_alcohol', 'train', 'eat_well', 'water', 'sleep', 'steps'],
+  habits: ['meditate', 'read', 'no_alcohol', 'train', 'eat_well', 'water', 'sleep', 'steps', 'no_screens_bed', 'journaling'],
   enemy: {
     key: 'void',
     nameKey: 'enemy.void.name',

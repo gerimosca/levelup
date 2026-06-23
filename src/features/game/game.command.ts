@@ -257,6 +257,21 @@ export async function buildStructure(userId: string, structureKey: string): Prom
     );
 }
 
+export async function saveMissionOverride(
+  userId: string,
+  dayDate: string,
+  originalHabit: string,
+  replacementHabit: string,
+): Promise<void> {
+  const supabase = await createClientServer();
+  await supabase
+    .from('mission_overrides')
+    .upsert(
+      { user_id: userId, day_date: dayDate, original_habit: originalHabit, replacement_habit: replacementHabit },
+      { onConflict: 'user_id,day_date,original_habit' },
+    );
+}
+
 /** Borra TODOS los datos de juego del usuario (reinicio total). */
 export async function deleteAllGameData(userId: string): Promise<void> {
   const supabase = await createClientServer();
@@ -275,6 +290,7 @@ export async function deleteAllGameData(userId: string): Promise<void> {
     'inventory',
     'camp_structures',
     'discoveries',
+    'mission_overrides',
     'player_state',
   ];
   for (const table of tables) {
